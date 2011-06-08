@@ -1,0 +1,48 @@
+<a id="sitelogo" href="http://perunspace.ru" alt="Перунова Слобода">
+<img src="/media/design/logo/perunspace-logo.gif" alt="Перунова Слобода" /></a>
+
+<div id="sitetitle">Перунова Слобода</div>
+<div id="siteslogan">Наша жизнь - дорога в Ирий!</div>
+
+<div id="pagemenu">
+<ul>
+    <li id="tradition"><a href="/tradition/">Славяно-горицкая борьба</a></li>
+    <li id="strely"><a href="/strely/">Клуб СГБ Стрелы Перуна</a></li>
+    <li id="sloboda"><a href="/sloboda/">Клановое поселение</a></li>
+    <li id="farm"><a href="/farm/">Натуральное хозяйство</a></li>
+    <li id="camp"><a href="/camp/">Лагерь активного отдыха</a></li>
+</ul>
+</div><!-- /#pagemenu -->
+
+<div id="sitepicture"></div>
+
+<div id="sitemenu">
+<ul>
+    <li><a href="{% url blog %}">Дневник</a>
+        <ul>
+            <li><a href="/blog/category/report/">Отчеты</a>
+            <li><a href="/blog/category/info/">Объявления</a>
+            <li><a href="/blog/category/article/">Статьи</a>
+            <li><a href="/blog/category/art/">Творчество</a>
+            <li><a href="/blog/category/press/">Пресса</a>
+            <li><a href="/blog/category/video/">Видео</a>
+            <li><a href="/blog/category/other/">Разное</a>
+        </ul>
+    </li>
+    <li><a href="/events/">События</a>
+        <ul>
+            <li><a href="/events/category/perungame/">Перуновы Игрища</a></li>
+            <li><a href="/events/category/sport/">Соревнования</a></li>
+            <li><a href="/events/category/seminar/">Семинары</a></li>
+            <li><a href="/events/category/wargame/">Военно-тактические игры</a></li>
+            <li><a href="/events/category/children/">Воспитание</a></li>
+            <li><a href="/events/category/show/">Показательные выступления</a></li>
+            <li><a href="/events/category/org/">Организационные</a></li>
+        </ul>
+    </li>
+    <li><a href="/gallery/">Галерея</a></li>
+    <li><a href="/forum/{% if request.subdomain == 'm' %}lofi/{% endif %}">Форум</a></li>
+    <li><a href="/links/">Ссылки</a></li>
+    <li><a href="/contacts/">Контакты</a></li>
+</ul>
+</div><!-- /#sitemenu -->

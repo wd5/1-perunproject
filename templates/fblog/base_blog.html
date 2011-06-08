@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load fblog_tags %}
+
+{% block title %}Дневник Перуновой Слободы{% endblock %}
+
+{% block breadcrumbs %} - Дневник{% endblock %}
+
+{% block sidebar %}
+{% category_menu request %}
+{% archive_menu request %}
+{% endblock %}
+
+{% block contentclass %}blog{% endblock %}

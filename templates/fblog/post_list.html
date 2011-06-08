@@ -1,0 +1,28 @@
+{% extends "fblog/base_blog.html" %}
+
+{% load markup %}
+{% load comments %}
+
+{% load inlines %}
+
+{% block breadcrumbs %} - Дневник{% endblock %}
+
+
+{% block content %}
+
+{% for news in object_list %}<h2><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2>
+<div class="postinfo">{{ news.date|date:"j M Y H:m" }} | раздел: <a href="{{ news.type.get_absolute_url }}">{{ news.type.title_plural|lower }}</a> | просмотров: {{ news.view_count }} | {% get_comment_count for news as comment_count %}<a href="{{ news.get_absolute_url }}#comments">ответов: {{ comment_count }}</a></div>
+<div class="content-block">
+{{ news.preview_or_content|render_inlines|markdown }}
+</div>
+{% if news.preview %}<a class="next" href="{{ news.get_absolute_url }}">читать дальше</a><br />{% endif %}<br />
+
+
+{% endfor %}
+{% if is_paginated %}<hr>
+<div id="pagination">Страницы:
+    {% if has_previous %}<a href="?page={{ previous }}">позже</a>{% endif %}
+    <span class="current">{{ page }}/{{ pages }}</span>
+    {% if has_next %}<a href="?page={{ next }}">раньше</a>{% endif %}
+</div>{% endif %}
+{% endblock %}

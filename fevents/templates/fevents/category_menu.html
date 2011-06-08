@@ -1,0 +1,5 @@
+<ul><li>Подразделы
+     <ul>{% for category in events_category_menu %}
+         <li><a style="{% if page.url == request.path %} color:red;{% endif %}" href="{% url fevents_category_detail category.slug %}">{{ category.title_plural }}</a></li>{% endfor %}
+     </ul>
+     </li></ul>

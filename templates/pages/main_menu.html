@@ -1,0 +1,7 @@
+<ul>{% for menu in main_menu %}
+    <li>{{ menu.name }} {#        <li {% if menu.current %} class="current"{% endif %}><a href="{{ menu.url }}">{{ menu.name }}</a> #}
+         {% if menu.page_set.menu_items %}<ul>
+             {% for page in menu.page_set.menu_items %}<li><a {% if page.url == request.path %}style="color:red;" {% endif %}href="{{ page.url }}">{{ page.nav_title }}</a></li>
+             {% endfor %}</ul>
+    </li>{% endif %}{#        </li> #}{% endfor %}
+    </ul>

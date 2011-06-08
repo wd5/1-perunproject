@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% load comments %}
+
+{% block content %}
+    <p>Комментарий сохранен.</p>
+    
+{#% if comment %#}
+    <p><a href=" {{ comment.get_content_object_url }}">Просмотреть</a></p>
+{#% endif %#}
+    
+{% endblock %}

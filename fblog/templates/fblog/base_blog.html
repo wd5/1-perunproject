@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load markup %}
+{% load comments %}
+
+{% load fblog_tags %}
+{% load inlines %}
+
+{% block title %}Дневник Перуновой Слободы{% endblock %}
+
+{% block breadcrumbs %} - Дневник{% endblock %}
+
+{% block sidebar %}
+{% category_menu request %}
+{% archive_menu request %}
+{% endblock %}
+
+
+{% block content %}
+
+    {% for news in object_list %}
+
+<h2 style="text-align: left; color:#FF6E1E; padding:4px; border:1px solid #666; background:#333;"><a style="color:#FFAE5E; text-decoration: none;" href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2>
+
+<p style="color: #666;">{{ news.date|date:"j M Y H:m" }} | раздел: <a href="{{ news.type.get_absolute_url }}">{{ news.type.title_plural|lower }}</a> | просмотров: {{ news.view_count }} | {% get_comment_count for news as comment_count %}<a href="{{ news.get_absolute_url }}#comments">ответов: {{ comment_count }}</a></p>
+
+<p>{{ news.preview_or_content|render_inlines|markdown }}</p>
+
+{% if news.preview %}<p style="text-align:left"><a style="border:1px solid #333; background: #222; text-decoration: none; padding:2px;" href="{{ news.get_absolute_url }}">читать дальше</a></p>{% endif %}
+
+<br><br>
+
+{% endfor %}
+
+{% if is_paginated %}
+    <hr>
+        <center><span class="menu-side" style="text-align:center">Страницы:
+
+        {% if has_previous %}
+            <a href="?page={{ previous }}">позже</a>
+        {% endif %}
+
+        <span class="current">
+            {{ page }}/{{ pages }}
+        </span>
+
+        {% if has_next %}
+            <a href="?page={{ next }}">раньше</a>
+        {% endif %}
+</span></center>
+
+    {% endif %}
+
+
+{% endblock %}

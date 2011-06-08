@@ -1,0 +1,28 @@
+html {
+    height: 100%;
+    font-size: 12px;
+    font-family: Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+}
+
+#sitemenu ul li ul {
+    display: none;
+}
+
+ul.htabs {
+    list-style-type: none;
+    margin: 0; padding: 0;
+}
+
+ul.htabs li, ul.htabs span {
+    margin: 0; padding: 0;
+    display: inline;
+    font-size: 150%;
+    font-weight: bold;
+}

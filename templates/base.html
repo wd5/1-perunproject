@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+
+<title>{% block title %}{% endblock %}</title>
+
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="shortcut icon" href="/media/design/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="/media/design/favicon.ico" type="image/x-icon" />
+
+<link rel="stylesheet" href="/media/design/css/base{% if request.subdomain == "m" %}_mobile{% endif %}.css" type="text/css" />
+
+<meta name="description" content="{% block description %}{% endblock %}"/>
+
+<meta name="keywords" content="{% block keywords %}{% endblock %}" />
+
+{% block extrahead %}{% endblock %}
+
+</head>
+
+<body>
+
+<div id="header">
+
+{% include "base_header.html" %}
+</div><!-- /#header -->
+
+<div class="infobar" id="breadcrumbs">
+    <a href="/">PerunSpace.Ru</a>{% block breadcrumbs %}{% endblock %}
+    <div class="fright">
+        {% if not user.is_authenticated %}<a href="/accounts/login/?next=/">Войти</a>{% endif %}
+        {% if user.is_staff %}<a href="http://m.perunspace.ru/">Моб</a> <a href="http://mail.perunspace.ru">Почта</a> <a href="/admin/">Админка</a>{% endif %}
+        {% if user.is_authenticated %}<a href="/accounts/logout/?next=/">Выйти</a> ({{ user.username }}){% endif %}
+    </div>
+    <div style="clear:both"></div>
+</div><!-- /#infobar breadcrumbs -->
+
+<div id="main">
+
+<div id="content" class="{% block contentclass %}{% endblock %}">
+{% block content %}{% endblock %}
+</div><!-- /#content -->
+
+<div id="sidebar">
+{% block sidebar %}{% endblock %}
+</div><!-- /#sidebar -->
+
+</div><!-- /#main -->
+
+<div class="infobar" id="footer">
+{% include "base_footer.html" %}
+</div><!-- /#infobar footer -->
+
+{% include "base_yandex.html" %}
+
+{% include "base_google.html" %}
+
+</body>
+</html>
