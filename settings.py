@@ -96,6 +96,10 @@ TEMPLATE_DIRS = (
     '/home/hosting_dfalk/projects/perunspace/app/templates/',
 )
 
+FIXTURE_DIRS = (
+    '/home/hosting_dfalk/projects/perunspace/data/fixtures/',
+)
+
 INSTALLED_APPS = (
     'django.contrib.admin',
 
