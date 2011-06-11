@@ -37,7 +37,7 @@
     <div style="clear:both"></div>
 </div><!-- /#infobar breadcrumbs -->
 
-<div id="main">
+<div id="main">{% block main %}
 
 <div id="content" class="{% block contentclass %}{% endblock %}">
 {% block content %}{% endblock %}
@@ -47,7 +47,7 @@
 {% block sidebar %}{% endblock %}
 </div><!-- /#sidebar -->
 
-</div><!-- /#main -->
+{% endblock %}</div><!-- /#main -->
 
 <div class="infobar" id="footer">
 {% include "base_footer.html" %}
