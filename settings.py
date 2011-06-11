@@ -171,7 +171,7 @@ if not hasattr(globals(), 'SECRET_KEY'):
         except IOError:
             raise Exception('Please create a %s file with random characters to generate your secret key!' % SECRET_FILE)
 
-DJANGOBB_FORUM_BASE_TITLE = 'Перунова Слобода - Форум'
+DJANGOBB_FORUM_BASE_TITLE = 'Форум Перуновой Слободы'
 DJANGOBB_HEADER = 'Перунова Слобода'
 DJANGOBB_TAGLINE = 'Перунова Слобода - клановое бойцовское поселение клуба СГБ "Стрелы Перуна"'
 
