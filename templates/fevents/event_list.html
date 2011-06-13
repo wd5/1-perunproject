@@ -22,6 +22,7 @@
     <ul>
         {% for post in event1.post_set.all %}<li><a href="{{ post.get_absolute_url }}" title="{{ post.title }}">{{ post.type.title }}</a></li>{% endfor %}
         {% for album in event1.album_set.all %}<li><a href="{{ album.get_absolute_url }}">Фотоальбом</a></li>{% endfor %}
+        {% for video in event1.video_set.all %}<li><a href="{{ video.get_absolute_url }}">Видео</a></li>{% endfor %}
     </ul></li>
     {% endfor %}
 </ul></div>

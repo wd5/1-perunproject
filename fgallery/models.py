@@ -151,3 +151,28 @@ class Photo(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('fgallery.views.photo_detail',[str(self.album.id),str(self.id)])
+
+
+class Video(models.Model):
+    """
+       YouTube video integration
+    """
+    video_id = models.CharField(max_length=60)
+    
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    
+    title = models.CharField(max_length=200, blank=True)
+    event = models.ForeignKey(Event, blank=True, null=True)
+    
+    enable_comments = models.BooleanField(default=True)
+    is_published = models.BooleanField(default=True)
+    
+    objects = PublicManager()
+
+    def __unicode__(self):
+        return "%s" % (self.title)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('fgallery.views.video_detail',[str(self.id)])

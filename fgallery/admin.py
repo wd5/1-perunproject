@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from models import Photo, Album
+from models import Photo, Album, Video
 from django.contrib import admin
 
 class PhotoInline(admin.TabularInline):
@@ -38,3 +38,4 @@ class PhotoAdmin(admin.ModelAdmin):
     
 admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Album, AlbumAdmin)
+admin.site.register(Video)

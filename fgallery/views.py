@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from fgallery.models import Album, Photo
+from fgallery.models import Album, Photo, Video
 from django.views.generic.simple import direct_to_template
 from django.shortcuts import redirect
 
 def albums(request):
     album_list = Album.objects.filter(is_published=True).order_by('-date_mod')
-    return direct_to_template(request, 'fgallery/album_list.html', {'album_list': album_list})
+    video_list = Video.objects.published()
+    return direct_to_template(request, 'fgallery/album_list.html', {'album_list': album_list, 'video_list': video_list})
 
 def album1(request, falbum_id):
     albumres = Album.objects.get(id=falbum_id) #.all()#.order_by('-pub_date')[:10]
@@ -49,3 +50,11 @@ def photo_detail(request, falbum_id, fphoto_id):
 
     return direct_to_template(request, 'fgallery/photo_detail.html', {'photores': photores, 'photoprev': photoprev, 'photonext': photonext})
 
+
+def video_detail(request, fvideo_id):
+    object = Video.objects.get(id=fvideo_id)
+    return direct_to_template(request, 'fgallery/video_detail.html', {'object': object} )
+
+def video_list(request):
+    object_list = Video.objects.published()
+    return direct_to_template(request, 'fgallery/video_list.html', {'object_list': object_list} )

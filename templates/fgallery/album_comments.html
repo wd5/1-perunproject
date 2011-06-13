@@ -3,21 +3,12 @@
 {% load comments %}
 {% load thumbnail %}
 
-{% block title %}
+{% block title %}{{ albumres.title }} - комментарии | Фото клуба Стрелы Перуна{% endblock %}
 
-{{ albumres.title }} - комментарии | Фотогалерея Перуновой Слободы
-
-{% endblock %}
-
-{% block breadcrumbs %}
-
-    - <a href="/gallery/">Галерея</a> - <a href="{{ albumres.get_absolute_url }}">Фотоальбом</a> - Комментарии
-
-{% endblock %}
+{% block breadcrumbs %} - <a href="/gallery/">Галерея</a> - <a href="{{ albumres.get_absolute_url }}">Фотоальбом</a> - Комментарии{% endblock %}
 
 {% block content %}
-
-                    <h3>{{ albumres.title }}</h3>
+<h3>{{ albumres.title }}</h3>
 
 <p><a href="{{ albumres.get_absolute_url }}">Посмотреть альбом</a>
 <p>{% if albumres.event.post_set.all %}Информация в разделе: <a href="{{ albumres.event.post_set.all.0.get_absolute_url }}">{{ albumres.event.post_set.all.0.type }}</a>{% endif %}

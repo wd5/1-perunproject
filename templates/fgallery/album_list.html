@@ -3,18 +3,13 @@
 {% load comments %}
 {% load thumbnail %}
 
-{% block title %}
-
-Фотогалерея Перуновой Слободы
-
-{% endblock %}
+{% block title %}Фото и видео клуба Стрелы Перуна | Перунова Слобода{% endblock %}
 
 {% block breadcrumbs %} - Галерея{% endblock %}
 
 {% block content %}
-
-
-                    <h3>Фотогалерея</h3>
+    <div style="width: 450px" class="fleft">
+    <h3>Фотогалерея</h3>
 
     <p>Альбомов: {{ album_list.count }}
     <table>
@@ -26,6 +21,19 @@
 
     {% endfor %}
     </table>
+    </div>
+
+
+    <div style="width: 200px; margin-left:20px; text-align: center;" class="fright">
+    <h3 style="text-align: center">Видео</h3>
+    {% for object in video_list %}
+    <div style="margin-bottom: 15px;">
+    <a href="/gallery/video/{{ object.id }}/"><img src="http://img.youtube.com/vi/{{ object.video_id }}/1.jpg"></a>
+    <div>{{ object.title }}</div>
+    </div>
+    {% endfor %}
+    <a href="/gallery/video/">Еще видео</a>
+    </div>
 
 
 {% endblock %}

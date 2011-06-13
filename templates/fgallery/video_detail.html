@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load markup %}
+{% load comments %}
+{% load thumbnail %}
+
+{% block title %}{{ object.title }} | Видео клуба Стрелы Перуна{% endblock %}
+
+{% block breadcrumbs %} - <a href="/gallery/">Галерея</a> - <a href="/gallery/video/">Видеоальбом</a> - Видео{% endblock %}
+
+{% block contentclass %}video{% endblock %}
+{% block content %}
+
+<h1>{{ object.title }}</h1>
+
+<div class="img"><iframe width="640" height="390" src="http://www.youtube.com/embed/{{ object.video_id }}?rel=0" frameborder="0" allowfullscreen></iframe></div>
+<br>
+<hr>
+
+<h3 id="comments">Комментарии:</h3>
+
+{% get_comment_list for object as allcomments %}{% if allcomments|length = 0 %}
+0 комментариев. Напишите первый комментарий к этому видео!
+{% endif %}
+                
+                {% for acomment in allcomments %}
+                    <p><b>{{ acomment.user_name }}</b>, {{ acomment.submit_date }}:<br>{{ acomment.comment }}</p>
+                {% endfor %}
+                {% if object.enable_comments %}
+                <h3>Ваш комментарий:</h3>
+                {% else %}
+                <h3>Комментирование отключено.</h3>
+                {% endif %}
+                {% if object.enable_comments and user.is_authenticated %}
+                {% render_comment_form for object %}
+                {% endif %}
+                {% if object.enable_comments and not user.is_authenticated %}
+                <p><a href="/accounts/login/?next={{ request.path }}">Чтобы оставить комментарий, необходимой войти на сайт</a>
+                {% endif %}
+{% endblock %}

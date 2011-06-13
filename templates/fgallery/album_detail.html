@@ -3,17 +3,9 @@
 {% load comments %}
 {% load thumbnail %}
 
-{% block title %}
+{% block title %}{{ albumres.title }} | Фото клуба Стрелы Перуна{% endblock %}
 
-{{ albumres.title }} | Фотогалерея Перуновой Слободы
-
-{% endblock %}
-
-{% block breadcrumbs %}
-
-    - <a href="/gallery/">Галерея</a> - Фотоальбом
-
-{% endblock %}
+{% block breadcrumbs %} - <a href="/gallery/">Галерея</a> - Фотоальбом{% endblock %}
 
 {% block content %}
 <h3>{{ albumres.title }}</h3>
