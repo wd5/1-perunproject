@@ -105,6 +105,7 @@ class Photo(models.Model):
     position = models.IntegerField(default=0)
 
     title = models.CharField(max_length=70)
+    seo_title = models.CharField(max_length=70, blank=True)
     rating = models.IntegerField(blank=True, null=True, default=0)
     view_count = models.PositiveIntegerField(default=0, editable=False)
 
@@ -119,6 +120,9 @@ class Photo(models.Model):
     def __unicode__(self):
         dt = unicode(self.date)[:10]
         return "%s-[%s]-%s" % (self.id, dt, self.title)
+        
+    def seo_or_title(self):
+        return self.seo_title or self.title
 
     def image_thumb(self):
         if self.image:
