@@ -4,7 +4,7 @@
 
 {% block title %}Хроники клуба «Стрелы Перуна» | Перунова Слобода{% endblock %}
 
-{% block breadcrumbs %}{% if category %} - <a href="/events/">Хроники</a> - {{ category }}{% else %} - События{% endif %}{% endblock %}
+{% block breadcrumbs %}{% if category %} - <a href="/events/">Хроники</a> - {{ category }}{% else %} - Хроники{% endif %}{% endblock %}
 
 {% block sidebar %}
 {% category_menu request %}
@@ -12,7 +12,7 @@
 
 {% block content %}
 
-{% if not category %}<h3>События</h3>{% endif %}
+{% if not category %}<h3>Хроники</h3>{% endif %}
 {% if category %}<h3>{{ category }}</h3>{% endif %}
 
 <div class="eventlist">

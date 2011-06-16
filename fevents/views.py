@@ -11,4 +11,8 @@ def event_list(request):
 def category_detail(request, slug, **kwargs):
     events_list = Event.objects.filter(type__slug__exact=slug)
     category = Etype.objects.get(slug=slug)
-    return object_list(request, queryset=events_list, paginate_by=50, extra_context={'category':category.title_plural})
+    return object_list(
+        request, queryset=events_list, paginate_by=50,
+        template_name='fevents/category_detail.html',
+        extra_context={'category':category.title_plural},
+        **kwargs)
