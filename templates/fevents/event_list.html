@@ -2,14 +2,13 @@
 
 {% load fevents_tags %}
 
-{% block title %}События | Перунова Слобода{% endblock %}
+{% block title %}Хроники клуба «Стрелы Перуна» | Перунова Слобода{% endblock %}
 
-{% block breadcrumbs %}{% if category %} - <a href="/events/">События</a> - {{ category }}{% else %} - События{% endif %}{% endblock %}
+{% block breadcrumbs %}{% if category %} - <a href="/events/">Хроники</a> - {{ category }}{% else %} - События{% endif %}{% endblock %}
 
 {% block sidebar %}
 {% category_menu request %}
 {% endblock %}
-
 
 {% block content %}
 
