@@ -122,7 +122,7 @@ INSTALLED_APPS = (
     'messages',
     'captcha',
     'netauth',
-    'syncr.youtube',
+    #'syncr.youtube',
 
     'simplepages',
     'basic.inlines',
