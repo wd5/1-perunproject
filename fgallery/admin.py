@@ -27,7 +27,7 @@ class PhotoAdmin(admin.ModelAdmin):
     #prepopulated_fields = {"slug": ("title",)}
 
     fieldsets = [
-        (None,               {'fields': ['is_published','album','image','title']}),
+        (None,               {'fields': ['is_published','album','image','title','tags']}),
         ('Additional', {'fields': ['seo_title', 'date','position','is_cover','rating','enable_comments',], 'classes': ['collapse']}),
     ]
 
