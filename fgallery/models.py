@@ -4,7 +4,7 @@
 from django.db import models
 from datetime import datetime
 
-#from tagging.fields import TagField
+from tagging.fields import TagField
 #from sorl.improved.fields import ImprovedImageWithThumbnailsField
 from django.contrib.auth.models import User
 from fevents.models import Event
@@ -83,6 +83,8 @@ class Photo(models.Model):
     image = models.ImageField(upload_to='photos/')
 
     objects = PublicManager()
+
+    tags = TagField()
 
     """
     image = ImprovedImageWithThumbnailsField(
