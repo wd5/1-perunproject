@@ -116,6 +116,7 @@ INSTALLED_APPS = (
     'registration',
     'sorl.thumbnail',
     #'easy_thumbnails',
+    'tagging',
     'djangobb_forum',
     'haystack',
     'messages',

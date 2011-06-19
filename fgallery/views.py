@@ -3,7 +3,10 @@
 
 from fgallery.models import Album, Photo, Video
 from django.views.generic.simple import direct_to_template
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
+from tagging.models import Tag, TaggedItem
+from django.views.generic import date_based, list_detail
+import urllib
 
 def albums(request):
     album_list = Album.objects.filter(is_published=True).order_by('-date_mod')
@@ -49,6 +52,28 @@ def photo_detail(request, falbum_id, fphoto_id):
             photonext = None
 
     return direct_to_template(request, 'fgallery/photo_detail.html', {'photores': photores, 'photoprev': photoprev, 'photonext': photonext})
+
+
+def tag_detail(request, slug, template_name = 'fgallery/tag_detail.html', **kwargs):
+    """
+    Tag detail
+
+    Template: ``fgallery/tag_detail.html``
+    Context:
+    object_list
+    List of posts specific to the given tag.
+    tag
+    Given tag.
+    """
+    tag = urllib.unquote(unicode(slug)) # russian tags
+    tag = get_object_or_404(Tag, name__iexact=tag)
+    return list_detail.object_list(
+        request,
+        queryset=TaggedItem.objects.get_by_model(Photo,tag),
+        extra_context={'tag': tag},
+        template_name=template_name,
+        **kwargs
+    )
 
 
 def video_detail(request, fvideo_id):
