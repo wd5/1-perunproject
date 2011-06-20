@@ -151,11 +151,11 @@ a.next:hover {
     color: #cccccc;
 }
 
-.gallery a, .gallery a:visited, #cloud a, #cload a:visited {
+.gallery a, .gallery a:visited, #tagcloud a, #tagcload a:visited {
     color: #cccccc;
 }
 
-.gallery a, .gallery a:hover, #cloud a:hover {
+.gallery a, .gallery a:hover, #tagcloud a:hover {
     color: #ffffff;
 }
 
@@ -332,6 +332,16 @@ div#sidebar {
     margin: 4px auto;
     text-align:center;
     font: 14px bold Verdana;
+}
+
+#recentcomments ul li a, #recentcomments ul li a:visited {
+    color: #F59E52;
+    text-decoration: underline;
+}
+
+#recentcomments ul li a:hover {
+    color: #FFFFFF;
+    text-decoraton: none;
 }
 
 

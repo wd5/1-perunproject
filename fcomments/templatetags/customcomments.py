@@ -13,7 +13,7 @@ class LatestCommentsNode(Node):
         
     def render(self, context):
         site = Site.objects.get_current()
-        context[self.varname] = Comment._default_manager.for_model(self.model).filter(site = site, is_public = True, is_removed = False)[:self.num]
+        context[self.varname] = Comment._default_manager.for_model(self.model).filter(site = site, is_public = True, is_removed = False).order_by('-submit_date')[:self.num]
         return ''
 
 def get_latest_comments(parser, token):

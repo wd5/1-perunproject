@@ -19,7 +19,7 @@
     <div id="recentcomments">{% get_latest_comments fgallery.Photo 5 as recent_photo_comments %}
     <ul>Последние ответы<li><ul>
         {% for object in recent_photo_comments %}
-        <li><b>{{ object.user }}</b>, {{ object.submit_date|date:"j b, H:i" }},<br>фото <a style="color:#bb6e2e" href="{{ object.content_object.get_absolute_url }}">{{ object.content_object.title }}</a>:<br><i>{{ object.comment }}</i></li>
+        <li><b>{{ object.user_name }}</b>, {{ object.submit_date|date:"j b, H:i" }},<br>фото <a href="{{ object.content_object.get_absolute_url }}">{{ object.content_object.title }}</a>:<br><i>{{ object.comment }}</i></li>
         {% endfor %}</ul>
     </ul>
     {#% recent_comments %#}
