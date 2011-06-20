@@ -4,6 +4,7 @@
 
 {% block breadcrumbs %} - Галерея{% endblock %}
 
+{% block contentclass %}gallery{% endblock %}
 {% block sidebar %}{% tag_cloud_for_model fgallery.Photo as tags with steps=9 min_count=0 distribution=log %}
     <div id="cloud">
     <ul>Метки фотографий</ul>
