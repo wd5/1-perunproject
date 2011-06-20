@@ -2,14 +2,27 @@
 
 {% load tagging_tags %}
 
+{% load customcomments %}
+
 {% block breadcrumbs %} - Галерея{% endblock %}
 
 {% block contentclass %}gallery{% endblock %}
 {% block sidebar %}{% tag_cloud_for_model fgallery.Photo as tags with steps=9 min_count=0 distribution=log %}
-    <div id="cloud">
+    <div id="tagcloud">
     <ul>Метки фотографий</ul>
     {% for tag in tags %}
         <a href="{% url gallery_tag tag|urlencode %}" style="font-size: 1.{{ tag.font_size }}em">{{ tag }}</a>&nbsp;
     {% endfor %}
     </div>
+
+    <br>
+    <div id="recentcomments">{% get_latest_comments fgallery.Photo 5 as recent_photo_comments %}
+    <ul>Последние ответы<li><ul>
+        {% for object in recent_photo_comments %}
+        <li><b>{{ object.user }}</b>, {{ object.submit_date|date:"j b, H:i" }},<br>фото <a style="color:#bb6e2e" href="{{ object.content_object.get_absolute_url }}">{{ object.content_object.title }}</a>:<br><i>{{ object.comment }}</i></li>
+        {% endfor %}</ul>
+    </ul>
+    {#% recent_comments %#}
+    </div>
+
 {% endblock %}
