@@ -14,7 +14,7 @@ body {
     background:#252525;
 }
 
-/* deprecated */
+/* not used: */
 #container {
     width: 960px;
     text-align: center;
@@ -42,62 +42,6 @@ h1 {
     background:#333;
 }
 
-.page h2 {
-    font-size: 150%;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
-    margin-top: 8px;
-    margin-bottom: 6px;
-    color: #FFFFFF;
-    text-align: center;
-}
-
-.blog h2 {
-    font-size: 150%;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
-    text-align: left;
-    color:#FF6E1E;
-    padding:4px;
-    margin-top: 8px;
-    margin-bottom: 6px;
-    border:1px solid #666;
-    background:#333;
-}
-
-.blog h2 a {
-    color:#FFAE5E;
-    text-decoration: none;
-    margin-bottom: 8px;
-}
-
-.photo h1 {
-    border:1px solid #666;
-    width: 650px;
-    background:#333;
-    text-align:center;
-    color:#FFAE5E;
-    margin: 6px auto;
-}
-
-#photo-nav {
-    margin: 0px auto 4px;
-    text-align:center;
-}
-
-#album-title {
-    margin: 4px auto;
-    text-align:center;
-    font: 14px bold Verdana;
-}
-
-a.next {
-    border:1px solid #333;
-    background: #222;
-    text-decoration: none;
-    padding:2px;
-}
-
 h3 {
     font-size: 150%;
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -108,27 +52,9 @@ h3 {
     text-align:left;
 }
 
-input, textarea {
-    background-color: #666666;
-}
-
-textarea {
-    width: 75%;
-    height: 100px;
-}
-
-strong {
-    font-weight:normal;
-    color:#F00;
-}
-
-blockquote {
-    font-style: italic;
-    text-align: justify;
-}
-
 a, a:visited {
-    color: #CCC;
+    color: #F59E52;
+    text-decoration: underline;    
 }
 
 a:hover, a:active {
@@ -142,6 +68,27 @@ p {
     margin-bottom:10px;
     text-align:justify;
 }
+
+input, textarea {
+    background-color: #666666;
+}
+
+textarea {
+    width: 75%;
+    height: 100px;
+}
+
+strong {
+    font-weight:normal;
+    color:#EE0000;
+}
+
+blockquote {
+    font-style: italic;
+    text-align: justify;
+}
+
+/* ============================= ESPECIALLY STYLES ============================= */
 
 div.img {
     clear: both;
@@ -157,6 +104,71 @@ div.img img {
 img.free {
     border: 0px;
 }
+
+a.next, a.next:visited {
+    border:1px solid #333;
+    background: #222;
+    text-decoration: none;
+    padding:2px;
+    color: #cccccc;
+}
+
+a.next:hover {
+    color: #ffffff;
+}
+
+.page h2 {
+    font-size: 150%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: normal;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.blog h2 {
+    font-size: 150%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: normal;
+    text-align: left;
+    color:#FFAE5F;
+    padding:4px;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    border:1px solid #666;
+    background:#252525;
+}
+
+.blog h2 a {
+    /*color:#FFB569;*/
+    color:#FFAE5F;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.blog a {
+    color: #cccccc;
+}
+
+.gallery a, .gallery a:visited, #tagcloud a, #tagcload a:visited {
+    color: #cccccc;
+}
+
+.gallery a, .gallery a:hover, #tagcloud a:hover {
+    color: #ffffff;
+}
+
+.photo h1 {
+    border:1px solid #666;
+    width: 650px;
+    background:#333;
+    text-align:center;
+    color:#FFAE5E;
+    margin: 6px auto;
+}
+
+
 
 .fire {
     color:#F00;
@@ -209,6 +221,14 @@ img.free {
     margin-bottom: 8px;
 }
 
+.postinfo a, .postinfo a:visited {
+    color: #999;
+}
+
+.postinfo a:hover {
+    color: #fff;
+}
+
 
 
 /* ==================
@@ -249,6 +269,16 @@ div.infobar {
     background-image: url(/media/design/decor/infobar-bg.gif);
 }
 
+.infobar a, .infobar a:visited {
+    text-decoration: underline;
+    color:#CCCCCC;
+}
+
+.infobar a:hover {
+    text-decoration: none;
+    color:#FFFFFF;
+}
+
 
 /* ==================
        SIDEBAR
@@ -278,8 +308,84 @@ div#sidebar {
     list-style-type:disc;
 }
 
-#sidebar ul li a {
-    text-decoration: none;    
+#sidebar ul li a, #sidebar ul li a:visited {
+    text-decoration: none;
+    color:#CCCCCC;
+}
+
+#sidebar ul li a:hover {
+    text-decoration: none;
+    color:#FFFFFF;
+}
+
+
+/* ==================
+ *    GALLERY
+ * ================*/
+
+#photo-nav {
+    margin: 0px auto 4px;
+    text-align:center;
+}
+
+#album-title {
+    margin: 4px auto;
+    text-align:center;
+    font: 14px bold Verdana;
+}
+
+#recentcomments ul li a, #recentcomments ul li a:visited {
+    color: #F59E52;
+    text-decoration: underline;
+}
+
+#recentcomments ul li a:hover {
+    color: #FFFFFF;
+    text-decoraton: none;
+}
+
+
+/* ==================
+      FRONT PAGE
+================== */
+
+#content.frontpage {
+    width: 944px;
+}
+
+.frontpage h2 {
+    font-size: 150%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: normal;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    color: #FFAE5E;
+    text-align: left;
+}
+
+.frontpage h2 a, .frontpage h2 a:visited, ul.htabs span a {
+    text-decoration: none;
+    color:#CCCCCC;
+}
+
+.frontpage h2 a:hover, ul.htabs span a:hover {
+    text-decoration: none;
+    color:#FFFFFF;
+}
+
+#about {
+    font: italic 19px Times New Roman;
+    line-height:1.2;
+    text-align: justify;
+}
+
+.half {
+    text-align: left;
+    float: left;
+    margin: 0px;
+    padding: 6px;
+    padding-top: 0px;
+    width: 450px;
 }
 
 
@@ -370,6 +476,7 @@ div#sidebar {
     display: block;
     float: left;
     font:14px Verdana;
+    color:#CCCCCC;
     padding: 0px 4px 0px 4px;
     font-style:italic;
     text-decoration:none;
@@ -433,43 +540,6 @@ div#sidebar {
 #sitemenu ul li:hover li a:hover { background: #580202; }
 
     
-/* ==================
-      FRONT PAGE
-================== */
-
-#content.frontpage {
-    width: 944px;
-}
-
-.frontpage h2 {
-    font-size: 150%;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
-    margin-top: 8px;
-    margin-bottom: 6px;
-    color: #FFAE5E;
-    text-align: left;
-}
-
-.frontpage h2 a {
-    text-decoration: none;
-}
-
-#about {
-    font: italic 19px Times New Roman;
-    line-height:1.2;
-    text-align: justify;
-}
-
-.half {
-    text-align: left;
-    float: left;
-    margin: 0px;
-    padding: 6px;
-    padding-top: 0px;
-    width: 450px;
-}
-
 /* =======================
         EVENT LIST
 ======================= */
