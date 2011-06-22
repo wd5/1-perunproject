@@ -1,81 +1,90 @@
+/* PERUNSPACE STYLES */
+
+/*
+SCTRUCTURE:
+- common html styles: body, h1, a, p, etc
+- layout styles
+- section specific styles
+- js specific styles
+*/
+
+
+/* ============================================================================
+                                 COMMON STYLES
+============================================================================ */
+
 html {
     height: 100%;
     background: #000000;
-    color: #CCCCCC;
-    font-size: 12px;
-    font-family: Verdana, sans-serif;
 }
 
 body {
+    width: 960px;
     margin: 0px auto;
-    padding: 0;
-    width: 960px;
+    padding: 0px;
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    color: #CCCCCC;
+    background: #252525;
     text-align: left;
-    background:#252525;
-}
-
-/* not used: */
-#container {
-    width: 960px;
-    text-align: center;
-    margin: 0 auto;
-    padding: 0;
 }
 
 img { border: 0; }
 
-
-/* ====================
-      COMMON STYLE
-===================== */
+/* check in ie: */
+#container {
+    width: 960px;
+    margin: 0 auto;
+    padding: 0;
+}
 
 h1 {
-    font-size: 170%;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
-    margin-top:8px;
-    margin-bottom:10px;
-    color: #FFAE5E;
-    text-align:center;
+    margin-top: 8px;
+    margin-bottom: 10px;
     padding: 2px;
-    border:1px solid #666;
-    background:#333;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 170%;
+    font-weight: normal;
+    color: #FFAE5E;
+    background: #333;
+    border: 1px solid #666;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 8px;
+    margin-bottom: 6px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 150%;
+    font-weight: normal;
+    color: #FFAE5E;
+    text-align: left;
 }
 
 h3 {
-    font-size: 150%;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
     margin-top:8px;
     margin-bottom:6px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 150%;
+    font-weight: normal;
     color: #FFAE5E;
     text-align:left;
 }
 
 a, a:visited {
-    color: #F59E52;
+    color: #F59E52; /*#FFAE5E;*/ /*#F59E52;*/
     text-decoration: underline;    
 }
 
 a:hover, a:active {
-    /* brown color: #FFCB5C; */
+    color: #FFFFFF; /* brown color: #FFCB5C; */
     text-decoration: none;
-    color: #FFFFFF;
 }
 
 p {
     margin-top:2px;
     margin-bottom:10px;
     text-align:justify;
-}
-
-input, textarea {
-    background-color: #666666;
-}
-
-textarea {
-    width: 75%;
-    height: 100px;
 }
 
 strong {
@@ -88,7 +97,20 @@ blockquote {
     text-align: justify;
 }
 
-/* ============================= ESPECIALLY STYLES ============================= */
+input, textarea {
+    background-color: #666666;
+}
+
+textarea {
+    width: 75%;
+    height: 100px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+/* =========================== ESCPECIALLY STYLES ========================== */
 
 div.img {
     clear: both;
@@ -116,59 +138,6 @@ a.next, a.next:visited {
 a.next:hover {
     color: #ffffff;
 }
-
-.page h2 {
-    font-size: 150%;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
-    margin-top: 8px;
-    margin-bottom: 6px;
-    color: #FFFFFF;
-    text-align: center;
-}
-
-.blog h2 {
-    font-size: 150%;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
-    text-align: left;
-    color:#FFAE5F;
-    padding:4px;
-    margin-top: 8px;
-    margin-bottom: 6px;
-    border:1px solid #666;
-    background:#252525;
-}
-
-.blog h2 a {
-    /*color:#FFB569;*/
-    color:#FFAE5F;
-    text-decoration: none;
-    margin-bottom: 8px;
-}
-
-.blog a {
-    color: #cccccc;
-}
-
-.gallery a, .gallery a:visited, #tagcloud a, #tagcload a:visited {
-    color: #cccccc;
-}
-
-.gallery a, .gallery a:hover, #tagcloud a:hover {
-    color: #ffffff;
-}
-
-.photo h1 {
-    border:1px solid #666;
-    width: 650px;
-    background:#333;
-    text-align:center;
-    color:#FFAE5E;
-    margin: 6px auto;
-}
-
-
 
 .fire {
     color:#F00;
@@ -215,51 +184,36 @@ a.next:hover {
     margin-left: 4px;
 }
 
-.postinfo {
-    text-align: left;
-    color: #666;
-    margin-bottom: 8px;
-}
 
-.postinfo a, .postinfo a:visited {
-    color: #999;
-}
+/* ============================================================================
+                                 LAYOUT - MAIN
+============================================================================ */
 
-.postinfo a:hover {
-    color: #fff;
-}
-
-
-
-/* ==================
-      MAIN CONTENT
-================== */
-
-div#main {
-    background:#252525;
+#main {
+    min-height: 550px;
     margin:0px;
     padding:0px;
-    min-height: 550px;
+    background:#252525;
 }
 
-div#content {
-    background: #1A1A1A;
-    margin: 0;
-    min-height: 550px;
-    padding: 8px;
-    padding-top: 0px;
-    width: 708px;
+#content {
     float: left;
     /*overflow: auto;*/
+    width: 708px;
+    min-height: 550px;
+    margin: 0;
+    padding: 8px;
+    padding-top: 0px;
+    background: #1A1A1A;
     text-align: left;
 }
 
 
-/* ==================
-       INFOBAR
-================== */
+/* ============================================================================
+                                LAYOUT - INFOBARS
+============================================================================ */
 
-div.infobar {
+.infobar {
     text-align: left;
     clear: both;
     border: 1px solid #444;
@@ -270,21 +224,33 @@ div.infobar {
 }
 
 .infobar a, .infobar a:visited {
-    text-decoration: underline;
     color:#CCCCCC;
+    text-decoration: underline;
 }
 
 .infobar a:hover {
+    color:#FFFFFF;    
     text-decoration: none;
-    color:#FFFFFF;
+}
+
+#breadcrumbs, #copyright {
+    float: left;
+}
+
+#profile, #author {
+    float: right;
+}
+
+#copyright, #author {
+    color: #666666;
 }
 
 
-/* ==================
-       SIDEBAR
-================== */
+/* ============================================================================
+                                LAYOUT - SIDEBAR
+============================================================================ */
 
-div#sidebar {
+#sidebar {
     float: right;
     width: 216px;
     padding: 8px;
@@ -292,10 +258,10 @@ div#sidebar {
 }
 
 #sidebar ul {
+    margin: 0; padding: 0;
+    margin-bottom: 4px;    
     font-family: Georgia;
     font-size: 140%;
-    margin: 0; padding: 0;
-    margin-bottom: 4px;
     list-style: none;
 }
 
@@ -308,24 +274,87 @@ div#sidebar {
     list-style-type:disc;
 }
 
-#sidebar ul li a, #sidebar ul li a:visited {
-    text-decoration: none;
+#sidebar ul li h2 {
     color:#CCCCCC;
+    font-size: 150%;
+}
+
+#sidebar ul li a, #sidebar ul li a:visited {
+    color:#CCCCCC;
+    text-decoration: none;
 }
 
 #sidebar ul li a:hover {
+    color:#FFFFFF;    
     text-decoration: none;
-    color:#FFFFFF;
 }
 
 
-/* ==================
- *    GALLERY
- * ================*/
+/* ============================================================================
+                             SECTION SPECIFIC STYLES
+============================================================================ */
 
-#photo-nav {
-    margin: 0px auto 4px;
-    text-align:center;
+
+/* ================================ PAGES ================================== */
+
+.page h2 {
+    font-size: 150%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: normal;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+/* ================================== BLOG ================================= */
+
+.blog h2 {
+    font-size: 170%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: normal;
+    text-align: left;
+    color: #cccccc;
+    /*color:#FFAE5F;*/
+    padding: 4px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    border:1px solid #666;
+    background:#252525;
+}
+
+.blog h2 a {
+    /*color:#FFB569;*/
+    color:#FFAE5F;
+    /*color: #ddd;*/
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.postinfo {
+    margin-bottom: 8px;
+    font-size: 80%;
+    color: #666;
+    text-align: left;
+}
+
+.postinfo a, .postinfo a:visited {
+    color: #999;
+}
+
+.postinfo a:hover {
+    color: #fff;
+}
+
+
+/* ================================ GALLERY ================================ */
+
+.gallery a, .gallery a:visited, #tagcloud a, #tagcload a:visited {
+    color: #cccccc;
+}
+
+.gallery a, .gallery a:hover, #tagcloud a:hover {
+    color: #ffffff;
 }
 
 #album-title {
@@ -334,8 +363,26 @@ div#sidebar {
     font: 14px bold Verdana;
 }
 
+.photo h1 {
+    width: 650px;    
+    margin: 6px auto;    
+    border:1px solid #666;
+    color:#FFAE5E;    
+    background:#333;
+    text-align:center;
+}
+
+#photo-nav {
+    margin: 0px auto 4px;
+    text-align:center;
+}
+
+#recentcomments ul li span {
+    color: #CCCCCC;
+}
+
 #recentcomments ul li a, #recentcomments ul li a:visited {
-    color: #F59E52;
+    color: #F59E52;/*#FFAE5E;*/
     text-decoration: underline;
 }
 
@@ -345,32 +392,74 @@ div#sidebar {
 }
 
 
-/* ==================
-      FRONT PAGE
-================== */
+/* ============================== EVENTS ================================ */
+
+.eventlist ul {
+    min-height: 10px;    
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.eventlist ul li span {
+    font-style: italic;
+}
+
+.eventlist ul li ul {
+    font-size: 75%;
+    color: #666;
+    margin-left: 110px; 
+    margin-top: -2px;
+}
+
+.eventlist ul li ul li {
+    display: inline;
+    margin-right: 5px;
+}
+
+.eventlist ul li ul li a, .eventlist ul li ul li a:visited {
+    color: #777777;
+    text-decoration:none;
+}
+
+.eventlist ul li ul li a:hover {
+    color: #FFFFFF;
+}
+
+
+/* ============================= FRONT PAGE ================================ */
 
 #content.frontpage {
     width: 944px;
 }
 
+.half {
+    width: 450px;
+    float: left;
+    margin: 0px;
+    padding: 6px;
+    padding-top: 0px;
+    text-align: left;
+}
+
 .frontpage h2 {
-    font-size: 150%;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
     margin-top: 8px;
     margin-bottom: 6px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 150%;
+    font-weight: normal;
     color: #FFAE5E;
     text-align: left;
 }
 
 .frontpage h2 a, .frontpage h2 a:visited, ul.htabs span a {
-    text-decoration: none;
     color:#CCCCCC;
+    text-decoration: none;
 }
 
 .frontpage h2 a:hover, ul.htabs span a:hover {
-    text-decoration: none;
     color:#FFFFFF;
+    text-decoration: none;
 }
 
 #about {
@@ -379,26 +468,48 @@ div#sidebar {
     text-align: justify;
 }
 
-.half {
-    text-align: left;
+.ptitle {
     float: left;
-    margin: 0px;
-    padding: 6px;
-    padding-top: 0px;
-    width: 450px;
+}
+
+.pdate {
+    float: right;
+    color: #CC0000;
+}
+
+.ptype {
+    float: left;
+    color: #666;
+    font-size: 75%;
+}
+
+.preplies {
+    float: right;
+    color: #666;
+    font-size: 75%;
 }
 
 
-/* ====================
-     HEADER LAYOUT
-==================== */
+/* ============================================================================
+                                 HEADER LAYOUT
+============================================================================ */
 
 #header {
     clear: both;
-    height: 144px;
-    background-image:url(/media/design/decor/header-bg.gif); 
     position: relative;
     margin: 0 auto;
+    height: 144px;
+    background-image:url(/media/design/decor/header-bg.gif); 
+}
+
+#sitelogo {
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    width: 136px;
+    height: 136px;
+    margin: 4px;
 }
 
 #sitetitle {
@@ -417,31 +528,20 @@ div#sidebar {
     font: italic 24px Times New Roman;
 }
 
-#sitelogo {
-    display: block;
-    position: absolute;
-    z-index: 2;
-    top: 0px;
-    left: 0px;
-    margin: 4px;
-    width: 136px;
-    height: 136px;
-}
-
 #sitepicture {
     position: absolute;
     z-index: 3;
     top: 0px;
     right: 0px;
-    margin: 4px;
-    background: url(/media/design/logo/psloboda-view.gif);
     width: 220px;
     height: 136px;
+    margin: 4px;
+    background: url(/media/design/logo/psloboda-view.gif);
 }
 
+/* ============================ SIMPLE PAGE MENU ========================== */
+
 #pagemenu {
-    text-align: left;
-    background-image: url(/media/design/decor/header-menu.gif);
     position:absolute;
     z-index: 1;
     top: 70px;
@@ -450,6 +550,8 @@ div#sidebar {
     height: 41px;
     padding-left: 20px;
     padding-top: 5px;
+    text-align: left;
+    background-image: url(/media/design/decor/header-menu.gif);
 }
 
 #pagemenu ul {
@@ -475,20 +577,20 @@ div#sidebar {
 #pagemenu ul li a, #pagemenu ul li a:visited {
     display: block;
     float: left;
-    font:14px Verdana;
-    color:#CCCCCC;
     padding: 0px 4px 0px 4px;
-    font-style:italic;
-    text-decoration:none;
-    text-align:center;
+    font: 14px Verdana;
+    font-style: italic;
+    color: #CCCCCC;
+    text-decoration: none;
+    text-align: center;
 }
 
 #pagemenu ul li a:hover {
-    text-decoration:none;
     color: #FFFFFF;
+    text-decoration: none;
 }
 
-/* === CASCADE SITE MENU === */
+/* ========================== CASCADE SITE MENU ======================== */
 
 #sitemenu {
     position: absolute;
@@ -498,118 +600,77 @@ div#sidebar {
 }
 
 #sitemenu ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 #sitemenu ul li {
-  display: block;
-  position: relative;
-  float: left;
+    display: block;
+    position: relative;
+    float: left;
 }
 #sitemenu ul li ul {
-  display: none;
-  margin: 0;
-  padding: 0;
+    display: none;
+    margin: 0;
+    padding: 0;
 }
 #sitemenu ul li a {
-  display: block;
-  font:13px Verdana;
-  font-weight:bold;
-  text-align: left;
-  text-decoration: none;
-  color: #CCCCCC;
-  padding: 0px 6px 1px 6px;
-  background: #580202;
-  margin-left: 10px;
-  white-space: nowrap;
+    display: block;
+    margin-left: 10px;
+    padding: 0px 6px 1px 6px;
+    font: 13px Verdana;
+    font-weight: bold;
+    color: #CCCCCC;
+    text-align: left;
+    text-decoration: none;
+    background: #580202;
+    white-space: nowrap;
 }
 #sitemenu ul li ul li a {
   border-bottom: 2px solid #380202;
   font-weight: normal;
 }
 #sitemenu ul li a:hover { background: #580202; color:#ffffff; }
-#sitemenu ul li:hover ul {
-  display: block;
-  position: absolute;
-}
-#sitemenu ul li:hover li {
-  float: none;
-}
+#sitemenu ul li:hover ul { display: block; position: absolute; }
+#sitemenu ul li:hover li { float: none; }
 #sitemenu ul li:hover a { background: #580202; }
 #sitemenu ul li:hover li a:hover { background: #580202; }
 
     
-/* =======================
-        EVENT LIST
-======================= */
-
-.eventlist ul {
-    margin: 0; padding: 0;
-    list-style-type: none;
-    min-height: 10px;
-}
-
-.eventlist ul li span {
-    font-style: italic;
-}
-
-.eventlist ul li ul {
-    font-size: 75%;
-    color: #666;
-    margin-left: 110px; 
-    margin-top: -2px;
-}
-
-.eventlist ul li ul li {
-    display: inline;
-    margin-right: 5px;
-}
-
-.eventlist ul li ul li a, .eventlist ul li ul li a:visited {
-    color:#777;
-    text-decoration:none;
-}
-
-.eventlist ul li ul li a:hover {
-    color:#fff;
-}
-
-
-/* ====================
-         TABS
-==================== */
+/* ============================================================================
+                               FRONT PAGE TABS
+============================================================================ */
 
 .htabs {
-    overflow:hidden;
     margin: 0;
     padding: 0;
     list-style-type: none;
+    overflow: hidden;
 }
 .htabs li {
     display: inline;
-    margin-top:2px;
+    margin-top: 2px;
     padding: 3px 2px 0 0;
-    overflow:hidden;
+    overflow: hidden;
 }
 .htabs li a {
-    font-size:18px;
-    font-family: Georgia;
-    color:#FFAE5E;
     padding: 2px;
+    font-family: Georgia;
+    font-size: 18px;
+    color: #FFAE5E;
     text-decoration: none;
 }
 
 .htabs li a:hover, .htabs span a:hover {
+    color: #FFFFFF;
     text-decoration: none;
-    color: white;
 }
 
 .htabs span {
-    font-size:18px;
-    font-family: Georgia;
-    color:#FFAE5E;
     padding: 2px;
+    font-size: 18px;
+    font-family: Georgia;
+    color: #FFAE5E;
     text-decoration: none;
 }
 
@@ -618,8 +679,8 @@ div#sidebar {
 }
 
 .tabs {
-    margin-top:2px;
-    overflow:hidden;
+    margin-top: 2px;
+    overflow: hidden;
 }
 .tabs ul {
     margin: 0;
@@ -627,18 +688,18 @@ div#sidebar {
     list-style-type: none;
 }
 .tab ul li {
+    clear: both;
+    display: block;
+    margin: 2px;
+    margin-bottom: 3px;
+    padding: 2px;
     background: #272727;
-    display:block;
-    clear:both;
-    margin:2px;
-    margin-bottom:3px;
-    padding:2px;
 }
 .tab ul li a {
-    color: #ccc;
+    color: #CCCCCC;
     text-decoration: none;
 }
 .tab ul li a:hover {
-    color: white;
+    color: #FFFFFF;
 }
 

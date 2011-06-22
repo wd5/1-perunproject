@@ -44,7 +44,7 @@
         </ul>
         </div>
 
-    </div><div style="clear:both"></div>
+    </div><div class="clearfix"></div>
     {% if request.subdomain != "m" %}<div class="half">
 
         <div id='coin-slider' style="margin-top: 4px;">
@@ -94,8 +94,10 @@
             <ul>
                 {% for news in news_list %}
                 <li>
-                    <a href="{{ news.get_absolute_url }}">{{ news.title }}</a> <span class="fright darkfire">{{ news.date|date:"j b" }}</span>
-                    <div class="gray subfont">{{ news.type }} <span class="fright">Ответов: {% get_comment_count for news as newscmnts %}<span{% if newscmnts > 0 %} class="gold"{% endif %}>{{ newscmnts }}</span></div>
+                    <div><div class="ptitle"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></div>
+                    <div class="pdate">{{ news.date|date:"j b" }}</div></div><div class="clearfix"></div>
+                    <div><div class="ptype">{{ news.type }}</div>
+                    <div class="preplies">Ответов: {% get_comment_count for news as newscmnts %}<span{% if newscmnts > 0 %} class="gold"{% endif %}>{{ newscmnts }}</span></div></div><div class="clearfix"></div>
                 </li>
                 {% endfor %}
                 </ul>
@@ -104,8 +106,10 @@
             <ul>
                 {% for news in featured_list %}
                 <li>
-                    <a href="{{ news.get_absolute_url }}">{{ news.title }}</a> <span class="fright darkfire">{{ news.date|date:"j b Y" }}</span>
-                    <div class="gray subfont">{{ news.type }} <span class="fright">Ответов: {% get_comment_count for news as newscmnts %}<span{% if newscmnts > 0 %} class="gold"{% endif %}>{{ newscmnts }}</span></div>
+                    <div><div class="ptitle"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></div>
+                    <div class="pdate">{{ news.date|date:"j b" }}</div></div><div class="clearfix"></div>
+                    <div><div class="ptype">{{ news.type }}</div>
+                    <div class="preplies">Ответов: {% get_comment_count for news as newscmnts %}<span{% if newscmnts > 0 %} class="gold"{% endif %}>{{ newscmnts }}</div></div><div class="clearfix"></div>
                 </li>
                 {% endfor %}
                 </ul>

@@ -17,7 +17,7 @@
 
     <br>
     <div id="recentcomments">{% get_latest_comments fgallery.Photo 5 as recent_photo_comments %}
-    <ul>Последние ответы<li><ul>
+    <ul><li><h2>Последние ответы</h2><ul>
         {% for object in recent_photo_comments %}
         <li><a href="{{ object.content_object.get_absolute_url }}">{{ object.content_object.title }}</a><br /><b>{{ object.user }}</b>, {{ object.submit_date|date:"j b, H:i" }}:<br /><i>{{ object.comment }}</i></li>
         {% endfor %}</ul>
