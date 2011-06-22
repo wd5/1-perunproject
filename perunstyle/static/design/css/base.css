@@ -257,6 +257,12 @@ a.next:hover {
     color: #FFAE5E;
 }
 
+#sidebar h2 {
+    color:#FFAE5E;
+    font-size: 150%;
+    font-weight: normal;
+}
+
 #sidebar ul {
     margin: 0; padding: 0;
     margin-bottom: 4px;    
@@ -271,21 +277,16 @@ a.next:hover {
     font-size: 12px;
     font-family: Verdana, Georgia, "Times New Roman", Times, serif;
     font-weight: normal;
-    list-style-type:disc;
-}
-
-#sidebar ul li h2 {
-    color:#CCCCCC;
-    font-size: 150%;
+    list-style-type: disc;
 }
 
 #sidebar ul li a, #sidebar ul li a:visited {
-    color:#CCCCCC;
+    color: #CCCCCC;
     text-decoration: none;
 }
 
 #sidebar ul li a:hover {
-    color:#FFFFFF;    
+    color: #FFFFFF;    
     text-decoration: none;
 }
 
