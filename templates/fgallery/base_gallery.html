@@ -8,7 +8,7 @@
 
 {% block contentclass %}gallery{% endblock %}
 {% block sidebar %}{% tag_cloud_for_model fgallery.Photo as tags with steps=9 min_count=0 distribution=log %}
-    <div id="tagcloud" class="sidelist">
+    <div id="tagcloud" class="sidemenu">
     <h3>Метки фотографий</h3>
     {% for tag in tags %}
         <a href="{% url gallery_tag tag|urlencode %}" style="font-size: 1.{{ tag.font_size }}em">{{ tag }}</a>&nbsp;
