@@ -34,14 +34,6 @@ h1, h2, h3,
     color: #f7b867; /*#fdc36f;*/ /*#FFAE5E;*/
 }
 
-.htabs li a.htab-na, .htabs li a.htab-na:visited {
-    color: #666666;
-}
-
-.htabs li a.htab-na:hover {
-    color: #ffffff;
-}
-
 .page h2 { color: #ffffff; }
 
 strong { color: #ee0000; }
@@ -91,6 +83,9 @@ ul.htabs span a:hover,
 .eventlist ul li ul li a:hover {
     color: #ffffff;
 }
+
+.htabs li a.htab-na, .htabs li a.htab-na:visited { color: #666666; }
+.htabs li a.htab-na:hover { color: #ffffff; }
 
 .commentinfo, .ptype, .preplies, .postinfo, #copyright, #author { color: #666666; }
 .edate-hl { color: #ff0000; }
