@@ -10,6 +10,7 @@
 {% category_menu request %}
 {% endblock %}
 
+{% block contentclass %}events{% endblock %}
 {% block content %}
 
 {% if not category %}<h3>Хроники</h3>{% endif %}
@@ -17,7 +18,7 @@
 
 <div class="eventlist">
 <ul>
-    {% for event1 in object_list %}<li><span class="fire"><i>{{ event1.date|date:"Y.m.d" }}</i></span> - {{ event1.title }}
+    {% for event1 in object_list %}<li><span class="edate-hl">{{ event1.date|date:"Y.m.d" }}</span> - {{ event1.title }}
     <ul>
         {% for post in event1.post_set.all %}<li><a href="{{ post.get_absolute_url }}" title="{{ post.title }}">{{ post.type.title }}</a></li>{% endfor %}
         {% for album in event1.album_set.all %}<li><a href="{{ album.get_absolute_url }}">Фотоальбом</a></li>{% endfor %}

@@ -33,7 +33,7 @@
         <div class="eventlist">
         <ul>
         {% for event1 in event_list %}
-        <li><span{% if not event1.is_past_due %} class="fire"{% endif %}>{{ event1.date|date:"Y.m.d" }}</span> - {{ event1.title }}
+        <li><span class="edate{% if not event1.is_past_due %}-hl{% endif %}">{{ event1.date|date:"Y.m.d" }}</span> - {{ event1.title }}
             <ul>{% for post in event1.post_set.all %}
                 <li><a href="{{ post.get_absolute_url }}" title="{{ post.title }}">{{ post.type.title }}</a></li>{% endfor %}
                 {% for album in event1.album_set.all %}<li><a href="{% url gallery_album album.id %}">Фотоальбом</a></li>{% endfor %}

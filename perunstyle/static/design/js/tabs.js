@@ -1,5 +1,5 @@
  $(document).ready(function() {
-    jQuery('.htabs li a:not(:first)').css('color','gray');
+    jQuery('.htabs li a:not(:first)').addClass('htab-na');
     jQuery('.tab:not(:first)').hide();     //if this is not the first tab, hide it
     jQuery('.tab:first').show();     //to fix u know who
 
@@ -14,8 +14,8 @@
     }
     else
 	    jQuery('.tab#' + stringref).fadeIn();     //display our tab fading it in
-    jQuery('.htabs li a#' + stringref).css('color','#FFAE5E');
-    jQuery('.htabs li a:not(#' + stringref+')').css('color','gray');
+    jQuery('.htabs li a#' + stringref).removeClass('htab-na').addClass('htab-active');
+    jQuery('.htabs li a:not(#' + stringref+')').removeClass('htab-active').addClass('htab-na');
     return false;     //stay with me
     });
  });                         

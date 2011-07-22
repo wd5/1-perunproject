@@ -2,11 +2,99 @@
 
 /*
 SCTRUCTURE:
+- color scheme
 - common html styles: body, h1, a, p, etc
 - layout styles
 - section specific styles
 - js specific styles
 */
+
+/*
+COLORS
+- #fdc16f lightbrown for headers
+- #ffae5e brown for links
+- #ee0000 red for strong hightlighting
+*/
+
+
+/* ============================================================================
+                                COLOR SCHEME
+============================================================================ */
+
+body { color: #cccccc; background: #252525; }
+#main { background: #252525; }
+#content { background: #1a1a1a; }
+
+h1, h2, h3,
+.blog h2,
+.blog h2 a,
+.htabs li a,
+.htabs li a:visited,
+.htabs span {
+    color: #f7b867; /*#fdc36f;*/ /*#FFAE5E;*/
+}
+
+.htabs li a.htab-na, .htabs li a.htab-na:visited {
+    color: #666666;
+}
+
+.htabs li a.htab-na:hover {
+    color: #ffffff;
+}
+
+.page h2 { color: #ffffff; }
+
+strong { color: #ee0000; }
+
+a, a:visited,
+#recentcomments a,
+#recentcomments a:visited {
+    color: #ef9e4e; /*#ffae5e; *//*#F59E52;*/
+}
+
+a:hover { color: #ffffff; /* brown color: #FFCB5C; */ }
+
+.infobar a,
+.infobar a:visited,
+.gallery a,
+.gallery a:visited,
+.frontpage h2 a,
+.frontpage h2 a:visited,
+ul.htabs span a,
+.tab ul li a,
+#pagemenu ul li a,
+#pagemenu ul li a:visited,
+.sidemenu ul li a,
+.sidemenu ul li a:visited,
+#tagcloud a,
+#tagcloud a:visited {
+    color: #cccccc;
+}
+
+.postinfo a,
+.postinfo a:visited,
+.eventlist ul li ul li a,
+.eventlist ul li ul li a:visited {
+    color: #777777;
+}
+
+.infobar a:hover,
+.gallery a:hover,
+.frontpage h2 a:hover,
+ul.htabs span a:hover,
+.tab ul li a:hover,
+#pagemenu ul li a:hover,
+.sidemenu ul li a:hover,
+#tagcloud a:hover,
+#recentcomments a:hover,
+.postinfo a:hover,
+.eventlist ul li ul li a:hover {
+    color: #ffffff;
+}
+
+.commentinfo, .ptype, .preplies, .postinfo, #copyright, #author { color: #666666; }
+.edate-hl { color: #ff0000; }
+.pdate { color: #cc0000; }
 
 
 /* ============================================================================
@@ -24,8 +112,6 @@ body {
     padding: 0px;
     font-family: Verdana, sans-serif;
     font-size: 12px;
-    color: #CCCCCC;
-    background: #252525;
     text-align: left;
 }
 
@@ -45,7 +131,6 @@ h1 {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 170%;
     font-weight: normal;
-    color: #FFAE5E;
     background: #333;
     border: 1px solid #666;
     text-align: center;
@@ -57,7 +142,6 @@ h2 {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 150%;
     font-weight: normal;
-    color: #FFAE5E;
     text-align: left;
 }
 
@@ -67,29 +151,25 @@ h3 {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 150%;
     font-weight: normal;
-    color: #FFAE5E;
     text-align:left;
 }
 
 a, a:visited {
-    color: #F59E52; /*#FFAE5E;*/ /*#F59E52;*/
     text-decoration: underline;    
 }
 
 a:hover, a:active {
-    color: #FFFFFF; /* brown color: #FFCB5C; */
     text-decoration: none;
 }
 
 p {
-    margin-top:2px;
-    margin-bottom:10px;
-    text-align:justify;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    text-align: justify;
 }
 
 strong {
-    font-weight:normal;
-    color:#EE0000;
+    font-weight: normal;
 }
 
 blockquote {
@@ -112,6 +192,20 @@ textarea {
 
 /* =========================== ESCPECIALLY STYLES ========================== */
 
+a.next, a.next:visited {
+    border:1px solid #333;
+    background: #222;
+    text-decoration: none;
+    padding:2px;
+    color: #cccccc;
+}
+
+a.next:hover {
+    text-decoration: none;
+}
+
+img { border: 0px; }
+
 div.img {
     clear: both;
     text-align: center;
@@ -123,65 +217,8 @@ div.img img {
     border: 1px solid #999;
 }
 
-img.free {
-    border: 0px;
-}
-
-a.next, a.next:visited {
-    border:1px solid #333;
-    background: #222;
-    text-decoration: none;
-    padding:2px;
-    color: #cccccc;
-}
-
-a.next:hover {
-    color: #ffffff;
-}
-
-.fire {
-    color:#F00;
-}
-
-.darkfire {
-    color:#C00;
-}
-
-.gold {
-    color:#FFAE5E;
-}
-
-.gray {
-    color: #666;
-}
-
 .subfont {
     font-size: 75%;
-}
-
-.right {
-    text-align: right;
-}
-
-.left {
-    text-align: left;
-}
-
-.center {
-    text-align: center;
-}
-
-.fleft {
-    float:left;
-    text-align: left;
-    margin-right: 4px;
-    padding-bottom: 4px;
-}
-
-.fright {
-    float: right;
-    text-align: right;
-    margin-left: 4px;
 }
 
 
@@ -191,9 +228,8 @@ a.next:hover {
 
 #main {
     min-height: 550px;
-    margin:0px;
-    padding:0px;
-    background:#252525;
+    margin: 0px;
+    padding: 0px;
 }
 
 #content {
@@ -204,7 +240,6 @@ a.next:hover {
     margin: 0;
     padding: 8px;
     padding-top: 0px;
-    background: #1A1A1A;
     text-align: left;
 }
 
@@ -223,26 +258,12 @@ a.next:hover {
     background-image: url(/media/design/decor/infobar-bg.gif);
 }
 
-.infobar a, .infobar a:visited {
-    color:#CCCCCC;
-    text-decoration: underline;
-}
-
-.infobar a:hover {
-    color:#FFFFFF;    
-    text-decoration: none;
-}
-
 #breadcrumbs, #copyright {
     float: left;
 }
 
 #profile, #author {
     float: right;
-}
-
-#copyright, #author {
-    color: #666666;
 }
 
 
@@ -254,39 +275,16 @@ a.next:hover {
     float: right;
     width: 216px;
     padding: 8px;
-    color: #FFAE5E;
-}
-
-#sidebar h2 {
-    color:#FFAE5E;
-    font-size: 150%;
-    font-weight: normal;
+    padding-top: 0px;
 }
 
 #sidebar ul {
-    margin: 0; padding: 0;
-    margin-bottom: 4px;    
-    font-family: Georgia;
-    font-size: 140%;
-    list-style: none;
-}
-
-#sidebar ul li ul {
-    padding-left: 24px;
-    color: #ccc;
-    font-size: 12px;
-    font-family: Verdana, Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
     list-style-type: disc;
+    margin: 0px; padding: 0px;
+    padding-left: 20px;
 }
 
 #sidebar ul li a, #sidebar ul li a:visited {
-    color: #CCCCCC;
-    text-decoration: none;
-}
-
-#sidebar ul li a:hover {
-    color: #FFFFFF;    
     text-decoration: none;
 }
 
@@ -299,12 +297,6 @@ a.next:hover {
 /* ================================ PAGES ================================== */
 
 .page h2 {
-    font-size: 150%;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
-    margin-top: 8px;
-    margin-bottom: 6px;
-    color: #FFFFFF;
     text-align: center;
 }
 
@@ -312,86 +304,41 @@ a.next:hover {
 
 .blog h2 {
     font-size: 170%;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
     text-align: left;
-    color: #cccccc;
-    /*color:#FFAE5F;*/
     padding: 4px;
     margin-top: 8px;
-    margin-bottom: 4px;
-    border:1px solid #666;
-    background:#252525;
+    margin-bottom: 8px;
+    border: 1px solid #666;
+    background: #252525;
 }
 
 .blog h2 a {
-    /*color:#FFB569;*/
-    color:#FFAE5F;
-    /*color: #ddd;*/
     text-decoration: none;
-    margin-bottom: 8px;
 }
 
 .postinfo {
     margin-bottom: 8px;
     font-size: 80%;
-    color: #666;
     text-align: left;
 }
 
-.postinfo a, .postinfo a:visited {
-    color: #999;
-}
-
-.postinfo a:hover {
-    color: #fff;
-}
-
-
 /* ================================ GALLERY ================================ */
-
-.gallery a, .gallery a:visited, #tagcloud a, #tagcload a:visited {
-    color: #cccccc;
-}
-
-.gallery a, .gallery a:hover, #tagcloud a:hover {
-    color: #ffffff;
-}
 
 #album-title {
     margin: 4px auto;
-    text-align:center;
+    text-align: center;
     font: 14px bold Verdana;
 }
 
 .photo h1 {
     width: 650px;    
     margin: 6px auto;    
-    border:1px solid #666;
-    color:#FFAE5E;    
-    background:#333;
-    text-align:center;
 }
 
 #photo-nav {
     margin: 0px auto 4px;
-    text-align:center;
+    text-align: center;
 }
-
-#recentcomments ul li span {
-    color: #CCCCCC;
-}
-
-#recentcomments ul li a, #recentcomments ul li a:visited {
-    color: #F59E52;/*#FFAE5E;*/
-    text-decoration: underline;
-}
-
-#recentcomments ul li a:hover {
-    color: #FFFFFF;
-    text-decoraton: none;
-}
-
 
 /* ============================== EVENTS ================================ */
 
@@ -402,13 +349,12 @@ a.next:hover {
     list-style-type: none;
 }
 
-.eventlist ul li span {
+.edate, .edate-hl {
     font-style: italic;
 }
 
 .eventlist ul li ul {
     font-size: 75%;
-    color: #666;
     margin-left: 110px; 
     margin-top: -2px;
 }
@@ -419,14 +365,8 @@ a.next:hover {
 }
 
 .eventlist ul li ul li a, .eventlist ul li ul li a:visited {
-    color: #777777;
     text-decoration:none;
 }
-
-.eventlist ul li ul li a:hover {
-    color: #FFFFFF;
-}
-
 
 /* ============================= FRONT PAGE ================================ */
 
@@ -435,7 +375,7 @@ a.next:hover {
 }
 
 .half {
-    width: 450px;
+    width: 455px;
     float: left;
     margin: 0px;
     padding: 6px;
@@ -443,23 +383,7 @@ a.next:hover {
     text-align: left;
 }
 
-.frontpage h2 {
-    margin-top: 8px;
-    margin-bottom: 6px;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 150%;
-    font-weight: normal;
-    color: #FFAE5E;
-    text-align: left;
-}
-
 .frontpage h2 a, .frontpage h2 a:visited, ul.htabs span a {
-    color:#CCCCCC;
-    text-decoration: none;
-}
-
-.frontpage h2 a:hover, ul.htabs span a:hover {
-    color:#FFFFFF;
     text-decoration: none;
 }
 
@@ -475,18 +399,15 @@ a.next:hover {
 
 .pdate {
     float: right;
-    color: #CC0000;
 }
 
 .ptype {
     float: left;
-    color: #666;
     font-size: 75%;
 }
 
 .preplies {
     float: right;
-    color: #666;
     font-size: 75%;
 }
 
@@ -547,8 +468,9 @@ a.next:hover {
     z-index: 1;
     top: 70px;
     left: 120px;
-    width: 633px;
+    width: 638px;
     height: 41px;
+    padding: 0px;
     padding-left: 20px;
     padding-top: 5px;
     text-align: left;
@@ -556,39 +478,30 @@ a.next:hover {
 }
 
 #pagemenu ul {
-   list-style: none;
-   margin: 0;
-   padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 #pagemenu li {
-   display: block;
-   float: left;
-   width: 116px;
-   margin: 0;
-   padding: 0;
-}
-
-#pagemenu li#tradition { width: 146px; }
-#pagemenu li#strely { width: 120px; }
-#pagemenu li#sloboda { width: 88px; }
-#pagemenu li#farm { width: 104px; }
-#pagemenu li#camp { width: 140px; }
-
-#pagemenu ul li a, #pagemenu ul li a:visited {
-    display: block;
     float: left;
-    padding: 0px 4px 0px 4px;
+    width: 114px;
+    margin: 0px;
+    padding: 0px;
     font: 14px Verdana;
     font-style: italic;
-    color: #CCCCCC;
-    text-decoration: none;
     text-align: center;
 }
 
-#pagemenu ul li a:hover {
-    color: #FFFFFF;
+#pagemenu li#tradition { width: 140px; }
+#pagemenu li#strely { width: 120px; }
+#pagemenu li#sloboda { width: 88px; }
+#pagemenu li#farm { width: 104px; }
+#pagemenu li#camp { width: 138px; }
+
+#pagemenu a, #pagemenu a:visited {
     text-decoration: none;
+
 }
 
 /* ========================== CASCADE SITE MENU ======================== */
@@ -632,6 +545,7 @@ a.next:hover {
   font-weight: normal;
 }
 #sitemenu ul li a:hover { background: #580202; color:#ffffff; }
+
 #sitemenu ul li:hover ul { display: block; position: absolute; }
 #sitemenu ul li:hover li { float: none; }
 #sitemenu ul li:hover a { background: #580202; }
@@ -658,12 +572,10 @@ a.next:hover {
     padding: 2px;
     font-family: Georgia;
     font-size: 18px;
-    color: #FFAE5E;
     text-decoration: none;
 }
 
 .htabs li a:hover, .htabs span a:hover {
-    color: #FFFFFF;
     text-decoration: none;
 }
 
@@ -671,7 +583,6 @@ a.next:hover {
     padding: 2px;
     font-size: 18px;
     font-family: Georgia;
-    color: #FFAE5E;
     text-decoration: none;
 }
 
@@ -697,10 +608,5 @@ a.next:hover {
     background: #272727;
 }
 .tab ul li a {
-    color: #CCCCCC;
     text-decoration: none;
 }
-.tab ul li a:hover {
-    color: #FFFFFF;
-}
-

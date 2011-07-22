@@ -23,7 +23,7 @@
 
 <div class="postinfo">{{ newsres.date|date:"j M Y H:m" }} | раздел: <a href="{{ newsres.type.get_absolute_url }}">{{ newsres.type.title_plural|lower }}</a> | просмотров: {{ newsres.view_count }} | {% get_comment_count for newsres as comment_count %}<a href="{{ newsres.get_absolute_url }}#comments">ответов: {{ comment_count }}</a></div>
 
-<div class="content-block">{{ newsres.content|render_inlines|markdown }}</div>
+<div class="postcontent">{{ newsres.content|render_inlines|markdown }}</div>
             
 <hr>
 

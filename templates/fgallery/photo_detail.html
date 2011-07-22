@@ -21,7 +21,7 @@
 </div>
 
 <div class="img">{% if photonext %}<a href="{{ photonext.get_absolute_url }}"><img src="{% thumbnail photores.image 640x480 %}" alt="{{ photores.seo_or_title }}" /></a>{% else %}<img src="{% thumbnail photores.image 640x480 %}" alt="{{ photores.seo_or_title }}" />{% endif %}</div>
-<p class="gray center">просмотров: {{ photores.view_count }}</p>
+<p style="color:#666; text-align: center;">просмотров: {{ photores.view_count }}</p>
 
 <hr>
 

@@ -1,5 +1,0 @@
-     <div class="sidemenu">Архивы
-                <ul>
-                    {% for category in events_month_list %}<li><a href="{% url events_archive_month category.year category|date:"m" %}">{{ category.year }}, {{ category|date:"F" }}</a></li>{% endfor %}
-                </ul>
-    </div>

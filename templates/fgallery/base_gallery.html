@@ -8,19 +8,19 @@
 
 {% block contentclass %}gallery{% endblock %}
 {% block sidebar %}{% tag_cloud_for_model fgallery.Photo as tags with steps=9 min_count=0 distribution=log %}
-    <div id="tagcloud">
-    <h2>Метки фотографий</h2>
+    <div id="tagcloud" class="sidelist">
+    <h3>Метки фотографий</h3>
     {% for tag in tags %}
         <a href="{% url gallery_tag tag|urlencode %}" style="font-size: 1.{{ tag.font_size }}em">{{ tag }}</a>&nbsp;
     {% endfor %}
     </div>
     <br />
-    <div id="recentcomments">{% get_latest_comments fgallery.Photo 5 as recent_photo_comments %}
-    <h2>Последние ответы</h2>
-    <ul><li><ul>
+    <div id="recentcomments" class="sidemenu">{% get_latest_comments fgallery.Photo 5 as recent_photo_comments %}
+    <h3>Последние ответы</h3>
+    <ul>
         {% for object in recent_photo_comments %}
-        <li><a href="{{ object.content_object.get_absolute_url }}">{{ object.content_object.title }}</a><br /><b>{{ object.user }}</b>, {{ object.submit_date|date:"j b, H:i" }}:<br /><i>{{ object.comment }}</i></li>
-        {% endfor %}</ul></li>
+        <li><a href="{{ object.content_object.get_absolute_url }}">{{ object.content_object.title }}</a><br /><span class="commentinfo"><b>{{ object.user }}</b>, {{ object.submit_date|date:"j b, H:i" }}:</span><br /><i>{{ object.comment }}</i></li>
+        {% endfor %}
     </ul>
     {#% recent_comments %#}
     </div>
