@@ -20,7 +20,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    (r'^$', 'views.mainpage'),
+    # (r'^$', 'views.mainpage'),
 
     # BLOG
     (r'^blog/', include('fblog.urls')),

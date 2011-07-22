@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% load markup %}
 {% load comments %}
+{% load inlines %}
+{% load page_tags %}
+{% load peruntags %}
 
-{% block title %}Перунова Слобода и клуб Стрелы Перуна — русская боевая традиция в Марий Эл{% endblock %}
+{% block title %}{% if page.html_title %}{{ page.html_title }}{% else %}{{ page.title }}{% endif %}{% endblock %}
 
-{% block description %}Перунова Слобода — автономное клановое поселение бойцов клуба СГБ «Стрелы Перуна». Краеугольная традиция клана — славяно-горицкая борьба. Наша цель — возрождение и развитие русских боевых традиций.{% endblock %}
+{% block description %}{% if page.meta_description %}{{ page.meta_description }}{% endif %}{% endblock %}
 
-{% block keywords %}Перунова Слобода, клановое поселение, Стрелы Перуна, славяно-горицкая борьба, русская боевая традиция, Йошкар-Ола, Марий Эл, Чебоксары, СГБ, клубы СГБ, русская профессиональная драка, рукопашный бой, штурмовой бой, спорт, варвар, выживание{% endblock %}
+{% block keywords %}{% if page.meta_keywords %}{{ page.meta_keywords }}{% endif %}{% endblock %}
 
 {% block extrahead %}{% if request.subdomain != 'm' %}<script type="text/javascript" src="/media/design/js/jquery-1.5.2.min.js"></script>
 <script type="text/javascript" src="/media/design/js/coin-slider.js"></script>
@@ -24,14 +27,14 @@
 
         <h2>О нас (<a href="/tradition/">подробнее</a>)</h2>
 
-        <div id="about">Перунова Слобода — <strong>автономное клановое поселение</strong> бойцов клуба «Стрелы Перуна». Краеугольная традиция клана — славяно-горицкая борьба. Наша цель — <strong>возрождение и развитие</strong> русских боевых традиций.</div>
+        <div id="about">{{ page.content|markdown|render_inlines }}</div>
 
     </div><div class="half">
 
         <h2>События (<a href="{% url events %}">хроники</a>)</h2>
         
         <div class="eventlist">
-        <ul>
+        <ul>{% get_latest fevents.Event 4 as event_list %}
         {% for event1 in event_list %}
         <li><span class="edate{% if not event1.is_past_due %}-hl{% endif %}">{{ event1.date|date:"Y.m.d" }}</span> - {{ event1.title }}
             <ul>{% for post in event1.post_set.all %}
@@ -91,7 +94,7 @@
         </ul>
         <div class="tabs">
             <div id="new" class="tab">
-            <ul>
+            <ul>{% get_latest fblog.Post 10 as news_list %}
                 {% for news in news_list %}
                 <li>
                     <div><div class="ptitle"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></div>
@@ -103,7 +106,7 @@
                 </ul>
             </div>
             <div id="featured" class="tab">
-            <ul>
+            <ul>{% get_latest_featured fblog.Post 10 as featured_list %}
                 {% for news in featured_list %}
                 <li>
                     <div><div class="ptitle"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></div>

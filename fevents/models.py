@@ -7,6 +7,7 @@ from datetime import datetime
 #from tagging.fields import TagField
 from sorl.improved.fields import ImprovedImageWithThumbnailsField
 from django.contrib.auth.models import User
+from fevents.managers import PublicManager
 
 class Etype(models.Model):
     title = models.CharField(max_length=70)
@@ -47,6 +48,8 @@ class Event(models.Model):
     
     description = models.TextField(blank=True, null=True)
     enable_comments = models.BooleanField(default=False)
+
+    objects = PublicManager()
     
     class Meta:
         ordering = ["-date"]

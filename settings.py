@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     'fgallery',
     'fevents',
     'fcomments',
+    'perunstyle',
 )
 
 COMMENTS_APP = "fcomments"
