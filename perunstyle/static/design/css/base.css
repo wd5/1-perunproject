@@ -31,7 +31,7 @@ h1, h2, h3,
 .htabs li a,
 .htabs li a:visited,
 .htabs span {
-    color: #f7b867; /*#fdc36f;*/ /*#FFAE5E;*/
+    color: #f7b867; /*#fdc36f; /*#FFAE5E;*/
 }
 
 .page h2 { color: #ffffff; }
@@ -41,10 +41,8 @@ strong { color: #ee0000; }
 a, a:visited,
 #recentcomments a,
 #recentcomments a:visited {
-    color: #ef9e4e; /*#ffae5e; *//*#F59E52;*/
+    color: #ef9e4e; /*#ffae5e; /*#F59E52;*/
 }
-
-a:hover { color: #ffffff; /* brown color: #FFCB5C; */ }
 
 .infobar a,
 .infobar a:visited,
@@ -54,6 +52,8 @@ a:hover { color: #ffffff; /* brown color: #FFCB5C; */ }
 .frontpage h2 a:visited,
 ul.htabs span a,
 .tab ul li a,
+a.next,
+a.next:visited,
 #pagemenu ul li a,
 #pagemenu ul li a:visited,
 .sidemenu ul li a,
@@ -70,15 +70,20 @@ ul.htabs span a,
     color: #777777;
 }
 
+a:hover,
+a.next:hover,
+.sidemenu ul li a:hover,
+.tab ul li a:hover,
+#tagcloud a:hover,
+#recentcomments a:hover {
+    color: #63c206; /*color: #ffffff; /*color: #FFCB5C; */
+}
+
 .infobar a:hover,
 .gallery a:hover,
 .frontpage h2 a:hover,
 ul.htabs span a:hover,
-.tab ul li a:hover,
 #pagemenu ul li a:hover,
-.sidemenu ul li a:hover,
-#tagcloud a:hover,
-#recentcomments a:hover,
 .postinfo a:hover,
 .eventlist ul li ul li a:hover {
     color: #ffffff;
@@ -126,7 +131,7 @@ h1 {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 170%;
     font-weight: normal;
-    background: #333;
+    background: #292929;
     border: 1px solid #666;
     text-align: center;
 }
@@ -192,7 +197,6 @@ a.next, a.next:visited {
     background: #222;
     text-decoration: none;
     padding:2px;
-    color: #cccccc;
 }
 
 a.next:hover {
