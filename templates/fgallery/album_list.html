@@ -9,7 +9,7 @@
 {% block breadcrumbs %} - Галерея{% endblock %}
 
 {% block content %}
-    <div style="width: 450px" class="fleft">
+    <div style="width: 450px; float: left;">
     <h3>Фотоальбомы</h3>
 
     <p>Всего: {{ album_list.count }}</p>
@@ -25,7 +25,7 @@
     </div>
 
 
-    <div style="width: 200px; margin-left:20px; text-align: center;" class="fright">
+    <div style="width: 200px; margin-left: 20px; text-align: center; float: right;">
     <h3 style="text-align: center">Видео</h3>
     <p style="text-align: center">Всего: {{ video_list.count }}</p>
     {% for object in video_list %}
