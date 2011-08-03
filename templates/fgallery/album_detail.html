@@ -11,7 +11,7 @@
 {% block content %}
 <h3>{{ albumres.title }}</h3>
 
-<p><a href="{% url gallery_comments albumres.id %}">Посмотреть все комментарии</a>
+<p><a href="{% url gallery_comments albumres.id %}">Посмотреть все комментарии</a>{% if user.is_staff %}, <a href="{% url gallery_edit albumres.id %}">редактировать</a>{% endif %}
 <p>{% if albumres.event.post_set.all %}Есть информация в разделе: <a href="{{ albumres.event.post_set.all.0.get_absolute_url }}">{{ albumres.event.post_set.all.0.type }}</a>{% endif %}
 <p>
 

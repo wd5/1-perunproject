@@ -6,6 +6,8 @@ from django.views.generic.simple import direct_to_template
 from django.shortcuts import redirect, get_object_or_404
 from tagging.models import Tag, TaggedItem
 from django.views.generic import date_based, list_detail
+from django.http import HttpResponseRedirect
+from django.contrib.admin.views.decorators import staff_member_required
 import urllib
 
 def albums(request):
@@ -16,6 +18,28 @@ def albums(request):
 def album1(request, falbum_id):
     albumres = Album.objects.get(id=falbum_id) #.all()#.order_by('-pub_date')[:10]
     return direct_to_template(request, 'fgallery/album_detail.html', {'albumres': albumres})
+
+from django.forms.models import inlineformset_factory
+from forms import PhotoForm
+
+@staff_member_required
+def album_edit(request, falbum_id):
+    
+    album = Album.objects.get(id=falbum_id)
+    PhotoFormSet = inlineformset_factory(Album, Photo, form=PhotoForm, fields=('image', 'title', 'seo_title'), extra=0)
+    
+    if request.method == 'POST':
+        formset = PhotoFormSet(request.POST, request.FILES, instance=album)
+        if formset.is_valid():
+            # do something with the formset.cleaned_data
+            #for form in formset.forms:
+            formset.save()
+
+            return HttpResponseRedirect('/gallery/')
+    else:
+        formset = PhotoFormSet(instance=album)
+        
+    return direct_to_template(request, 'fgallery/album_edit.html', {'album': album, 'formset': formset})
 
 def album1c(request, falbum_id):
     albumres = Album.objects.get(id=falbum_id) #.all()#.order_by('-pub_date')[:10]
