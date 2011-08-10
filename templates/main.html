@@ -100,7 +100,7 @@
                     <div><div class="ptitle"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></div>
                     <div class="pdate">{{ news.date|date:"j b" }}</div></div><div class="clearfix"></div>
                     <div><div class="ptype">{{ news.type }}</div>
-                    <div class="preplies">Ответов: {% get_comment_count for news as newscmnts %}<span{% if newscmnts > 0 %} class="gold"{% endif %}>{{ newscmnts }}</span></div></div><div class="clearfix"></div>
+                    <div class="preplies">Ответов: {% get_comment_count for news as newscmnts %}<span{% if newscmnts > 0 %} class="preplies-count"{% endif %}>{{ newscmnts }}</span></div></div><div class="clearfix"></div>
                 </li>
                 {% endfor %}
                 </ul>
@@ -112,7 +112,7 @@
                     <div><div class="ptitle"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></div>
                     <div class="pdate">{{ news.date|date:"j b" }}</div></div><div class="clearfix"></div>
                     <div><div class="ptype">{{ news.type }}</div>
-                    <div class="preplies">Ответов: {% get_comment_count for news as newscmnts %}<span{% if newscmnts > 0 %} class="gold"{% endif %}>{{ newscmnts }}</div></div><div class="clearfix"></div>
+                    <div class="preplies">Ответов: {% get_comment_count for news as newscmnts %}<span{% if newscmnts > 0 %} class="preplies-count"{% endif %}>{{ newscmnts }}</div></div><div class="clearfix"></div>
                 </li>
                 {% endfor %}
                 </ul>

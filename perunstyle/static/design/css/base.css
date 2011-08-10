@@ -40,7 +40,8 @@ strong { color: #ee0000; }
 
 a, a:visited,
 #recentcomments a,
-#recentcomments a:visited {
+#recentcomments a:visited,
+.preplies-count {
     color: #ef9e4e; /*#ffae5e; /*#F59E52;*/
 }
 
