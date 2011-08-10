@@ -8,10 +8,11 @@ from forms import ImprovedRegistrationForm
 
 from djangobb_forum import settings as forum_settings
 
-from sitemap import SitemapForum, SitemapTopic
+from sitemap import SitemapForum, SitemapTopic, SitemapPage
 sitemaps = {
-    'forum': SitemapForum,
-    'topic': SitemapTopic,
+    'page': SitemapPage,
+    #'forum': SitemapForum,
+    #'topic': SitemapTopic,
 }
 
 # Uncomment the next two lines to enable the admin:
