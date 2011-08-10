@@ -6,6 +6,7 @@ from django.contrib import admin
 
 class PhotoInline(admin.TabularInline):
     model = Photo
+    fields = ('image', 'title', 'seo_title', 'tags')
 
 class AlbumAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
