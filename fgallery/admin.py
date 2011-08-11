@@ -1,11 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from models import Photo, Album, Video
 from django.contrib import admin
+from django import forms
+from models import Photo, Album, Video
+from form_utils.widgets import ImageWidget
+
+class PhotoForm(forms.ModelForm):
+    image = forms.FileField(widget=ImageWidget(width=140,height=140))
+    class Meta:
+        model = Photo
 
 class PhotoInline(admin.TabularInline):
     model = Photo
+    form = PhotoForm
     fields = ('image', 'title', 'seo_title', 'tags')
 
 class AlbumAdmin(admin.ModelAdmin):
