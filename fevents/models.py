@@ -9,6 +9,9 @@ from sorl.improved.fields import ImprovedImageWithThumbnailsField
 from django.contrib.auth.models import User
 from fevents.managers import PublicManager
 
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+
 class Etype(models.Model):
     title = models.CharField(max_length=70)
     title_plural = models.CharField(max_length=70)
@@ -67,3 +70,12 @@ class Event(models.Model):
         else:
             result = False
         return result
+
+class EventRelation(models.Model):
+    event = models.ForeignKey(Event)
+    content_type = models.ForeignKey(ContentType,
+                            limit_choices_to={'model__in':('album', 'video', 'post',
+                                         'topic')})
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey('content_type',
+                                                'object_id')
