@@ -60,7 +60,9 @@ a.next:visited,
 .sidemenu ul li a,
 .sidemenu ul li a:visited,
 #tagcloud a,
-#tagcloud a:visited {
+#tagcloud a:visited,
+#sitelogo a,
+#sitelogo a:visited {
     color: #cccccc;
 }
 
