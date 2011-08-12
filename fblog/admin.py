@@ -3,6 +3,13 @@
 
 from models import Post, Ptype
 from django.contrib import admin
+from django.contrib.contenttypes import generic
+from fevents.models import EventRelation
+
+
+class EventAdminInline(generic.GenericTabularInline):
+    model = EventRelation
+    extra = 1
 
 class PostAdmin(admin.ModelAdmin):
     exclude = ["author"]
@@ -27,6 +34,8 @@ class PostAdmin(admin.ModelAdmin):
         }),
     )
 #    filter_horizontal = ['images',]
+
+    inlines = [EventAdminInline,]
 
     def save_model(self, request, obj, form, change):
         if not change:

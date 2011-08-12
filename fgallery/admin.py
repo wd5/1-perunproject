@@ -5,6 +5,13 @@ from django.contrib import admin
 from django import forms
 from models import Photo, Album, Video
 from form_utils.widgets import ImageWidget
+from django.contrib.contenttypes import generic
+from fevents.models import EventRelation
+
+
+class EventAdminInline(generic.GenericTabularInline):
+    model = EventRelation
+    extra = 1
 
 class PhotoForm(forms.ModelForm):
     image = forms.FileField(widget=ImageWidget(width=140,height=140))
@@ -24,7 +31,7 @@ class AlbumAdmin(admin.ModelAdmin):
     list_editable = ["title", "is_published"]    
     list_filter = ["date"]
     prepopulated_fields = {"slug": ("title",)}
-    inlines = [PhotoInline,]
+    inlines = [EventAdminInline, PhotoInline,]
 
 class PhotoAdmin(admin.ModelAdmin):
     exclude = ['author']
