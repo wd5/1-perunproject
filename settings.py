@@ -5,9 +5,6 @@
 import os
 PROJECT_DIR = os.path.dirname(__file__)
 
-#DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
 ADMINS = (
     ('Admin', 'contact@perunspace.ru'),
 )
@@ -207,4 +204,5 @@ if socket.gethostname() == 'hydrogen':
     LOCALSERVER = False
 else:
     DEBUG = True
+    TEMPLATE_DEBUG = DEBUG
     from local_settings import *
