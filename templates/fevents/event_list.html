@@ -20,9 +20,9 @@
 <ul>
     {% for event1 in object_list %}<li><span class="edate-hl">{{ event1.date|date:"Y.m.d" }}</span> - {{ event1.title }}
     <ul>
-        {% for post in event1.post_set.all %}<li><a href="{{ post.get_absolute_url }}" title="{{ post.title }}">{{ post.type.title }}</a></li>{% endfor %}
-        {% for album in event1.album_set.all %}<li><a href="{{ album.get_absolute_url }}">Фотоальбом</a></li>{% endfor %}
-        {% for video in event1.video_set.all %}<li><a href="{{ video.get_absolute_url }}">Видео</a></li>{% endfor %}
+        {% for erelation in event1.eventrelation_set.all %}
+             <li><a href="{{ erelation.content_object.get_absolute_url }}">{% if erelation.content_object.type %}{{ erelation.content_object.type }}{% else %}{{ erelation.content_type }}{% endif %}</a></li>
+        {% endfor %}
     </ul></li>
     {% endfor %}
 </ul></div>
