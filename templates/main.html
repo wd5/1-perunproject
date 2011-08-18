@@ -37,10 +37,9 @@
         <ul>{% get_latest fevents.Event 4 as event_list %}
         {% for event1 in event_list %}
         <li><span class="edate{% if not event1.is_past_due %}-hl{% endif %}">{{ event1.date|date:"Y.m.d" }}</span> - {{ event1.title }}
-            <ul>{% for post in event1.post_set.all %}
-                <li><a href="{{ post.get_absolute_url }}" title="{{ post.title }}">{{ post.type.title }}</a></li>{% endfor %}
-                {% for album in event1.album_set.all %}<li><a href="{% url gallery_album album.id %}">Фотоальбом</a></li>{% endfor %}
-                {% for video in event1.video_set.all %}<li><a href="{{ video.get_absolute_url }}">Видео</a></li>{% endfor %}
+            <ul>
+                {% for erelation in event1.eventrelation_set.all %}<li><a href="{{ erelation.content_object.get_absolute_url }}">{% if erelation.content_object.type %}{{ erelation.content_object.type }}{% else %}{{ erelation.content_type }}{% endif %}</a></li>
+                {% endfor %}
             </ul>
         </li>
         {% endfor %}
