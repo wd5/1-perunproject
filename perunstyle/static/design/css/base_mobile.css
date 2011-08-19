@@ -15,6 +15,22 @@ body {
     display: none;
 }
 
+#sitelogo {
+    padding: 2px;
+    display: inline;
+}
+
+#sitetitle {
+    display: inline;
+    font-size: 140%;
+    font-weight: bold;
+}
+
+#siteslogan {
+    padding-left: 24px;
+    font-style: italic;
+}
+
 ul.htabs {
     list-style-type: none;
     margin: 0; padding: 0;
