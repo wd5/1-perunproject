@@ -5,7 +5,13 @@ from models import Post, Ptype
 from django.contrib import admin
 from django.contrib.contenttypes import generic
 from fevents.models import EventRelation
+from fgallery.models import ImageRelation
 
+
+class ImageAdminInline(generic.GenericTabularInline):
+    model = ImageRelation
+    raw_id_fields = ('image',)
+    extra = 1
 
 class EventAdminInline(generic.GenericTabularInline):
     model = EventRelation
@@ -35,7 +41,7 @@ class PostAdmin(admin.ModelAdmin):
     )
 #    filter_horizontal = ['images',]
 
-    inlines = [EventAdminInline,]
+    inlines = [EventAdminInline,ImageAdminInline]
 
     def save_model(self, request, obj, form, change):
         if not change:

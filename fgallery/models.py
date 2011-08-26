@@ -10,6 +10,9 @@ from django.contrib.auth.models import User
 from fevents.models import Event
 from fgallery.managers import PublicManager
 
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+
 from django.conf import settings 
 from PIL import Image
 import os
@@ -157,6 +160,15 @@ class Photo(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('fgallery.views.photo_detail',[str(self.album.id),str(self.id)])
+
+
+class ImageRelation(models.Model):
+    image = models.ForeignKey(Photo)
+    content_type = models.ForeignKey(ContentType,
+                            limit_choices_to={'model__in':('page','post','event')})
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey('content_type',
+                                                'object_id')
 
 
 class Video(models.Model):
