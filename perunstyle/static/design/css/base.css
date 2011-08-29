@@ -401,20 +401,16 @@ div.img img {
 }
 
 .ptitle {
-    float: left;
 }
 
 .pdate {
-    float: right;
 }
 
 .ptype {
-    float: left;
     font-size: 75%;
 }
 
 .preplies {
-    float: right;
     font-size: 75%;
 }
 

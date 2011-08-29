@@ -4,6 +4,8 @@
 {% load inlines %}
 {% load page_tags %}
 {% load peruntags %}
+{% load thumbnail %}
+{% load fgallery_tags %}
 
 {% block title %}{% if page.html_title %}{{ page.html_title }}{% else %}{{ page.title }}{% endif %}{% endblock %}
 
@@ -93,28 +95,42 @@
         </ul>
         <div class="tabs">
             <div id="new" class="tab">
-            <ul>{% get_latest fblog.Post 10 as news_list %}
-                {% for news in news_list %}
+            <ul>{% get_latest fblog.Post 5 as entry_list %}
+                {% for entry in entry_list %}{% get_main_image for entry as pimage %}
                 <li>
-                    <div><div class="ptitle"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></div>
-                    <div class="pdate">{{ news.date|date:"j b" }}</div></div><div class="clearfix"></div>
-                    <div><div class="ptype">{{ news.type }}</div>
-                    <div class="preplies">Ответов: {% get_comment_count for news as newscmnts %}<span{% if newscmnts > 0 %} class="preplies-count"{% endif %}>{{ newscmnts }}</span></div></div><div class="clearfix"></div>
+                    <div style="float: left; padding: 2px; padding-right: 6px;"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 76x54 %}" /></a></div>
+                    <div>
+                        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                    </div>
+                    <div style="font-size: 75%; color: #777; margin-top: 3px;">
+                        <span style="color: #C00">{{ entry.date|date:"j b" }}</span>,
+                        <span>{{ entry.type }}</span>,
+                        Ответов: {% get_comment_count for entry as ecom_count %}
+                        <span{% if ecom_count > 0 %} class="preplies-count"{% endif %}>{{ ecom_count }}</span>
+                    </div>
+                    <div class="clearfix"></div>
                 </li>
                 {% endfor %}
-                </ul>
+            </ul>
             </div>
             <div id="featured" class="tab">
-            <ul>{% get_latest_featured fblog.Post 10 as featured_list %}
-                {% for news in featured_list %}
+            <ul>{% get_latest_featured fblog.Post 5 as featured_list %}
+                {% for entry in featured_list %}{% get_main_image for entry as pimage %}
                 <li>
-                    <div><div class="ptitle"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></div>
-                    <div class="pdate">{{ news.date|date:"j b" }}</div></div><div class="clearfix"></div>
-                    <div><div class="ptype">{{ news.type }}</div>
-                    <div class="preplies">Ответов: {% get_comment_count for news as newscmnts %}<span{% if newscmnts > 0 %} class="preplies-count"{% endif %}>{{ newscmnts }}</div></div><div class="clearfix"></div>
+                    <div style="float: left; padding: 2px; padding-right: 6px;"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 76x54 %}" /></a></div>
+                    <div>
+                        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                    </div>
+                    <div style="font-size: 75%; color: #777; margin-top: 3px;">
+                        <span style="color: #C00">{{ entry.date|date:"j b" }}</span>,
+                        <span>{{ entry.type }}</span>,
+                        Ответов: {% get_comment_count for entry as ecom_count %}
+                        <span{% if ecom_count > 0 %} class="preplies-count"{% endif %}>{{ ecom_count }}</span>
+                    </div>
+                    <div class="clearfix"></div>
                 </li>
                 {% endfor %}
-                </ul>
+            </ul>
             </div>
         </div><!-- tabs -->
         </div><!-- tabwrapper -->
