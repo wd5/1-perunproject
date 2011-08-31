@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'fevents',
     'fcomments',
     'perunstyle',
+    'seo',
 )
 
 COMMENTS_APP = "fcomments"
@@ -142,6 +143,13 @@ CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
 CAPTCHA_NOISE_FUNCTIONS = ''
 #CAPTCHA_FILTER_FUNCTIONS = ''
 CAPTCHA_LETTER_ROTATION = (-15,15)
+
+SEO_FOR_MODELS = [
+    'simplepages.models.Page',
+    'fblog.models.Post',
+    'fgallery.models.Photo',
+    'fgallery.models.Album',
+]
 
 try:
     import mailer
