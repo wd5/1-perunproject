@@ -5,7 +5,6 @@ from django.db import models
 from datetime import datetime
 
 from fblog.managers import PublicManager
-#from fgallery.models import Photo, Album
 from fevents.models import Event
 from sorl.improved.fields import ImprovedImageWithThumbnailsField
 #from tagging.fields import TagField
@@ -53,7 +52,6 @@ class Post(models.Model):
     preview = models.TextField(blank=True)
     content = models.TextField()
 
-    event = models.ForeignKey(Event, blank=True, null=True)
     type = models.ForeignKey(Ptype, blank=True, null=True)
 
     slug = models.SlugField(unique=True,max_length=70)
@@ -66,7 +64,6 @@ class Post(models.Model):
 
     objects = PublicManager()
 
-#    images = models.ManyToManyField(Photo, blank=True, null=True)
 #    tags = TagField()
 
     class Meta:

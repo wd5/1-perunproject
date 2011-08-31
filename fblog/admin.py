@@ -32,7 +32,7 @@ class PostAdmin(admin.ModelAdmin):
         }),
         ('Advanced options', {
             'classes': ('collapse',),
-            'fields': ('preview', 'date', 'is_featured', 'enable_comments', 'event')
+            'fields': ('preview', 'date', 'is_featured', 'enable_comments')
         }),
         ('SEO options', {
             'classes': ('collapse',),

@@ -23,8 +23,6 @@ class Album(models.Model):
     author = models.ForeignKey(User)
     is_published = models.BooleanField(default=True)
 
-    event = models.ForeignKey(Event, blank=True, null=True)
-
     date = models.DateTimeField(default=datetime.now)
     date_mod = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=70)
@@ -181,7 +179,6 @@ class Video(models.Model):
     modified = models.DateTimeField(auto_now=True)
     
     title = models.CharField(max_length=200, blank=True)
-    event = models.ForeignKey(Event, blank=True, null=True)
     
     enable_comments = models.BooleanField(default=True)
     is_published = models.BooleanField(default=True)
