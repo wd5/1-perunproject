@@ -3,8 +3,13 @@
 {% load markup %}
 {% load comments %}
 {% load thumbnail %}
+{% load seo_tags %}
 
-{% block title %}{{ photores.seo_or_title }} | Фото клуба «Стрелы Перуна»{% endblock %}
+{% block title %}{% seo title for photores as seo_title %}{% if seo_title %}{{ seo_title }}{% else %}{{ photores.title }}{% endif %} | Фото клуба «Стрелы Перуна»{% endblock %}
+
+{% block description %}{% seo description for photores %}{% endblock %}
+
+{% block keywords %}{% seo keywords for photores %}{% endblock %}
 
 {% block breadcrumbs %} - <a href="/gallery/">Галерея</a> - <a href="{% url gallery_album photores.album.id %}">Фотоальбом</a> - Фото{% endblock %}
 

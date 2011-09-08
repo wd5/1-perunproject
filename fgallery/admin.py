@@ -21,7 +21,7 @@ class PhotoForm(forms.ModelForm):
 class PhotoInline(admin.TabularInline):
     model = Photo
     form = PhotoForm
-    fields = ('image', 'author', 'title', 'seo_title', 'tags')
+    fields = ('image', 'author', 'title', 'tags')
 
 class AlbumAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
@@ -44,7 +44,7 @@ class PhotoAdmin(admin.ModelAdmin):
 
     fieldsets = [
         (None,               {'fields': ['is_published','album','image','title','tags']}),
-        ('Additional', {'fields': ['seo_title', 'date','position','is_cover','rating','enable_comments',], 'classes': ['collapse']}),
+        ('Additional', {'fields': ['date','position','is_cover','rating','enable_comments',], 'classes': ['collapse']}),
     ]
 
     def save_model(self, request, obj, form, change):

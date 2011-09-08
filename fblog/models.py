@@ -55,9 +55,6 @@ class Post(models.Model):
     type = models.ForeignKey(Ptype, blank=True, null=True)
 
     slug = models.SlugField(unique=True,max_length=70)
-    seo_title = models.CharField(max_length=100, blank=True)
-    meta_description = models.TextField(blank=True)
-    meta_keywords = models.CharField(max_length=300, blank=True)
 
     enable_comments = models.BooleanField(default=True)
     view_count = models.PositiveIntegerField(default=0, editable=False)
@@ -74,9 +71,6 @@ class Post(models.Model):
     def __unicode__(self):
         dt = unicode(self.date)[:10]
         return "[%s]-%s" % (dt, self.title)
-
-    def seo_or_title(self):
-        return self.seo_title or self.title
 
     def preview_or_content(self):
         return self.preview or self.content
