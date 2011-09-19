@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     'fblog',
     'fgallery',
     'fevents',
+    'fcss',
     'fcomments',
     'perunstyle',
     'seo',
