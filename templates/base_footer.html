@@ -1,2 +1,58 @@
-<div id="copyright">(c) Перунова Слобода, 2010-2011{% if request.subdomain == "m" %}, мобильная версия сайта{% endif %}</div>
-<div id="author">дизайн и разработка: Сокол, 2010-2011</div>
+<div id="splitline">
+    <div id="copyright">(c) Перунова Слобода, 2010-2011{% if request.subdomain == "m" %}, мобильная версия сайта{% endif %}</div>
+    <div id="author">дизайн и разработка: Сокол, 2010-2011</div>
+    <div class="clearfix"></div>
+</div><!-- /.infobar -->
+
+<div id="subfooter">
+
+<div id="campfire"><img src="{{ MEDIA_URL }}design/logo/campfire.png" /></div>
+
+<div id="footermenu">
+    <ul>
+    <li id="fm-resources"><h3>Ресурсы</h3>
+    <ul>
+        <li><a href="/blog/">Дневник</a></li>
+        <li><a href="/events/">Хроники</a></li>
+        <li><a href="/gallery/">Галерея</a></li>
+    </ul>
+    </li><li id="fm-about"><h3>О нас</h3>
+    <ul>
+        <li><a href="/tradition/">Славяно-горицкая борьба</a></li>
+        <li><a href="/strely/">Клуб Стрелы Перуна</a></li>
+        <li><a href="/sloboda/">Клановое поселение</a></li>
+    </ul>
+    </li><li id="fm-present"><h3>Мы предлагаем</h3>
+    <ul>
+        <li><a href="/strely/">Регулярные тренировки</a></li>
+        <li><a href="/camp/">Интересные семинары</a></li>
+        <li><a href="/farm/">Здоровое питание</a></li>
+    </ul>
+    </li><li id="fm-community"><h3>Сообщество</h3>
+    <ul>
+        <li><a href="/forum/">Форум</a></li>
+        <li><a href="http://vkontake.ru/perunspace/">Вконтакте</a></li>
+        <li><a href="/links/">Ссылки</a></li>
+    </ul>
+    </li>
+    </li><li id="fm-community"><h3>Контакты</h3>
+    <ul>
+        <li>sloboda@perunspace.ru</li>
+        <li>8-927-681-56-04</li>
+    </ul>
+    </li>
+    </ul>
+</div><!-- /#footermenu -->
+
+<div id="stats">
+<ul>
+<li>{% include "stat_liveinternet.html" %}</li>
+<li>{% include "stat_yandex_informer.html" %}</li>
+</ul>
+{% include "stat_google.html" %}
+{% include "stat_yandex.html" %}
+</div><!-- /#stats -->
+
+<div class="clearfix"></div>
+
+</div><!-- /#subfooter -->

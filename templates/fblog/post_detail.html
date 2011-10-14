@@ -17,7 +17,7 @@
 {% archive_menu request %}
 {% endblock %}
 
-{% block breadcrumbs %} - <a href="{% url blog %}">Дневник</a> - <a href="{{ newsres.type.get_absolute_url }}">{{ newsres.type.title_plural }}</a> / <a href="{% url blog_archive_year newsres.date.year %}">{{ newsres.date.year }}</a> - <a href="{% url blog_archive_month newsres.date.year newsres.date|date:"m" %}">{{ newsres.date|date:"F" }}</a> - Заметка{% endblock %}
+{% block breadcrumbs %} - <a href="{% url blog %}">Дневник</a> - <a href="{% url blog_archive_year newsres.date.year %}">{{ newsres.date.year }}</a> - <a href="{% url blog_archive_month newsres.date.year newsres.date|date:"m" %}">{{ newsres.date|date:"F" }}</a> - Заметка{% endblock %}
 
 {% block content %}
 <h1>{{ newsres.title }}</h1>

@@ -19,23 +19,23 @@
 <script type="text/javascript" src="/media/design/js/tabs.js"></script>{% endif %}
 {% endblock %}
 
-{% block breadcrumbs %} - Главная{% endblock %}
+{% block breadcrumbs %} - Добро пожаловать!{% endblock %}
 
-{% block contentclass %}frontpage{% endblock %}
-{% block content %}
-    <div class="half">
+{% block main %}
+    <div id="content" class="frontpage">
+    <div id="about" class="halftop">
 
         <!--<h2>Перунова Слобода — автономное клановое поселение бойцов клуба «Стрелы Перуна»</h2>-->
 
         <h2>О нас (<a href="/tradition/">подробнее</a>)</h2>
 
-        <div id="about">{{ page.content|markdown|render_inlines }}</div>
+        <div id="about-text">Перунова Слобода — <strong>автономное клановое поселение</strong> бойцов клуба славяно-горицкой борьбы «Стрелы Перуна». Наша цель — возрождение и <strong>развитие русских боевых традиций</strong>.</div>
 
-    </div><div class="half">
+    </div><div id="events" class="halftop">
 
         <h2>События (<a href="{% url events %}">хроники</a>)</h2>
         
-        <div class="eventlist">
+        <div class="eventlist" style="padding-top: 3px;">
         <ul>{% get_latest fevents.Event 4 as event_list %}
         {% for event1 in event_list %}
         <li><span class="edate{% if not event1.is_past_due %}-hl{% endif %}">{{ event1.date|date:"Y.m.d" }}</span> - {{ event1.title }}
@@ -48,44 +48,11 @@
         </ul>
         </div>
 
-    </div><div class="clearfix"></div>
-    {% if request.subdomain != "m" %}<div class="half">
+    </div><!-- /#half -->
 
-        <div id='coin-slider' style="margin-top: 4px;">
-        <!--<a href="sgb13.jpg" target="_blank"> <span></span> </a>-->
+    <div class="clearfix"></div>
 
-        <img src='/media/design/slideshow/strely1-IMG_0766.jpg' />
-        <span>
-            <big><b>Славяно-горицкая борьба</b></big><br />
-            Русская боевая традиция - <a style="color: #ffffff; text-decoration:underline;" href="/tradition/">подробнее</a>
-        </span>
-    
-        <img src='/media/design/slideshow/strely2-IMG_6732.jpg' />
-        <span>
-            <big><b>Клуб «Стрелы Перуна»</b></big><br />
-            Воины на все времена - <a style="color: #ffffff; text-decoration:underline;" href="/strely/">подробнее</a>
-        </span>
-
-        <img src='/media/design/slideshow/strely3-IMG_5198.jpg' />
-        <span>
-            <big><b>Перунова Слобода</b></big><br />
-            Автономное клановое поселение - <a style="color: #ffffff; text-decoration:underline;" href="/sloboda/">подробнее</a>
-        </span>
-
-        <img src='/media/design/slideshow/strely4-hardball.jpg' />
-        <span>
-            <big><b>Лагерь активного отдыха</b></big><br />
-            Отдых для настоящих мужчин! - <a style="color: #ffffff; text-decoration:underline;" href="/camp/">подробнее</a>
-        </span>
-        </div><!-- coin-slider -->
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#coin-slider').coinslider({width:460,height:348,delay:5000,links:false,effect:'rain'});
-            });
-        </script>
-
-    </div>{% endif %}<div class="half">
+    <div id="blog" class="half">
 
         <div id="tabwrapper">
         <ul class="htabs">
@@ -135,6 +102,71 @@
         </div><!-- tabs -->
         </div><!-- tabwrapper -->
 
-    </div><!-- #/half -->
+    </div><!-- /#half1 -->
+
+    <div id="services" class="half">
+
+        <h2>Мы предлагаем (<a href="/tradition/">больше</a>)</h2>
+
+        <div id="servicelist">
+        <ul>
+            <li id="sl-training">
+            <div style="float: left; margin-right: 10px;"><img src="/media/design/services/training.png" /></div>
+            <div style="float: left;">
+                Регулярные тренировки по СГБ
+                <ul>
+                    <li>Йошкар-Ола</li>
+                    <li>Чебоксары</li>
+                    <li>Токтайбеляк</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            </li><li id="sl-camp">
+            <div style="float: left; margin-right: 10px;"><img src="/media/design/services/seminar.png" /></div>
+            <div style="float: left;">
+                Лагерь активного отдыха
+                <ul>
+                    <li>Практикумы по штурмовому бою СГБ</li>
+                    <li>Семинары по русской здраве и натурфилософии</li>
+                    <li>Военно-спортивные курсы «Варвар»</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            </li><li id="sl-farm">
+            <div style="float: left; margin-right: 10px;"><img src="/media/design/services/farm.png" /></div>
+            <div style="float: left;">
+                Здоровое питание
+                <ul>
+                    <li>Мясо кролика</li>
+                    <li>Лекарственные травы</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            </li>
+        </ul>
+        </div><!-- /#servicelist -->
+        <div id="presentlist" style="margin-bottom: 2px;">А также представляем в Марий Эл и Чувашии:
+            <ul><li>
+                <div style="float: left">
+                    <img style="opacity: 0.85; margin-right: 4px;" width=32 src="/media/design/logo/goritsfighting-32px.png" />
+                </div>
+                <div style="float: left; margin-right: 10px; padding-top: 9px;">Федерация СГБ</div>
+                <div class="clearfix"></div>
+            </li><li>
+                <div style="float: left">
+                    <img style="opacity: 0.95; margin-right: 4px;" width=32 src="/media/design/logo/shturmfight-32px.png" />
+                </div>
+                <div style="float: left;  padding-top: 9px;">Федерация ШТУРМ</div>
+                <div class="clearfix"></div>
+                </li>
+            </ul>
+        </div>
+
+    </div><!-- /#half2 -->
+
+    <div class="clearfix"></div>
+
+    </div><!-- /#content -->
+    </div><!-- /#main -->
 {% endblock %}
 

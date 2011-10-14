@@ -6,16 +6,24 @@
 
 {% block content %}
 
-{% for news in object_list %}<h2><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2>
-<div class="postinfo">{{ news.date|date:"j M Y H:m" }} | раздел: <a href="{{ news.type.get_absolute_url }}">{{ news.type.title_plural|lower }}</a> | просмотров: {{ news.view_count }} | {% get_comment_count for news as comment_count %}<a href="{{ news.get_absolute_url }}#comments">ответов: {{ comment_count }}</a></div>
+<ul>
+{% for news in object_list %}
+<li><h2><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2>
+
+<div class="postinfo">{{ news.date|date:"j M Y H:m" }} | раздел: <a href="{{ news.type.get_absolute_url }}">{{ news.type.title_plural|lower }}</a> | просмотров: {{ news.view_count }}</div>
+
 <div class="postcontent">
 {{ news.preview_or_content|render_inlines|markdown }}
 </div>
-{% if news.preview %}<a class="next" href="{{ news.get_absolute_url }}">читать дальше</a><br />{% endif %}<br />
 
-
+<div class="postfooter">
+{% if news.preview %}<a class="more" href="{{ news.get_absolute_url }}">читать дальше</a> | {% endif %}{% get_comment_count for news as comment_count %}<a href="{{ news.get_absolute_url }}#comments">ответов: {{ comment_count }}</a>
+</div>
+</li>
 {% endfor %}
-{% if is_paginated %}<hr>
+</ul>
+
+{% if is_paginated %}
 <div id="pagination">Страницы:
     {% if has_previous %}<a href="?page={{ previous }}">позже</a>{% endif %}
     <span class="current">{{ page }}</span>/{{ pages }}
