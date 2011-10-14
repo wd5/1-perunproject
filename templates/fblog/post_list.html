@@ -6,6 +6,7 @@
 
 {% block content %}
 
+<div id="postlist">
 <ul>
 {% for news in object_list %}
 <li><h2><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2>
@@ -22,6 +23,7 @@
 </li>
 {% endfor %}
 </ul>
+</div><!-- /#postlist -->
 
 {% if is_paginated %}
 <div id="pagination">Страницы:

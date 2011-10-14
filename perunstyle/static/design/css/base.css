@@ -47,9 +47,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
+/*body {
 	line-height: 1;
-}
+}*/
 ol, ul {
 	list-style: none;
 }
@@ -203,6 +203,12 @@ a:hover, a:active {
 p {
     text-align: left;
     margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-bottom: 6px;
+    padding-left: 18px;
 }
 
 strong {
@@ -372,46 +378,6 @@ div.img img {
     float: right;
 }
 
-/* ============================ FOOTER ========================== */
-
-#splitline {
-    clear: both;
-    height: 16px;
-    margin: 0px 0;
-    padding: 3px;
-    border: 1px solid #444;
-    text-align: left;
-    background-image: url(/media/design/decor/infobar-bg.gif);
-}
-
-#copyright {
-    float: left;
-}
-
-#author {
-    float: right;
-}
-
-/* ========================== SUBFOOTER ======================== */
-
-#subfooter { background: #111; padding: 10px; margin-bottom: 10px; }
-#subfooter a, #subfooter a:visited { color: #aaa; text-decoration: none; }
-#subfooter a:hover { text-decoration: underline; }
-
-#campfire { float: left; padding-right: 30px; margin-left: -4px; }
-
-#footermenu > ul { padding: 0;  list-style-type: none; font-size: 75%; margin-top: 24px; }
-#footermenu > ul > li { float:left; padding: 0px; }
-#footermenu > ul > li h3 { margin: 0; padding: 0; }
-#footermenu > ul > li ul { list-style-type: none; display: inline; }
-#fm-about { width: 154px; }
-#fm-present { width: 150px; }
-#fm-resources { width: 80px; }
-#fm-community { width: 100px; }
-#fm-contacts { width: 100px; }
-
-#stats { float: right; padding: 5px 25px 0 0; margin-top: -15px; }
-
 
 /* ============================================================================
                                  LAYOUT - MAIN
@@ -461,10 +427,18 @@ div.img img {
                              SECTION SPECIFIC STYLES
 ============================================================================ */
 
-/* ============================= FRONT PAGE ================================ */
+/* ========================== FRONT PAGE =========================== */
 
 #content.frontpage {
     width: 932px;
+}
+
+.frontpage h2 {
+    margin-bottom: 4px;
+}
+
+.frontpage h2 a, .frontpage h2 a:visited, ul.htabs span a {
+    text-decoration: none;
 }
 
 .halftop {
@@ -487,14 +461,6 @@ div.img img {
     border: 1px solid #393939;
 }
 
-.frontpage h2 {
-    margin-bottom: 4px;
-}
-
-.frontpage h2 a, .frontpage h2 a:visited, ul.htabs span a {
-    text-decoration: none;
-}
-
 #about-text {
     font: italic 18px Times New Roman;
     line-height:1.2;
@@ -515,6 +481,17 @@ div.img img {
     font-size: 75%;
 }
 
+/* ======================== FRONTPAGE SERVICES ======================= */
+
+#servicelist > ul > li {
+    margin-bottom: 8px;
+}
+
+#servicelist > ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
 #servicelist > ul li ul {
     list-style-type: disc;
     padding-left: 14px;
@@ -522,9 +499,11 @@ div.img img {
     margin-bottom: 6px;
 }
 
-#servicelist > ul > li {
-    margin-bottom: 8px;
+#servicelist > ul li ul li {
+    color:#777;
+    margin-bottom: 1px;
 }
+
 
 #presentlist ul {
     list-style: none;
@@ -536,105 +515,15 @@ div.img img {
     margin-bottom: 3px;
 }
 
-/* ================================ PAGES ================================== */
-
-.page h2 {
-
+.sl-imglabel {
+    float: left; margin-right: 10px;"
 }
 
-/* ================================== BLOG ================================= */
-
-.blog h2 {
-    font-size: 20px;
-    text-align: left;
-    /*border: 1px solid #666;*/
-    /*background: #252525;*/
+.sl-sublist {
+    float: left;
 }
 
-.postcontent {
-    line-height: 1.4;
-}
-
-.blog h2 a {
-    text-decoration: none;
-}
-
-.postinfo {
-    margin-top: 6px;
-    margin-bottom: 10px;
-    font-size: 80%;
-    text-align: left;
-}
-
-.postfooter {
-    margin-top: 12px;
-    margin-bottom: 30px;
-    text-align: left;
-}
-
-a.next, a.next:visited {
-    border:1px solid #333;
-    background: #222;
-    color: #63c206;
-    text-decoration: none;
-    padding:2px;
-}
-
-a.next:hover {
-    text-decoration: none;
-}
-
-/* ================================ GALLERY ================================ */
-
-#album-title {
-    margin: 4px auto;
-    text-align: center;
-    font: 14px bold Verdana;
-}
-
-.photo h1 {
-    width: 650px;    
-    margin: 6px auto;    
-}
-
-#photo-nav {
-    margin: 0px auto 4px;
-    text-align: center;
-}
-
-/* ============================== EVENTS ================================ */
-
-.eventlist ul {
-    min-height: 10px;    
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-.edate, .edate-hl {
-    font-style: italic;
-}
-
-.eventlist ul li ul {
-    font-size: 75%;
-    margin-left: 110px; 
-    margin-top: -2px;
-    margin-bottom: 2px;
-}
-
-.eventlist ul li ul li {
-    display: inline;
-    margin-right: 5px;
-}
-
-.eventlist ul li ul li a, .eventlist ul li ul li a:visited {
-    text-decoration:none;
-}
-
-   
-/* ============================================================================
-                               FRONT PAGE TABS
-============================================================================ */
+/* ========================= FRONTPAGE TABS ======================== */
 
 .htabs {
     margin: 0;
@@ -685,9 +574,162 @@ a.next:hover {
     margin: 2px;
     margin-bottom: 3px;
     padding: 2px;
-    background: #272727;
+    background: #252525;
 }
 .tab ul li a {
     text-decoration: none;
 }
+
+/* ========================== PAGES =========================== */
+
+.page h1, .page h2 {
+    text-align: center;
+}
+
+.page h2 {
+    margin-bottom: 8px;
+}
+
+.page {
+    line-height: 1.3;
+}
+
+/* =========================== BLOG ============================ */
+
+.blog h2 {
+    font-size: 20px;
+    text-align: left;
+    /*border: 1px solid #666;*/
+    /*background: #252525;*/
+    padding-bottom: 2px;
+    border-bottom: 1px solid #393939;
+}
+
+.postcontent {
+    line-height: 1.3;
+    margin-left: 15px; 
+}
+
+.blog h2 a {
+    text-decoration: none;
+}
+
+#postlist ul {
+    list-style-type: none;
+    margin: 0; padding: 0;
+}
+
+.postinfo {
+    margin-top: 6px;
+    margin-bottom: 10px;
+    font-size: 80%;
+    text-align: left;
+}
+
+.postfooter {
+    margin-top: 12px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+a.next, a.next:visited {
+    border:1px solid #333;
+    background: #222;
+    color: #63c206;
+    text-decoration: none;
+    padding:2px;
+}
+
+a.next:hover {
+    text-decoration: none;
+}
+
+/* ========================= GALLERY ======================== */
+
+#album-title {
+    margin: 4px auto;
+    text-align: center;
+    font: 14px bold Verdana;
+}
+
+.photo h1 {
+    width: 650px;    
+    margin: 6px auto;    
+}
+
+#photo-nav {
+    margin: 0px auto 4px;
+    text-align: center;
+}
+
+/* ========================== EVENTS ========================== */
+
+.eventlist ul {
+    min-height: 10px;    
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.edate, .edate-hl {
+    font-style: italic;
+}
+
+.eventlist ul li ul {
+    font-size: 75%;
+    margin-left: 110px; 
+    margin-top: -2px;
+    margin-bottom: 2px;
+}
+
+.eventlist ul li ul li {
+    display: inline;
+    margin-right: 5px;
+}
+
+.eventlist ul li ul li a, .eventlist ul li ul li a:visited {
+    text-decoration:none;
+}
+
+
+/* ============================ FOOTER ========================== */
+
+#splitline {
+    clear: both;
+    height: 16px;
+    margin: 0px 0;
+    padding: 3px;
+    border: 1px solid #444;
+    text-align: left;
+    background-image: url(/media/design/decor/infobar-bg.gif);
+}
+
+#copyright {
+    float: left;
+}
+
+#author {
+    float: right;
+}
+
+/* ========================== SUBFOOTER ======================== */
+
+#subfooter { background: #111; padding: 10px; margin-bottom: 10px; }
+#subfooter a, #subfooter a:visited { color: #aaa; text-decoration: none; }
+#subfooter a:hover { text-decoration: underline; }
+
+#campfire { float: left; padding-right: 30px; margin-left: -4px; }
+
+#footermenu > ul { list-style-type: none; margin: 0; padding: 0;  font-size: 75%; margin-top: 20px; }
+#footermenu > ul > li { float:left; padding: 0px; }
+#footermenu > ul > li h3 { margin: 0; padding: 0; }
+#footermenu > ul > li ul { list-style-type: none; display: inline; margin: 0; padding: 0; }
+#fm-about { width: 154px; }
+#fm-present { width: 150px; }
+#fm-resources { width: 80px; }
+#fm-community { width: 100px; }
+#fm-contacts { width: 100px; }
+
+#stats { float: right; padding: 5px 25px 0 0; margin-top: -10px; }
+#stats ul { list-style-type: none; margin: 0; padding: 0; }
 
