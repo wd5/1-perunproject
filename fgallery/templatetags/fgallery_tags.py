@@ -7,6 +7,10 @@ from fgallery.models import ImageRelation
 
 register = Library()
 
+@register.filter
+def class_name(value):
+    return "%s-%s" % (value.__module__.split('.')[0], value.__class__.__name__.lower())
+
 class MainImageNode(Node):
 
     def __init__(self, obj, varname):

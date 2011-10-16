@@ -23,10 +23,6 @@ urlpatterns = patterns('',
 
     # (r'^$', 'views.mainpage'),
 
-    (r'^about/$', 'django.views.generic.simple.redirect_to', {'url': '/tradition/'}),
-    (r'^services/$', 'django.views.generic.simple.redirect_to', {'url': '/strely/'}),
-    (r'^training/$', 'django.views.generic.simple.redirect_to', {'url': '/contacts/'}),
-
     # BLOG
     (r'^blog/', include('fblog.urls')),
     # backward compatible

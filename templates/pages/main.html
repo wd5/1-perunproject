@@ -13,10 +13,10 @@
 
 {% block keywords %}{% if page.meta_keywords %}{{ page.meta_keywords }}{% endif %}{% endblock %}
 
-{% block extrahead %}{% if request.subdomain != 'm' %}<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>
+{% block extrahead %}{{ block.super }}
 <!--<script type="text/javascript" src="/media/design/js/coin-slider.js"></script>
 <link rel="stylesheet" href="/media/design/js/coin-slider-styles.css" type="text/css" />-->
-<script type="text/javascript" src="/media/design/js/tabs.js"></script>{% endif %}
+{% if request.subdomain != 'm' %}<script type="text/javascript" src="/media/design/js/tabs.js"></script>{% endif %}
 {% endblock %}
 
 {% block breadcrumbs %} - Добро пожаловать!{% endblock %}
@@ -28,7 +28,7 @@
 
         <!--<h2>Перунова Слобода — автономное клановое поселение бойцов клуба «Стрелы Перуна»</h2>-->
 
-        <h2>О нас (<a href="/tradition/">подробнее</a>)</h2>
+        <h2>О нас (<a href="/about/">подробнее</a>)</h2>
 
         <div id="about-text">Перунова Слобода — <strong>автономное клановое поселение</strong> бойцов клуба славяно-горицкой борьбы «Стрелы Перуна». Наша цель — возрождение и <strong>развитие русских боевых традиций</strong>.</div>
 
@@ -54,66 +54,6 @@
     </div><!-- /#events.halftop -->
 
     <div class="clearfix"></div>
-
-    <div id="services" class="half">
-
-        <h2>Мы предлагаем (<a href="/tradition/">больше</a>)</h2>
-
-        <div id="servicelist">
-        <ul>
-            <li id="sl-training">
-            <div class="sl-imglabel"><img src="/media/design/services/training.png" /></div>
-            <div class="sl-sublist">
-                <span>Регулярные тренировки по СГБ</span>
-                <ul>
-                    <li>Йошкар-Ола</li>
-                    <li>Чебоксары</li>
-                    <li>Токтайбеляк</li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-            </li><li id="sl-camp">
-            <div class="sl-imglabel"><img src="/media/design/services/seminar.png" /></div>
-            <div class="sl-sublist">
-                <span>Лагерь активного отдыха</span>
-                <ul>
-                    <li>Практикумы по штурмовому бою СГБ</li>
-                    <li>Семинары по русской здраве и натурфилософии</li>
-                    <li>Военно-спортивные курсы «Варвар»</li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-            </li><li id="sl-farm">
-            <div class="sl-imglabel"><img src="/media/design/services/farm.png" /></div>
-            <div class="sl-sublist">
-                <span>Здоровое питание</span>
-                <ul>
-                    <li>Мясо кролика</li>
-                    <li>Лекарственные травы</li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-            </li>
-        </ul>
-        </div><!-- /#servicelist -->
-        <div id="presentlist" style="margin-top: 10px;">А также представляем в Марий Эл и Чувашии:
-            <ul style="margin-top: 6px;"><li>
-                <div style="float: left">
-                    <img style="opacity: 0.78; margin-right: 4px;" src="/media/design/logo/goritsfighting-32px.png" />
-                </div>
-                <div style="float: left; margin-right: 10px; padding-top: 8px;">Федерация СГБ</div>
-                <div class="clearfix"></div>
-            </li><li>
-                <div style="float: left">
-                    <img style="opacity: 0.78; margin-right: 4px;" src="/media/design/logo/shturmfight-32px.png" />
-                </div>
-                <div style="float: left;  padding-top: 8px;">Федерация ШТУРМ</div>
-                <div class="clearfix"></div>
-                </li>
-            </ul>
-        </div>
-
-    </div><!-- /#half2 -->
 
     <div id="blog" class="half">
 
@@ -165,11 +105,70 @@
         </div><!-- tabs -->
         </div><!-- tabwrapper -->
 
-    </div><!-- /#half1 -->
+    </div><!-- /#blog -->
+
+    <div id="services" class="half">
+
+        <h2>Мы предлагаем (<a href="/services/">больше</a>)</h2>
+
+        <div id="servicelist">
+        <ul>
+            <li id="sl-training">
+            <div class="sl-imglabel"><a href="/training/"><img src="/media/design/services/training.png" /></a></div>
+            <div class="sl-sublist">
+                <span><a href="/training/">Регулярные тренировки по СГБ</a></span>
+                <ul>
+                    <li>Йошкар-Ола</li>
+                    <li>Чебоксары</li>
+                    <li>Токтайбеляк</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            </li><li id="sl-camp">
+            <div class="sl-imglabel"><a href="/camp/"><img src="/media/design/services/seminar.png" /></a></div>
+            <div class="sl-sublist">
+                <span><a href="/camp/">Лагерь активного отдыха</a></span>
+                <ul>
+                    <li>Практикумы по штурмовому бою СГБ</li>
+                    <li>Семинары по русской здраве и натурфилософии</li>
+                    <li>Военно-спортивные курсы «Варвар»</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            </li><li id="sl-farm">
+            <div class="sl-imglabel"><a href="/farm/"><img src="/media/design/services/farm.png" /></a></div>
+            <div class="sl-sublist">
+                <span><a href="/farm/">Здоровое питание</a></span>
+                <ul>
+                    <li>Мясо кролика</li>
+                    <li>Лекарственные травы</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            </li>
+        </ul>
+        </div><!-- /#servicelist -->
+        <div id="presentlist" style="margin-top: 10px;">А также представляем в Марий Эл и Чувашии:
+            <ul style="margin-top: 6px;"><li>
+                <div style="float: left">
+                    <img style="opacity: 0.78; margin-right: 4px;" src="/media/design/logo/goritsfighting-32px.png" />
+                </div>
+                <div style="float: left; margin-right: 10px; padding-top: 8px;">Федерация СГБ</div>
+                <div class="clearfix"></div>
+            </li><li>
+                <div style="float: left">
+                    <img style="opacity: 0.78; margin-right: 4px;" src="/media/design/logo/shturmfight-32px.png" />
+                </div>
+                <div style="float: left;  padding-top: 8px;">Федерация ШТУРМ</div>
+                <div class="clearfix"></div>
+                </li>
+            </ul>
+        </div>
+
+    </div><!-- /#services -->
 
     <div class="clearfix"></div>
 
-    </div><!-- /#content -->
     </div><!-- /#main -->
 {% endblock %}
 

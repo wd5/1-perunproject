@@ -40,7 +40,7 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+	/*vertical-align: baseline;*/
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -112,7 +112,9 @@ a.next:visited,
 #tagcloud a,
 #tagcloud a:visited,
 #sitelogo a,
-#sitelogo a:visited {
+#sitelogo a:visited,
+#servicelist ul li a,
+#servicelist ul li a:visited {
     color: #cccccc;
 }
 
@@ -128,7 +130,8 @@ a.next:hover,
 .sidemenu ul li a:hover,
 .tab ul li a:hover,
 #tagcloud a:hover,
-#recentcomments a:hover {
+#recentcomments a:hover,
+#servicelist ul li a:hover {
     color: #63c206; /*color: #ffffff; /*color: #FFCB5C; */
 }
 
@@ -175,6 +178,7 @@ h1 {
     font-size: 170%;
     font-weight: normal;
     text-align: left;
+    margin-bottom: 8px;
     /*background: #292929; border: 1px solid #666;*/
 }
 
@@ -183,6 +187,7 @@ h2 {
     font-size: 150%;
     font-weight: normal;
     text-align: left;
+    margin-bottom: 8px;
 }
 
 h3 {
@@ -190,6 +195,7 @@ h3 {
     font-size: 150%;
     font-weight: normal;
     text-align: left;
+    margin-bottom: 8px;
 }
 
 a, a:visited {
@@ -231,8 +237,8 @@ input, textarea {
 /* =========================== ESCPECIALLY STYLES ========================== */
 
 #id_comment {
-    width: 95%;
-    height: 80px;
+    width: 98%;
+    height: 70px;
 }
 
 #pagination {
@@ -354,9 +360,7 @@ div.img img {
 #sitemenu ul li:hover li a:hover { background: #580202; }
 
 
-/* ============================================================================
-                                LAYOUT - INFOBARS
-============================================================================ */
+/* ======================= NAVIGATION SUBLINE ===================== */
 
 #navline {
     clear: both;
@@ -416,6 +420,7 @@ div.img img {
     list-style-type: disc;
     margin: 0px; padding: 0px;
     padding-left: 20px;
+    padding-bottom: 4px;
 }
 
 #sidebar ul li a, #sidebar ul li a:visited {
@@ -484,7 +489,13 @@ div.img img {
 /* ======================== FRONTPAGE SERVICES ======================= */
 
 #servicelist > ul > li {
-    margin-bottom: 8px;
+    margin-bottom: 3px;
+    /*background: #232323;*/
+    padding: 2px;
+}
+
+#servicelist ul li a {
+    text-decoration: none;
 }
 
 #servicelist > ul {
@@ -516,7 +527,8 @@ div.img img {
 }
 
 .sl-imglabel {
-    float: left; margin-right: 10px;"
+    float: left; margin-right: 10px;
+    padding: 1px;
 }
 
 .sl-sublist {
@@ -574,7 +586,7 @@ div.img img {
     margin: 2px;
     margin-bottom: 3px;
     padding: 2px;
-    background: #252525;
+    background: #232323;
 }
 .tab ul li a {
     text-decoration: none;
@@ -588,6 +600,10 @@ div.img img {
 
 .page h2 {
     margin-bottom: 8px;
+}
+
+.page h3 a {
+    text-decoration: none;
 }
 
 .page {
@@ -723,7 +739,7 @@ a.next:hover {
 #footermenu > ul { list-style-type: none; margin: 0; padding: 0;  font-size: 75%; margin-top: 20px; }
 #footermenu > ul > li { float:left; padding: 0px; }
 #footermenu > ul > li h3 { margin: 0; padding: 0; }
-#footermenu > ul > li ul { list-style-type: none; display: inline; margin: 0; padding: 0; }
+#footermenu > ul > li ul { list-style-type: none; display: inline; margin: 0; padding: 0; text-align: left;}
 #fm-about { width: 154px; }
 #fm-present { width: 150px; }
 #fm-resources { width: 80px; }

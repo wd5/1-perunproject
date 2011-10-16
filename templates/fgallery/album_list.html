@@ -16,7 +16,7 @@
     <table>
     {% for album1 in album_list %}
 	{% if album1.is_published %}
-	<tr><td><a href="{% url gallery_album album1.id %}"><img src="{% thumbnail album1.get_cover_image 140x140 %}"></a></td>
+	<tr><td style="padding-bottom: 8px;"><a href="{% url gallery_album album1.id %}"><img src="{% thumbnail album1.get_cover_image 140x140 %}"></a></td>
 		<td align=left style="padding-left: 10px;"><a style="text-decoration: none;" href="{% url gallery_album album1.id %}"><b>{{ album1.title }}</b></a><br>(<a style="text-decoration:none;" href="{% url gallery_comments album1.id %}">комментарии к альбому</a>{% if user.is_staff %}, <a href="/gallery/{{ album1.id }}/edit/">изменить</a>{% endif %}){% if album1.event %}<br>Дата события: {{ album1.event.date|date:"d.m.Y" }}{% endif %} <br><span style="color:#666">Обновлено: {{ album1.date_mod|date:"d.m.Y" }}</span></td></tr>
 	{% endif %}
 
