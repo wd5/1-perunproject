@@ -669,8 +669,7 @@ a.next:hover {
 }
 
 .photo h1 {
-    width: 650px;    
-    margin: 6px auto;    
+    text-align: center;
 }
 
 #photo-nav {

@@ -16,8 +16,9 @@
 
 {% block contentclass %}photo{% endblock %}
 {% block content %}
-<div id="album-title">{{ photores.album.title }}</div>
 <h1>{{ photores.title }}</h1>
+
+<div id="album-title">из альбома: {{ photores.album.title }}</div>
 
 <div id="photo-nav">
 {% if photoprev %}<a href="{% url gallery_photo photoprev.album.id photoprev.id %}">назад</a>{% endif %}
