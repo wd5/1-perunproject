@@ -14,9 +14,7 @@
 {% block keywords %}{% if page.meta_keywords %}{{ page.meta_keywords }}{% endif %}{% endblock %}
 
 {% block extrahead %}{{ block.super }}
-<!--<script type="text/javascript" src="/media/design/js/coin-slider.js"></script>
-<link rel="stylesheet" href="/media/design/js/coin-slider-styles.css" type="text/css" />-->
-{% if request.subdomain != 'm' %}<script type="text/javascript" src="/media/design/js/tabs.js"></script>{% endif %}
+{% if request.subdomain != 'm' %}<script type="text/javascript" src="{{ MEDIA_URL }}design/js/tabs.js"></script>{% endif %}
 {% endblock %}
 
 {% block breadcrumbs %} - Добро пожаловать!{% endblock %}
@@ -38,7 +36,7 @@
 
         <h2>События (<a href="{% url events %}">хроники</a>)</h2>
         
-        <div class="eventlist" style="padding-top: 3px;">
+        <div class="eventlist">
         <ul>{% get_latest fevents.Event 4 as event_list %}
         {% for event1 in event_list %}
         <li><span class="edate{% if not event1.is_past_due %}-hl{% endif %}">{{ event1.date|date:"Y.m.d" }}</span> - {{ event1.title }}
@@ -68,13 +66,13 @@
             <ul>{% get_latest fblog.Post 5 as entry_list %}
                 {% for entry in entry_list %}{% get_main_image for entry as pimage %}
                 <li>
-                    <div style="float: left; padding: 2px; padding-right: 6px;"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 75x57 %}" /></a></div>
-                    <div>
+                    <div class="entry-img"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 75x57 %}" /></a></div>
+                    <div class="entry-link">
                         <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
                     </div>
-                    <div style="font-size: 75%; color: #777; margin-top: 3px;">
-                        <span style="color: #C00">{{ entry.date|date:"j b" }}</span>,
-                        <span>{{ entry.type }}</span>,
+                    <div class="entry-footer">
+                        <span class="entry-date">{{ entry.date|date:"j b" }}</span>,
+                        <span class="entry-category">{{ entry.type }}</span>,
                         Ответов: {% get_comment_count for entry as ecom_count %}
                         <span{% if ecom_count > 0 %} class="preplies-count"{% endif %}>{{ ecom_count }}</span>
                     </div>
@@ -87,13 +85,13 @@
             <ul>{% get_latest_featured fblog.Post 5 as featured_list %}
                 {% for entry in featured_list %}{% get_main_image for entry as pimage %}
                 <li>
-                    <div style="float: left; padding: 2px; padding-right: 6px;"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 75x57 %}" /></a></div>
-                    <div>
+                    <div class="entry-img"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 75x57 %}" /></a></div>
+                    <div class="entry-link">
                         <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
                     </div>
-                    <div style="font-size: 75%; color: #777; margin-top: 3px;">
-                        <span style="color: #C00">{{ entry.date|date:"j b" }}</span>,
-                        <span>{{ entry.type }}</span>,
+                    <div class="entry-footer">
+                        <span class="entry-date">{{ entry.date|date:"j b" }}</span>,
+                        <span class="entry-category">{{ entry.type }}</span>,
                         Ответов: {% get_comment_count for entry as ecom_count %}
                         <span{% if ecom_count > 0 %} class="preplies-count"{% endif %}>{{ ecom_count }}</span>
                     </div>
@@ -114,7 +112,7 @@
         <div id="servicelist">
         <ul>
             <li id="sl-training">
-            <div class="sl-imglabel"><a href="/training/"><img src="/media/design/services/training.png" /></a></div>
+            <div class="sl-imglabel"><a href="/training/"><img src="{{ MEDIA_URL }}design/services/training.png" /></a></div>
             <div class="sl-sublist">
                 <span><a href="/training/">Регулярные тренировки по СГБ</a></span>
                 <ul>
@@ -125,7 +123,7 @@
             </div>
             <div class="clearfix"></div>
             </li><li id="sl-camp">
-            <div class="sl-imglabel"><a href="/camp/"><img src="/media/design/services/seminar.png" /></a></div>
+            <div class="sl-imglabel"><a href="/camp/"><img src="{{ MEDIA_URL }}design/services/seminar.png" /></a></div>
             <div class="sl-sublist">
                 <span><a href="/camp/">Лагерь активного отдыха</a></span>
                 <ul>
@@ -136,7 +134,7 @@
             </div>
             <div class="clearfix"></div>
             </li><li id="sl-farm">
-            <div class="sl-imglabel"><a href="/farm/"><img src="/media/design/services/farm.png" /></a></div>
+            <div class="sl-imglabel"><a href="/farm/"><img src="{{ MEDIA_URL }}design/services/farm.png" /></a></div>
             <div class="sl-sublist">
                 <span><a href="/farm/">Здоровое питание</a></span>
                 <ul>
@@ -148,18 +146,18 @@
             </li>
         </ul>
         </div><!-- /#servicelist -->
-        <div id="presentlist" style="margin-top: 10px;">А также представляем в Марий Эл и Чувашии:
-            <ul style="margin-top: 6px;"><li>
-                <div style="float: left">
-                    <img style="opacity: 0.78; margin-right: 4px;" src="/media/design/logo/goritsfighting-32px.png" />
+        <div id="presentlist">А также представляем в Марий Эл и Чувашии:
+            <ul><li>
+                <div class="pl-img">
+                    <img src="{{ MEDIA_URL }}design/logo/goritsfighting-32px.png" />
                 </div>
-                <div style="float: left; margin-right: 10px; padding-top: 8px;">Федерация СГБ</div>
+                <div class="pl-title">Федерация СГБ</div>
                 <div class="clearfix"></div>
             </li><li>
-                <div style="float: left">
-                    <img style="opacity: 0.78; margin-right: 4px;" src="/media/design/logo/shturmfight-32px.png" />
+                <div class="pl-img">
+                    <img src="{{ MEDIA_URL }}design/logo/shturmfight-32px.png" />
                 </div>
-                <div style="float: left;  padding-top: 8px;">Федерация ШТУРМ</div>
+                <div class="pl-title">Федерация ШТУРМ</div>
                 <div class="clearfix"></div>
                 </li>
             </ul>

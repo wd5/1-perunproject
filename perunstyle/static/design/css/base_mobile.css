@@ -1,3 +1,5 @@
+/* ========================== MAIN =========================== */
+
 html {
     height: 100%;
     font-size: 12px;
@@ -5,18 +7,21 @@ html {
 }
 
 body {
+    max-width: 640px;
     margin: 0;
     padding: 0;
-    width: 100%;
+    margin-left: 10px;
+    margin-top: 4px;
     text-align: left;
 }
 
-#sitemenu ul li ul {
-    display: none;
+.clearfix {
+    clear: both;
 }
 
+/* ========================= HEADER ========================= */
+
 #sitelogo {
-    padding: 2px;
     display: inline;
 }
 
@@ -31,6 +36,20 @@ body {
     font-style: italic;
 }
 
+#sitepicture {
+    display: none;
+}
+
+#sitemenu ul li ul {
+    display: none;
+}
+
+#profile {
+    margin-bottom: 10px;
+}
+
+/* ====================== FRONT TABS ====================== */
+
 ul.htabs {
     list-style-type: none;
     margin: 0; padding: 0;
@@ -41,4 +60,49 @@ ul.htabs li, ul.htabs span {
     display: inline;
     font-size: 150%;
     font-weight: bold;
+}
+
+.tab {
+    margin-bottom: 10px;
+}
+
+.tab ul li {
+    margin-bottom: 2px;
+}
+
+.tab .entry-img {
+    float: left;
+    margin-right: 4px;
+}
+
+.eventlist ul li ul li {
+    display: inline;
+}
+
+#servicelist .sl-imglabel {
+    float: left;
+    margin-right: 4px;
+}
+
+#servicelist .sl-sublist {
+    float: left;
+}
+
+#servicelist ul li {
+    margin-bottom: 2px;
+}
+
+#presentlist .pl-img {
+    float: left;
+    margin-right: 4px;
+}
+
+
+/* ======================== FOOTER ======================== */
+#campfire {
+    display: none;
+}
+
+#footermenu {
+    display: none;
 }

@@ -9,9 +9,10 @@ from forms import ImprovedRegistrationForm
 from djangobb_forum import settings as forum_settings
 
 from sitemap import SitemapForum, SitemapTopic, SitemapPage
+from fblog.sitemap import BlogSitemap
 sitemaps = {
     'page': SitemapPage,
-    #'forum': SitemapForum,
+    'blog': BlogSitemap,
     #'topic': SitemapTopic,
 }
 

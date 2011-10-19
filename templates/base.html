@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<link rel="shortcut icon" href="/media/design/favicon.ico" type="image/x-icon" />
-<link rel="icon" href="/media/design/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="{{ MEDIA_URL }}design/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="{{ MEDIA_URL }}design/favicon.ico" type="image/x-icon" />
 
-<link rel="stylesheet" href="/media/design/css/base{% if request.subdomain == "m" %}_mobile{% endif %}.css" type="text/css" />
+<link rel="stylesheet" href="{{ MEDIA_URL }}design/css/base{% if request.subdomain == "m" %}_mobile{% endif %}.css" type="text/css" />
 
 <meta name="description" content="{% block description %}{% endblock %}"/>
 
@@ -29,12 +29,12 @@
 </div><!-- /#header -->
 
 <div id="navline">
-    <div id="breadcrumbs"><a href="/">Главная</a>{% block breadcrumbs %}{% endblock %}</div>
     <div id="profile">
         {% if not user.is_authenticated %}<a href="/accounts/login/?next=/">Войти</a>{% endif %}
-        {% if user.is_staff %}<a href="http://m.perunspace.ru/">Моби</a> <a href="http://mail.perunspace.ru">Почта</a> <a href="/admin/">Админка</a>{% endif %}
+        {% if user.is_staff %}{% if request.subdomain == 'm' %}<a href="http://{{ request.domain }}">Оригинал</a>{% else %}<a href="http://m.{{ request.domain }}">Моби</a>{% endif %} <a href="http://mail.perunspace.ru">Почта</a> <a href="{% url admin:index %}">Админка</a>{% endif %}
         {% if user.is_authenticated %}<a href="/accounts/logout/?next=/">Выйти</a> ({{ user.username }}){% endif %}
     </div>
+    <div id="breadcrumbs"><a href="/">Главная</a>{% block breadcrumbs %}{% endblock %}</div>
     <div class="clearfix"></div>
 </div><!-- /#infobar personal -->
 

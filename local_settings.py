@@ -2,6 +2,8 @@ LOCALSERVER = True
 
 # Django local settings for app project.
 
+SESSION_COOKIE_DOMAIN = '.example.com'
+
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'test.db'             # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.

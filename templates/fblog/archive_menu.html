@@ -1,7 +1,0 @@
-<div id="blog-archive" class="sidemenu">
-<h3>Архивы</h3>
-<ul>
-    {% for category in blog_month_list %}<li><a href="{% url blog_archive_month category.year category|date:"m" %}">{{ category.year }}, {{ category|date:"F" }}</a></li>
-    {% endfor %}
-</ul>
-</div>

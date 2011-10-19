@@ -152,6 +152,8 @@ SEO_FOR_MODELS = [
     'fgallery.models.Album',
 ]
 
+FBLOG_BLOG_TITLE = 'Дневник клуба "Стрелы Перуна"'
+
 try:
     import mailer
     INSTALLED_APPS += ('mailer',)

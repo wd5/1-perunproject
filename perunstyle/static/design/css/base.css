@@ -107,8 +107,8 @@ a.next,
 a.next:visited,
 #pagemenu ul li a,
 #pagemenu ul li a:visited,
-.sidemenu ul li a,
-.sidemenu ul li a:visited,
+#sidebar ul li a,
+#sidebar ul li a:visited,
 #tagcloud a,
 #tagcloud a:visited,
 #sitelogo a,
@@ -127,7 +127,7 @@ a.next:visited,
 
 a:hover,
 a.next:hover,
-.sidemenu ul li a:hover,
+#sidebar ul li a:hover,
 .tab ul li a:hover,
 #tagcloud a:hover,
 #recentcomments a:hover,
@@ -283,6 +283,10 @@ div.img img {
     margin: 4px;
 }
 
+#sitelogo img {
+    width: 110px;
+}
+
 #sitetitle {
     position: absolute;
     z-index: 35;
@@ -308,6 +312,10 @@ div.img img {
     height: 116px;
     margin: 4px;
     /*background: url(/media/design/logo/psloboda-view.gif);*/
+}
+
+#sitepicture img {
+    height:106px; /* TEMP */
 }
 
 /* ======================= CASCADE SITE MENU ===================== */
@@ -379,6 +387,7 @@ div.img img {
 }
 
 #profile {
+    padding-right: 4px;
     float: right;
 }
 
@@ -472,18 +481,18 @@ div.img img {
     text-align: justify;
 }
 
-.ptitle {
+.tab .entry-img {
+    float: left;
+    padding: 2px;
+    padding-right: 6px;
 }
 
-.pdate {
+.tab .entry-footer {
+    font-size: 75%; color: #777; margin-top: 3px;
 }
 
-.ptype {
-    font-size: 75%;
-}
-
-.preplies {
-    font-size: 75%;
+.tab .entry-date {
+    color: #c00;
 }
 
 /* ======================== FRONTPAGE SERVICES ======================= */
@@ -524,6 +533,26 @@ div.img img {
 #presentlist ul li {
     list-style: none;
     margin-bottom: 3px;
+}
+
+#presentlist {
+    margin-top: 10px;
+}
+
+#presentlist ul {
+    margin-top: 8px;
+}
+
+#presentlist .pl-img {
+    float: left;
+}
+
+#presentlist .pl-img img {
+    opacity: 0.78; margin-right: 4px;
+}
+
+#presentlist .pl-title {
+    float: left; margin-right: 10px; padding-top: 8px;
 }
 
 .sl-imglabel {
@@ -630,7 +659,7 @@ div.img img {
     text-decoration: none;
 }
 
-#postlist ul {
+#postlist > ul {
     list-style-type: none;
     margin: 0; padding: 0;
 }
@@ -660,11 +689,22 @@ a.next:hover {
     text-decoration: none;
 }
 
+.collapsed {
+    display: none;
+}
+.expanded {
+    display: block;
+}
+
+#blog-archive-tree ul li {
+    margin-left: 0px;
+}
+
 /* ========================= GALLERY ======================== */
 
 #album-title {
     margin: 4px auto;
-    text-align: center;
+    text-align: center;re
     font: 14px bold Verdana;
 }
 

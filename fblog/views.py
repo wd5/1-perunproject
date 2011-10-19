@@ -58,9 +58,14 @@ def post_archive_day(request, year, month, day, page=0, template_name='fblog/pos
         template_name = template_name,
         **kwargs)
 
-def category_detail(request, slug, **kwargs):
-    object_list = Post.objects.filter(type__slug__exact=slug)
+def category_detail(request, slug, page=0, template_name='fblog/post_list.html', **kwargs):
     category = Ptype.objects.get(slug=slug)
-    return direct_to_template(request,'fblog/category_detail.html', {'object_list': object_list, 'category': category.title_plural })
-
+    return list_detail.object_list(
+        request,
+        queryset = Post.objects.published().filter(type__slug__exact=slug),
+        paginate_by = 10,
+        page = page,
+        template_name = template_name,
+        extra_context = {'category':category.title_plural},
+        **kwargs)
 
