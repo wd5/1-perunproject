@@ -6,13 +6,13 @@ from django.db.models import get_model
 from django.utils.translation import ugettext as _
 from django.contrib.sites.models import Site
 from fblog.models import Post, Ptype
-import calendar
+from django.utils.dates import MONTHS
 
 register = Library()
 
 @register.filter
 def month_name(month_number):
-    return _(calendar.month_name[int(month_number)])
+    return MONTHS[int(month_number)]
 
 @register.inclusion_tag('fblog/category_menu.html')
 def category_menu(request):
