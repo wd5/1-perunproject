@@ -1,9 +1,14 @@
-from fblog.models import Post, Ptype
-from django import template
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from django.template import Library, Node
+from django.db.models import get_model
 from django.utils.translation import ugettext as _
+from django.contrib.sites.models import Site
+from fblog.models import Post, Ptype
 import calendar
 
-register = template.Library()
+register = Library()
 
 @register.filter
 def month_name(month_number):
@@ -24,3 +29,46 @@ def archive_tree(current_entry=None):
     entry_list = Post.objects.published()
     current_entry = current_entry
     return {'entry_list': entry_list, 'current_entry': current_entry}
+
+class LatestContentNode(Node):
+
+    def __init__(self, model, num, varname):
+        self.num, self.varname = num, varname
+        self.model = get_model(*model.split('.'))
+        
+    def render(self, context):
+        site = Site.objects.get_current()
+        context[self.varname] = self.model._default_manager.published()[:self.num]
+        return ''
+
+def get_latest(parser, token):
+    bits = token.contents.split()
+    if len(bits) != 5:
+        raise TemplateSyntaxError, "get_latest tag takes exactly four arguments"
+    if bits[3] != 'as':
+        raise TemplateSyntaxError, "third argument to get_latest_comments tag must be 'as'"
+    return LatestContentNode(bits[1], bits[2], bits[4])
+    
+get_latest = register.tag(get_latest)
+
+
+class LatestFeaturedContentNode(Node):
+
+    def __init__(self, model, num, varname):
+        self.num, self.varname = num, varname
+        self.model = get_model(*model.split('.'))
+        
+    def render(self, context):
+        site = Site.objects.get_current()
+        context[self.varname] = self.model._default_manager.published().filter(is_featured=True)[:self.num]
+        return ''
+
+def get_latest_featured(parser, token):
+    bits = token.contents.split()
+    if len(bits) != 5:
+        raise TemplateSyntaxError, "get_latest_featured tag takes exactly four arguments"
+    if bits[3] != 'as':
+        raise TemplateSyntaxError, "third argument to get_latest_comments tag must be 'as'"
+    return LatestFeaturedContentNode(bits[1], bits[2], bits[4])
+    
+get_latest_featured = register.tag(get_latest_featured)

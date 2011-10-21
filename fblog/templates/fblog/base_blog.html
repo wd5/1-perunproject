@@ -7,14 +7,23 @@
 {% block breadcrumbs %} - Дневник{% endblock %}
 
 {% block sidebar %}
-<h3>Архив</h3>
-{% if newsres %}{% archive_tree newsres %}{% else %}{% archive_tree %}{% endif %}
+{% if request.subdomain == 'm' %}<h2>Содержание</h2>{% endif %}
+<h3>Подписки</h3>
+<ul><li><a href="{% url blog_rss %}">RSS лента</a></li></ul>
+
+<h3>Интересное</h3>
+{% get_latest_featured fblog.Post 7 as featured_list %}
+<ul>
+{% for item in featured_list %}
+<li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+{% endfor %}
+</ul>
 
 <h3>Разделы</h3>
 {% category_menu request %}
 
-<h3>Подписки</h3>
-<ul><li><a href="{% url blog_rss %}">RSS лента</a></li></ul>
+<h3>Архив</h3>
+{% if newsres %}{% archive_tree newsres %}{% else %}{% archive_tree %}{% endif %}
 
 {% endblock %}
 

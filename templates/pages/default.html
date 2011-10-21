@@ -7,6 +7,7 @@
 {% block breadcrumbs %} - {% if page.site_section.url == page.url %}{{ page.site_section.name }}{% else %}<a href="{{ page.site_section.url }}">{{ page.site_section.name }}</a> - Страница{% endif %}{% endblock %}
 
 {% block sidebar %}
+{% if request.subdomain == 'm' %}<h2>Содержание</h2>{% endif %}
 {% main_menu request page.site_section %}
 {% endblock %}
 

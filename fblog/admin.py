@@ -23,6 +23,7 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_per_page = 20
 
+    filter_horizontal = ["related_entries"]
     list_display = ["title", "is_published"]
     list_editable = ["is_published"]
 
@@ -32,7 +33,7 @@ class PostAdmin(admin.ModelAdmin):
         }),
         ('Advanced options', {
             'classes': ('collapse',),
-            'fields': ('preview', 'date', 'is_featured', 'enable_comments')
+            'fields': ('preview', 'related_entries', 'date', 'is_featured', 'enable_comments')
         }),
     )
 #    filter_horizontal = ['images',]

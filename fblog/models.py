@@ -43,20 +43,23 @@ class Ptype(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey(User, related_name='author')
-    is_published = models.BooleanField(default=True)
+    type = models.ForeignKey(Ptype, blank=True, null=True)
+
+    title = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True,max_length=70)
+
+    content = models.TextField()
+    preview = models.TextField(blank=True)
+
+    related_entries = models.ManyToManyField('self', blank=True, null=True)
+
     is_featured = models.BooleanField(default=False)
+    enable_comments = models.BooleanField(default=True)
+
+    is_published = models.BooleanField(default=True)
     date = models.DateTimeField(default=datetime.now)
     date_mod = models.DateTimeField(auto_now=True)
 
-    title = models.CharField(max_length=100)
-    preview = models.TextField(blank=True)
-    content = models.TextField()
-
-    type = models.ForeignKey(Ptype, blank=True, null=True)
-
-    slug = models.SlugField(unique=True,max_length=70)
-
-    enable_comments = models.BooleanField(default=True)
     view_count = models.PositiveIntegerField(default=0, editable=False)
 
     objects = PublicManager()

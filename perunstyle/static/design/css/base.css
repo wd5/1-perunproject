@@ -427,13 +427,19 @@ div.img img {
 
 #sidebar ul {
     list-style-type: disc;
-    margin: 0px; padding: 0px;
-    padding-left: 20px;
-    padding-bottom: 4px;
 }
 
 #sidebar ul li a, #sidebar ul li a:visited {
     text-decoration: none;
+}
+
+.listentries {
+    padding-top: 4px;
+    padding-left: 4px;
+}
+
+.listentries li {
+    margin-bottom: 4px;
 }
 
 
@@ -540,7 +546,7 @@ div.img img {
 }
 
 #presentlist ul {
-    margin-top: 8px;
+    margin-top: 7px;
 }
 
 #presentlist .pl-img {
@@ -641,8 +647,14 @@ div.img img {
 
 /* =========================== BLOG ============================ */
 
+.blog h1 {
+    font-size: 24px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #393939;
+}
+
 .blog h2 {
-    font-size: 20px;
+    font-size: 24px;
     text-align: left;
     /*border: 1px solid #666;*/
     /*background: #252525;*/
@@ -657,6 +669,15 @@ div.img img {
 
 .blog h2 a {
     text-decoration: none;
+}
+
+.blog #related, .blog #comments {
+    padding-bottom: 2px;
+    border-bottom: 1px solid #393939;
+}
+
+.postcontent, .postrelated, .postcomments {
+    margin-bottom: 20px;
 }
 
 #postlist > ul {
@@ -696,8 +717,8 @@ a.next:hover {
     display: block;
 }
 
-#blog-archive-tree ul li {
-    margin-left: 0px;
+#blog-archive-tree > ul > ul {
+    padding-left: 6px;
 }
 
 /* ========================= GALLERY ======================== */
