@@ -27,7 +27,7 @@ def post_detail(request, year, month, day, slug, **kwargs):
     if not request.user.is_staff:
         newsres.view_count += 1
         newsres.save()
-    return direct_to_template(request,'fblog/post_detail.html', {'newsres': newsres})
+    return direct_to_template(request,'fblog/post_detail.html', {'newsres': newsres, 'next': newsres.get_absolute_url() })
 
 def post_archive_year(request, year, page=0, template_name='fblog/post_archive_year.html', **kwargs):
     return list_detail.object_list(

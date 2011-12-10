@@ -82,6 +82,7 @@ MIDDLEWARE_CLASSES = (
     #'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'simplepages.middleware.PageFallbackMiddleware',
     'subdomains.SubdomainMiddleware',
+    'fcomments.threadlocals.ThreadLocalsMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -139,6 +140,9 @@ INSTALLED_APPS = (
 COMMENTS_APP = "fcomments"
 
 THUMBNAIL_QUALITY = 90
+
+CAPTCHA_BACKGROUND_COLOR = '#000000'
+CAPTCHA_FOREGROUND_COLOR = '#cccccc'
 
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
 CAPTCHA_NOISE_FUNCTIONS = ''

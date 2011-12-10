@@ -75,7 +75,7 @@ def photo_detail(request, falbum_id, fphoto_id):
         if photonext.album != photores.album:
             photonext = None
 
-    return direct_to_template(request, 'fgallery/photo_detail.html', {'photores': photores, 'photoprev': photoprev, 'photonext': photonext})
+    return direct_to_template(request, 'fgallery/photo_detail.html', {'photores': photores, 'photoprev': photoprev, 'photonext': photonext, 'next': photores.get_absolute_url() })
 
 
 def tag_detail(request, slug, template_name = 'fgallery/tag_detail.html', **kwargs):

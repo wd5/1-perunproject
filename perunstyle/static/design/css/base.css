@@ -228,6 +228,7 @@ blockquote {
 
 input, textarea {
     background-color: #666666;
+    color: black;
 }
 
 .clearfix {
@@ -296,10 +297,18 @@ div.img img {
     font: italic 40px Times New Roman;
 }
 
+#sitedescription {
+    position: absolute;
+    z-index: 35;
+    top: 52px; left: 154px;
+    color: #ccc;
+    font: italic 18px Times New Roman;
+}
+
 #siteslogan {
     position: absolute;
     z-index: 35;
-    top: 52px; left: 182px;
+    top: 32px; left: 522px;
     color: #ccc;
     font: italic 18px Times New Roman;
 }

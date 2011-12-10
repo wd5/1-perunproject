@@ -53,6 +53,8 @@ $(document).ready(function(){
 
 <hr>
 
+<div class="postcomments">
+
 <h3 id="comments">Комментарии:</h3>
 
 {% get_comment_list for photores as allcomments %}{% if allcomments|length = 0 %}
@@ -62,10 +64,13 @@ $(document).ready(function(){
 {% for acomment in allcomments %}
     <p><b>{{ acomment.user_name }}</b>, {{ acomment.submit_date }}:<br>{{ acomment.comment }}</p>
 {% endfor %}
-{% if photores.enable_comments %}<h3>Ваш комментарий:</h3>{% else %}<h3>Комментирование отключено.</h3>{% endif %}
-{% if photores.enable_comments and user.is_authenticated %}{% render_comment_form for photores %}{% endif %}
-{% if photores.enable_comments and not user.is_authenticated %}
-<p><a href="/accounts/login/?next={{ request.path }}">Чтобы оставить комментарий, необходимой войти на сайт</a>
+{% if photores.enable_comments %}
+<h3>Ваш комментарий{% if user.is_authernticated %}, {{ user }}{% endif %}:</h3>
+{% render_comment_form for photores %}
+{% else %}
+<h3>Комментирование отключено.</h3>
 {% endif %}
+
+</div>
 
 {% endblock %}
