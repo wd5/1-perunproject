@@ -5,6 +5,8 @@
 {% load fblog_tags %}
 {% load inlines %}
 {% load seo_tags %}
+{% load thumbnail %}
+{% load fgallery_tags %}
 
 {% block title %}{% seo title for newsres as seo_title %}{% if seo_title %}{{ seo_title }}{% else %}{{ newsres.title }}{% endif %} | Клуб «Стрелы Перуна»{% endblock %}
 
@@ -24,10 +26,11 @@
 <div class="postrelated">
 
 <h3 id="related">Заметки по теме:</h3>
-<ul>
-{% for relpost in newsres.related_entries.published %}
-<li><a href="{{ relpost.get_absolute_url }}">{{ relpost.title }}</a></li>
+<ul style="list-style-type: none;">
+{% for relpost in newsres.related_entries.published %}{% get_main_image for relpost as pimage %}
+<li style="float: left; width: 135px;"><a href="{{ relpost.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 130x95 %}" /><div style="width: 125px;">{{ relpost.title }}</div></a></li>
 {% endfor %}
+<div class="clearfix"></div>
 </ul>
 
 </div>

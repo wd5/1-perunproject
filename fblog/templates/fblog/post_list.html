@@ -25,10 +25,6 @@
 </ul>
 </div><!-- /#postlist -->
 
-{% if is_paginated %}
-<div id="pagination">Страницы:
-    {% if has_previous %}<a href="?page={{ previous }}">позже</a>{% endif %}
-    <span class="current">{{ page }}</span>/{{ pages }}
-    {% if has_next %}<a href="?page={{ next }}">раньше</a>{% endif %}
-</div>{% endif %}
+{% if is_paginated %}{% load paginator %}{% paginator 2 %}{% endif %}
+
 {% endblock %}

@@ -818,3 +818,30 @@ a.next:hover {
 #stats { float: right; padding: 5px 25px 0 0; margin-top: -10px; }
 #stats ul { list-style-type: none; margin: 0; padding: 0; }
 
+/* ========================== PAGINATOR ============================ */
+
+   .pager {
+      padding-left: 10px;
+      }
+   .pager .page a {
+      border: 1px solid #555555;
+      margin-left: 1px;
+      margin-right: 1px;
+      padding-left: 4px;
+      padding-right: 4px;
+      text-decoration: none;
+      background: #333333;
+      color: #cccccc;
+      }
+   .pager .page a:hover {
+      background: #111;
+      color: #fff;
+      }
+   .pager .current {
+      border: 2px solid #333333;
+      margin-left: 2px;
+      margin-right: 2px;
+      padding-left: 4px;
+      padding-right: 4px;
+      }
+
