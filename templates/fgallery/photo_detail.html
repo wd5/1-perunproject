@@ -64,12 +64,15 @@ $(document).ready(function(){
 {% for acomment in allcomments %}
     <p><b>{{ acomment.user_name }}</b>, {{ acomment.submit_date }}:<br>{{ acomment.comment }}</p>
 {% endfor %}
+
+<div id="commentform">
 {% if photores.enable_comments %}
 <h3>Ваш комментарий{% if user.is_authernticated %}, {{ user }}{% endif %}:</h3>
 {% render_comment_form for photores %}
 {% else %}
 <h3>Комментирование отключено.</h3>
 {% endif %}
+</div>
 
 </div>
 
