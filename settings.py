@@ -105,6 +105,7 @@ ROOT_URLCONF = 'urls'
 
 INSTALLED_APPS = (
     'django.contrib.admin',
+    'django.contrib.staticfiles',
 
     'django.contrib.auth',
     'django.contrib.sessions',
