@@ -120,11 +120,9 @@ INSTALLED_APPS = (
     'south',
     'dbtemplates',
     'registration',
+
     'sorl.thumbnail', #'easy_thumbnails',
     'tagging',
-    'djangobb_forum',
-    'haystack',
-    'messages',
     'captcha',
     'netauth',
     'form_utils',
@@ -136,9 +134,14 @@ INSTALLED_APPS = (
     'fblog',
     'fgallery',
     'fevents',
+    'haystack',
+    'djangobb_forum',
+    'messages',
+
     'fcss',
     'fcomments',
     'perunstyle',
+
     'seo',
 )
 
