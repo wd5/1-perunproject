@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 
+"""
+Unicode usernames support for UserCreation/ChangeForms in admin.
+
+Usage: include this app in settings.INSTALLED_APPS
+"""
+
 from django import forms
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.contrib.auth.models import User

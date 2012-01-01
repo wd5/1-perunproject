@@ -53,6 +53,8 @@ urlpatterns = patterns('',
     url(r'^accounts/register/$', 'registration.views.register', {'backend': 'registration.backends.default.DefaultBackend', 'form_class': ImprovedRegistrationForm}, name='registration_register'),
     #(r'^forum/account/', include(authopenid_urlpatterns)),
     url(r'^accounts/', include('registration.urls')),
+    url(r'^profiles/', include('profiles.urls')),
+    url(r'^avatar/', include('avatar.urls')),
     url(r'^auth/', include( 'netauth.urls')),
 
     # Forum

@@ -121,6 +121,8 @@ INSTALLED_APPS = (
     'south',
     'dbtemplates',
     'registration',
+    'profiles',
+    'avatar',
 
     'sorl.thumbnail', #'easy_thumbnails',
     'tagging',
@@ -142,6 +144,8 @@ INSTALLED_APPS = (
     'fcss',
     'fcomments',
     'perunstyle',
+    'perunprofile',
+    'perunutils',
 
     'seo',
 )
@@ -188,6 +192,8 @@ FIXTURE_DIRS = (
 ACCOUNT_ACTIVATION_DAYS = 10
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
+
+AUTH_PROFILE_MODULE = 'perunprofile.UserProfile'
 
 #Cache settings
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
