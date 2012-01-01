@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, primary_key=True)
-    #status = models.CharField('Статус', blank=True, max_length=50)
+    status = models.CharField('Статус', blank=True, max_length=50)
     location = models.CharField('Откуда', blank=True, max_length=50)
     about = models.TextField('О себе', blank=True)
 

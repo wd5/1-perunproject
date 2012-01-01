@@ -5,6 +5,7 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 
 from forms import ImprovedRegistrationForm
+from perunprofile.forms import UserProfileForm
 
 from djangobb_forum import settings as forum_settings
 
@@ -53,6 +54,7 @@ urlpatterns = patterns('',
     url(r'^accounts/register/$', 'registration.views.register', {'backend': 'registration.backends.default.DefaultBackend', 'form_class': ImprovedRegistrationForm}, name='registration_register'),
     #(r'^forum/account/', include(authopenid_urlpatterns)),
     url(r'^accounts/', include('registration.urls')),
+    ('^profiles/edit', 'profiles.views.edit_profile', {'form_class': UserProfileForm,}),
     url(r'^profiles/', include('profiles.urls')),
     url(r'^avatar/', include('avatar.urls')),
     url(r'^auth/', include( 'netauth.urls')),
