@@ -10,7 +10,7 @@
 <h1>Редактирование профиля {{ user }} </h1>
 
 <p>Аватар (<a href="{% url avatar_change %}">Изменить</a>):</p>
-<p>{% avatar user 60 %}</p>
+<p>{% avatar request.user %}</p>
  
 <form method="POST" action="">{% csrf_token %}
     {{ form.as_p }}
