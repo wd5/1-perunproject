@@ -1,14 +1,15 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.comments.forms import CommentForm
-from fcomments.threadlocals import get_request
 from captcha.fields import CaptchaField
 
 class FCommentForm(CommentForm):
     def __init__(self, *args, **kwargs):
         super(FCommentForm, self).__init__(*args, **kwargs)
-        request = get_request()
-        if not request.user.is_authenticated():
-            self.fields['captcha'] = CaptchaField()
-        else:
-            self.fields['email'] = forms.EmailField(label=_("Email address"), required=False)
+        self.fields['captcha'] = CaptchaField()
+
+class AuthCommentForm(CommentForm):
+    def __init__(self, *args, **kwargs):
+        super(AuthCommentForm, self).__init__(*args, **kwargs)
+        # email not required, because user may authenticated via oauth
+        self.fields['email'] = forms.EmailField(label=_("Email address"), required=False)

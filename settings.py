@@ -98,7 +98,6 @@ MIDDLEWARE_CLASSES = (
     #'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'simplepages.middleware.PageFallbackMiddleware',
     'subdomains.SubdomainMiddleware',
-    'fcomments.threadlocals.ThreadLocalsMiddleware', # hack
 )
 
 ROOT_URLCONF = 'urls'

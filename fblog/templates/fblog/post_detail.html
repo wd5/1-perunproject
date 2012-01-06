@@ -1,6 +1,7 @@
 {% extends "fblog/base_blog.html" %}
 {% load markup %}
 {% load comments %}
+{% load customcomments %}
 
 {% load fblog_tags %}
 {% load inlines %}
@@ -46,8 +47,10 @@
     <p><b>{{ acomment.user_name }}</b>, {{ acomment.submit_date }}:<br>{{ acomment.comment }}</p>
 {% endfor %}
 {% if newsres.enable_comments %}
-<h3>Ваш комментарий{% if user.is_authernticated %}, {{ user }}{% endif %}:</h3>
-{% render_comment_form for newsres %}
+<h3>Ваш комментарий{% if user.is_authenticated %}, {{ user }}{% endif %}:</h3>
+{% if user.is_authenticated %}{% render_auth_comment_form for newsres %}
+{% else %}{% render_comment_form for newsres %}
+{% endif %}
 {% else %}
 <h3>Комментирование отключено.</h3>
 {% endif %}
