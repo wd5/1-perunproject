@@ -194,6 +194,8 @@ LOGIN_URL = '/accounts/login/'
 
 AUTH_PROFILE_MODULE = 'perunprofile.UserProfile'
 
+AUTO_GENERATE_AVATAR_SIZES = (60, 80,)
+
 #Cache settings
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 
