@@ -12,4 +12,5 @@ class AuthCommentForm(CommentForm):
     def __init__(self, *args, **kwargs):
         super(AuthCommentForm, self).__init__(*args, **kwargs)
         # email not required, because user may authenticated via oauth
-        self.fields['email'] = forms.EmailField(label=_("Email address"), required=False)
+        self.fields['email'].required = False
+

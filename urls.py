@@ -48,6 +48,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
+
+    ('^comments/post', 'fcomments.views.post_comment'),
     (r'^comments/', include('django.contrib.comments.urls')),
     
     # Registration
