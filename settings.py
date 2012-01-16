@@ -225,6 +225,7 @@ FBLOG_BLOG_TITLE = 'Дневник клуба "Стрелы Перуна"'
 DJANGOBB_FORUM_BASE_TITLE = 'Форум Перуновой Слободы'
 DJANGOBB_HEADER = 'Перунова Слобода'
 DJANGOBB_TAGLINE = 'Перунова Слобода - клановое бойцовское поселение клуба СГБ "Стрелы Перуна"'
+DJANGOBB_TOPIC_PAGE_SIZE = 20
 
 # Haystack settings
 HAYSTACK_SITECONF = 'search_sites'
