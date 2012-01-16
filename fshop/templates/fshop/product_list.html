@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% block title %}Мастерская | Перунова Слобода{% endblock %}
+
+{% block breadcrumbs %} - Мастерская{% endblock %}
+
+{% block content %}
+
+<div class="product-list">
+<ul>
+{% for object in object_list %}
+<li>
+
+<h2>{{ object.title }}</h2>
+
+<div class="product-image"><p><img src="{% thumbnail object.image 200x200 %}" /></p></div>
+
+<div class="product-description">
+<p>{{ object.short_description }}</p>
+
+<p><a href="{% url product_detail object.id %}">Подробнее</a></p>
+</div>
+
+</li>{% endfor %}
+</ul></div>
+
+{% endblock %}

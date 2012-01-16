@@ -89,7 +89,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
@@ -120,25 +119,26 @@ INSTALLED_APPS = (
     'south',
     'dbtemplates',
     'registration',
-    'profiles',
     'avatar',
-
+    'profiles',
     'sorl.thumbnail', #'easy_thumbnails',
     'tagging',
     'captcha',
     'netauth',
     'form_utils',
     'genericadmin',
+    'basic.inlines',
     #'syncr.youtube',
 
-    'simplepages',
-    'basic.inlines',
-    'fblog',
-    'fgallery',
-    'fevents',
     'haystack',
     'djangobb_forum',
     'messages',
+
+    'simplepages',
+    'fblog',
+    'fgallery',
+    'fevents',
+    'fshop',
 
     'fcss',
     'fcomments',
@@ -230,6 +230,8 @@ DJANGOBB_TAGLINE = 'Перунова Слобода - клановое бойц�
 HAYSTACK_SITECONF = 'search_sites'
 HAYSTACK_SEARCH_ENGINE = 'dummy'
 HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_DIR, 'djangobb_index')
+
+FSHOP_SHOP_TITLE = 'Гильдия мастеров'
 
 
 # ============================ LOCAL SETTINGS ============================
