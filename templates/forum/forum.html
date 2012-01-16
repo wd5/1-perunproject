@@ -1,6 +1,7 @@
 {% extends 'forum/base.html' %}
 {% load forum_extras %}
 {% load i18n %}
+{% load paginator %}
 
 {% block title %}{{ forum.name }} / {{ block.super }}{% endblock %}
 {% block content %}
@@ -46,6 +47,7 @@
 									{% else %}
 										{% link topic %} <span class="byuser">{% trans "by" %} {{ topic.user.username }}</span>
 									{% endif %}
+<span class="pagination">{% object_paginate topic.get_absolute_url topic.reply_count %}</span>
 								</div>
 							</div>
 						</td>
