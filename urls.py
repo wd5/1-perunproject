@@ -34,7 +34,7 @@ urlpatterns = patterns('',
 
     # EVENTS
     (r'^events/', include('fevents.urls')),
-    (r'^workshop/', include('fshop.urls')),
+    #(r'^workshop/', include('fshop.urls')),
 
     # GALLERY
     (r'^gallery/', include('fgallery.urls')),
