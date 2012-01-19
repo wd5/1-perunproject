@@ -27,6 +27,7 @@ class Album(models.Model):
     date_mod = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=70)
     description = models.TextField(blank=True, null=True)
+    cover = models.ForeignKey('Photo', related_name='album_cover', blank=True, null=True)
 
     enable_comments = models.BooleanField(default=True)
     #position = models.IntegerField(default=0)
@@ -51,18 +52,22 @@ class Album(models.Model):
     images.allow_tags = True
 
     def get_cover_image(self):
-        covers = self.photo_set.filter(is_cover=True)[:1]
-        if len(covers) > 0:
-            image = covers[0].image
-            return image
-        else:
-            return None
+        cover = self.cover
+        if not cover:
+            image_list = [x for x in self.photo_set.all().order_by('id')]
+            if len(image_list) > 0:
+                cover = image_list[0]
+        return cover.image
 
     def get_cover(self):
-        covers = self.photo_set.filter(is_cover=True)[:1]
-        if len(covers) > 0:
-            image = covers[0].image
-            thumbnail1 = DjangoThumbnail(image, (120, 120))
+        if self.cover:
+            cover = self.cover.image
+        else:
+            image_list = [x for x in self.photo_set.all().order_by('id')]
+            if len(image_list) > 0:
+                cover = image_list[0].image
+        if cover:
+            thumbnail1 = DjangoThumbnail(cover, (120, 120))
             return u'<img src="%s"/>' % (thumbnail1.absolute_url)
         else:
             return None

@@ -27,6 +27,7 @@ class AlbumAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
     #exclude = ["author"]
     search_fields = ["title"]
+    raw_id_fields = ["cover"]
     list_display = ["get_cover", "title", "date", "is_published"]
     list_editable = ["title", "is_published"]    
     list_filter = ["date"]
@@ -37,8 +38,8 @@ class PhotoAdmin(admin.ModelAdmin):
     exclude = ['author']
     date_hierarchy = 'date'		
     search_fields = ["title"]
-    list_display = ["image_thumb", "title", "date", "album", "is_cover", "position"]
-    list_editable = ["title", "album", "is_cover", "position"]
+    list_display = ["image_thumb", "title", "date", "album", "position"]
+    list_editable = ["title", "album", "position"]
     list_filter = ["date", "album"]
     #prepopulated_fields = {"slug": ("title",)}
 
