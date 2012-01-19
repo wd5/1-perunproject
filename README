@@ -1,3 +1,18 @@
-Oh, look, it's my first django site.
+DJANGO SITE PROJECT
+===================
 
-Some simple apps in complete project.
+
+Includes:
+
+- pages
+- blog
+- gallery
+- events
+- forum
+- profiles
+
+
+Todo:
+
+- workshop
+- wiki
