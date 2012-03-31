@@ -1,0 +1,24 @@
+{% extends 'fshop/base_shop.html' %}
+
+{% load thumbnail %}
+
+{% block title %}{{ object.title }} | {{ block.super }}{% endblock %}
+
+{% block breadcrumbs %}{{ block.super }}
+{% if object.category %} - <a href="{% url product_list %}">Каталог</a>{% for item in categories %} - <a href="{% url product_category item.slug %}">{{ item.name }}</a>{% endfor %} - <a href="{% url product_category object.category.slug %}">{{ object.category.name }}</a>{% endif %} - Подробности
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ object.title }}</h1>
+
+<p><img src="{% thumbnail object.get_cover_image 240x240 %}" /><br />
+<p>Цена: <span class="unit-price">{{object.price}} р</span> {% if object.old_price %}<strike>{{object.old_price}} р</strike>{% endif %}</p>
+<p><a class="button red" href="{% url cart_add object.id 1 %}">Заказать</a></p>
+<p>{{object.short_description}}</p>
+{% if object.long_description %}<p><b>Подробности:</b></p>
+<p>{{object.long_description}}</p>
+{% endif %}
+
+
+{% endblock %}

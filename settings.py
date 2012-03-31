@@ -96,6 +96,7 @@ MIDDLEWARE_CLASSES = (
     'djangobb_forum.middleware.UsersOnline',
     #'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'simplepages.middleware.PageFallbackMiddleware',
+    'pagination.middleware.PaginationMiddleware',
     'subdomains.SubdomainMiddleware',
 )
 
@@ -128,6 +129,7 @@ INSTALLED_APPS = (
     'form_utils',
     'genericadmin',
     'basic.inlines',
+    'pagination',
     #'syncr.youtube',
 
     'haystack',
@@ -138,7 +140,9 @@ INSTALLED_APPS = (
     'fblog',
     'fgallery',
     'fevents',
-    #'fshop',
+    'fshop',
+    'cart',
+    'mptt',
 
     'fcss',
     'fcomments',

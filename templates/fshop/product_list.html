@@ -1,0 +1,39 @@
+{% extends 'fshop/base_shop.html' %}
+
+{% load thumbnail pagination_tags %}
+
+{% block title %}Каталог работ наших мастеров | {{ block.super }}{% endblock %}
+
+{% block breadcrumbs %}{{ block.super }}
+{% if category %} - <a href="{% url product_list %}">Каталог</a>{% for item in categories %} - <a href="{% url product_category item.slug %}">{{ item.name }}</a>{% endfor %} - <a href="{% url product_category category.slug %}">{{ category.name }}</a>{% else %} - Каталог{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<h1>{% if category %}{{ category.name }}{% else %}Каталог{% endif %}</h1>
+
+{% autopaginate object_list %}
+<ul id="product-list">
+{% for object in object_list %}
+<li><h2><a href="{% url product_detail object.slug %}">{{object.title}}</a></h2><br />
+<a href="{% url product_detail object.slug %}"><img src="{% thumbnail object.get_cover_image 160x160 %}" /></a><br />
+<p>Цена: <span class="unit-price">{{object.price}} р</span> {% if object.old_price %}<strike>{{object.old_price}} р</strike>{% endif %}</p>
+<p>{{object.short_description}}</p>
+
+
+<div class="clearfix">
+<div style="margin-top: 4px; float:left">
+<a class="button" href="{% url product_detail object.slug %}">Подробнее</a>&nbsp;&nbsp;<a class="button red" href="{% url cart_add object.id 1 %}">Заказать</a>
+</div>
+
+</div>
+<div class="clearfix"></div>
+
+</li>
+
+{% endfor %}
+</ul>
+
+{% paginate %}
+
+{% endblock %}

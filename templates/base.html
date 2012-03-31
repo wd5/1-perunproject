@@ -10,7 +10,7 @@
 <link rel="shortcut icon" href="{{ MEDIA_URL }}design/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="{{ MEDIA_URL }}design/favicon.ico" type="image/x-icon" />
 
-<link rel="stylesheet" href="{{ MEDIA_URL }}design/css/base{% if request.subdomain == "m" %}_mobile{% endif %}.css" type="text/css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}design/css/base{% if request.subdomain == "m" %}_mobile{% endif %}.css" type="text/css" />
 
 <meta name="description" content="{% block description %}{% endblock %}"/>
 

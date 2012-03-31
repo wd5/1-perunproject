@@ -730,6 +730,20 @@ a.next:hover {
     padding-left: 6px;
 }
 
+
+/* ========================== SHOP ========================== */
+
+#product-list {
+    list-style-type: none;
+}
+
+#product-list li {
+    float: left;
+    padding: 10px;
+    padding-right: 20px;
+}
+
+
 /* ========================= GALLERY ======================== */
 
 #album-title {

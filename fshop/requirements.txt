@@ -1,0 +1,4 @@
+django-pagination
+sorl-thumbnail=3.2.5
+django-form-tools
+django-cart
