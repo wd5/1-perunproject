@@ -271,7 +271,7 @@ div.img img {
     position: relative;
     margin: 6px auto 0px;
     height: 120px;
-    background-image:url(/media/design/decor/bg-body.png); 
+    background-image:url(/static/design/decor/bg-body.png); 
 }
 
 #sitelogo {
@@ -320,7 +320,7 @@ div.img img {
     right: 3px;
     height: 116px;
     margin: 4px;
-    /*background: url(/media/design/logo/psloboda-view.gif);*/
+    /*background: url(/static/design/logo/psloboda-view.gif);*/
 }
 
 #sitepicture img {
@@ -387,7 +387,7 @@ div.img img {
     border-top: 1px solid #444;
     border-bottom: 1px solid #444;
     text-align: left;
-    background-image: url(/media/design/decor/infobar-bg.gif);
+    background-image: url(/static/design/decor/infobar-bg.gif);
 }
 
 #breadcrumbs {
@@ -800,7 +800,7 @@ a.next:hover {
     padding: 3px;
     border: 1px solid #444;
     text-align: left;
-    background-image: url(/media/design/decor/infobar-bg.gif);
+    background-image: url(/static/design/decor/infobar-bg.gif);
 }
 
 #copyright {
