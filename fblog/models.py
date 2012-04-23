@@ -6,7 +6,7 @@ from datetime import datetime
 
 from fblog.managers import PublicManager
 from fevents.models import Event
-from sorl.improved.fields import ImprovedImageWithThumbnailsField
+#from sorl.improved.fields import ImprovedImageWithThumbnailsField
 #from tagging.fields import TagField
 from django.contrib.auth.models import User
 
@@ -15,17 +15,7 @@ class Ptype(models.Model):
     title_plural = models.CharField(max_length=70)
     slug = models.SlugField(max_length=70)
     order = models.PositiveIntegerField('Display Order', blank=True, null=True)
-    image = ImprovedImageWithThumbnailsField(blank=True, null=True, upload_to='ptypes/',max_width=800, max_height=800,                                             # Thumbnail for admin site.
-         thumbnail={
-             'size': (120, 120),
-             'options': ('crop','upscale')
-         },
-         extra_thumbnails={
-             'main': {
-                 'size': (200, 200),
-                 'options': ('crop','upscale',)
-             }
-         })
+    image = models.ImageField(blank=True, null=True, upload_to='ptypes/')#max_width=800, max_height=800, # Thumbnail for admin site.
 
     class Meta:
         ordering = ('order','title')

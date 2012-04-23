@@ -8,7 +8,7 @@ from genericadmin.admin import GenericAdminModelAdmin
 class EventRelationInline(admin.TabularInline):
     model = EventRelation
 
-class EventAdmin(GenericAdminModelAdmin):
+class EventAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'	
     list_display = ["title", "date", "is_published"]
     list_editable = ["is_published"]
