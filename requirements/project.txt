@@ -10,20 +10,20 @@ django-simple-captcha
 django-netauth
 django-form-utils
 #genericadmin
--e git+git@github.com:nicolaslara/django-genericadmin.git#egg=django-genericadmin
+git+git@github.com:nicolaslara/django-genericadmin.git#egg=django-genericadmin
 #basic.inlines
--e git+git@github.com:nathanborror/django-basic-apps.git#egg=django-basic-apps
+git+git@github.com:nathanborror/django-basic-apps.git#egg=django-basic-apps
 django-pagination
 #django-cart
--e git+git@github.com:dfalk/django-cart.git#egg=django-cart
+git+git@github.com:dfalk/django-cart.git#egg=django-cart
 django-mptt
 django-seo
 django-haystack
 BeautifulSoup
-#djangobb_forum
--e git+git@github.com:slav0nic/DjangoBB.git#egg=djangobb
 #django-messages
+#-e git+git@github.com:arneb/django-messages.git#egg=django-messages
+#djangobb_forum
+git+git@github.com:slav0nic/DjangoBB.git#egg=djangobb
 #simplepages
--e git+git@github.com:alekam/django-simplepages.git#egg=django-simplepages
-#fcss #flat
+git+git@github.com:alekam/django-simplepages.git#egg=django-simplepages
 #whoosh #check it
