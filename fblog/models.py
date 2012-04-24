@@ -16,6 +16,7 @@ class Ptype(models.Model):
     slug = models.SlugField(max_length=70)
     order = models.PositiveIntegerField('Display Order', blank=True, null=True)
     image = models.ImageField(blank=True, null=True, upload_to='ptypes/')#max_width=800, max_height=800, # Thumbnail for admin site.
+    hidden_related = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('order','title')

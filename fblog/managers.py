@@ -7,3 +7,7 @@ class PublicManager(Manager):
 
     def published(self):
         return self.get_query_set().filter(is_published=True, date__lte=datetime.datetime.now())
+
+    def visible(self):
+        return self.get_query_set().filter(is_published=True, date__lte=datetime.datetime.now(), type__hidden_related=False)
+
