@@ -1,6 +1,6 @@
 <div id="splitline">
-    <div id="copyright">(c) Перунова Слобода, 2010-2011{% if request.subdomain == "m" %}, мобильная версия сайта, <a href="http://{{ request.domain }}">полная версия</a>{% endif %}</div>
-    <div id="author">дизайн и разработка: Сокол, 2010-2011</div>
+    <div id="copyright">(c) Стрелы Перуна, 2010-2012{% if request.subdomain == "m" %}, мобильная версия сайта, <a href="http://{{ request.domain }}">полная версия</a>{% endif %}</div>
+    <div id="author">дизайн и разработка: Сокол, 2010-2012</div>
     <div class="clearfix"></div>
 </div><!-- /.infobar -->
 
@@ -18,27 +18,28 @@
     </ul>
     </li><li id="fm-about"><h3>О нас</h3>
     <ul>
-        <li><a href="/tradition/">Славяно-горицкая борьба</a></li>
+        <li><a href="/tradition/">Русская боевая традиция</a></li>
         <li><a href="/strely/">Клуб Стрелы Перуна</a></li>
-        <li><a href="/sloboda/">Клановое поселение</a></li>
+        <li><a href="/shturmfight/">Федерация ШТУРМ</a></li>
+        <li><a href="/camp/">Перунова Слобода</a></li>
+        <li><a href="/slashfight/">Союз Засечного боя</a></li>
     </ul>
     </li><li id="fm-present"><h3>Мы предлагаем</h3>
     <ul>
-        <li><a href="/strely/">Регулярные тренировки</a></li>
+        <li><a href="/training/">Регулярные тренировки</a></li>
         <li><a href="/camp/">Интересные семинары</a></li>
         <li><a href="/farm/">Здоровое питание</a></li>
+        <li><a href="/workshop/">Работы из мастерской</a></li>
     </ul>
     </li><li id="fm-community"><h3>Сообщество</h3>
     <ul>
-        <li><a href="/forum/">Форум</a></li>
         <li><a href="/links/">Ссылки</a></li>
         <li><a href="http://vkontakte.ru/perunspace">Мы Вконтакте</a></li>
     </ul>
     </li>
     </li><li id="fm-community"><h3>Контакты</h3>
     <ul>
-        <li>sloboda@perunspace.ru</li>
-        <li>8-927-681-56-04</li>
+        <li>contact@perunspace.ru</li>
     </ul>
     </li>
     </ul>
@@ -48,7 +49,7 @@
 <ul>
 {% if request.subdomain == "m" %}<li>{% include "stat_waplog.html" %}</li>{% else %}
 <li>{% include "stat_liveinternet.html" %}</li>
-<li>{% include "stat_yandex_informer.html" %}</li>{% endif %}
+{% endif %}
 </ul>
 {% include "stat_google.html" %}
 {% include "stat_yandex.html" %}
@@ -57,3 +58,4 @@
 <div class="clearfix"></div>
 
 </div><!-- /#subfooter -->
+

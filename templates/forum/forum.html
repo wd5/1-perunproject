@@ -3,15 +3,17 @@
 {% load i18n %}
 {% load paginator %}
 
-{% block title %}{{ forum.name }} / {{ block.super }}{% endblock %}
+{% block title %}{{ forum.name }} | {{ block.super }}{% endblock %}
 {% block content %}
 <div class="linkst">
 	<div class="inbox">
-		<p class="pagelink conl">{% pagination %}</p>
+		<ul style="margin-left:0px; font-size: 14px;"><li><a href="{% url djangobb:index %}">{% trans "Root" %}</a> </li><li>&raquo; {{ forum.name }}</li></ul>
+		<div class="clearer"></div>
+
+		<p class="pagelink conl" style="font-size:14px;">{% pagination %}</p>
 		{% if user.is_authenticated %}
-			<p class="postlink conr"><a href="{% url djangobb:add_topic forum.id %}">{% trans "New topic" %}</a></p>
+			<p class="postlink conr" style="text-align: right; font-size: 14px;"><a href="{% url djangobb:add_topic forum.id %}">{% trans "New topic" %}</a></p>
 		{% endif %}
-		<ul><li><a href="{% url djangobb:index %}">{% trans "Root" %}</a> </li><li>&raquo; {{ forum.name }}</li></ul>
 		<div class="clearer"></div>
 	</div>
 </div>
@@ -53,7 +55,7 @@
 						</td>
 						<td class="tc2">{{ topic.reply_count }}</td>
 						<td class="tc3">{{ topic.views }}</td>
-						<td class="tcr"><a href="{{ topic.get_absolute_url }}">{% forum_time topic.updated %}</a> <span class="byuser">{% trans "by" %} {{ topic.last_post.user.username }}</span></td>
+						<td class="tcr"><a href="{{ topic.last_post.get_absolute_url }}">{% forum_time topic.updated %}</a> <span class="byuser">{% trans "by" %} {{ topic.last_post.user.username }}</span></td>
 					</tr>
 				{% endfor %}
 			{% else %}
@@ -66,18 +68,22 @@
 </div>
 <div class="linkst">
 	<div class="inbox">
-		<p class="pagelink conl">{% pagination %}</p>
+		<p class="pagelink conl" style="font-size:14px;">{% pagination %}</p>
 		{% if user.is_authenticated %}
-			<p class="postlink conr"><a href="{% url djangobb:add_topic forum.id %}">{% trans "New topic" %}</a></p>
+			<p class="postlink conr" style="text-align: right; font-size: 14px;"><a href="{% url djangobb:add_topic forum.id %}">{% trans "New topic" %}</a></p>
 		{% endif %}
-		<ul><li><a href="{% url djangobb:index %}">{% trans "Root" %}</a> </li><li>&raquo; {{ forum.name }}</li></ul>
 		<div class="clearer"></div>
+		<ul style="margin-left:0px; font-size: 14px;"><li><a href="{% url djangobb:index %}">{% trans "Root" %}</a> </li><li>&raquo; {{ forum.name }}</li></ul>
+		<div class="clearer"></div>
+
+
 	</div>
 </div>
+<br />
 {% endblock %}
 {% block controls %}
 <div class="conl">
-	<form id="qjump" method="get" action="forum">
+<!--	<form id="qjump" method="get" action="forum">
 		<div><label>{% trans "Jump to" %}
 		<br />
 		<select name="id" id="forum_id" onchange="window.location=('{% url djangobb:index %}'+this.options[this.selectedIndex].value)">
@@ -91,7 +97,7 @@
 		</select>
 		<input type="button" onclick="window.location=('{% url djangobb:index %}'+getElementById('forum_id').value)" value=" {% trans "Go" %} " accesskey="g" />
 		</label></div>
-	</form>
+	</form>-->
 	{% if moderator %}
 		<p id="modcontrols"><a href="{% url djangobb:moderate forum.id %}">{% trans "Moderate forum" %}</a></p>
 	{% endif %}
@@ -105,3 +111,4 @@
     </p>
 {% endif %}
 {% endblock %}
+

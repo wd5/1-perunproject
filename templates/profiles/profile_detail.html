@@ -9,8 +9,8 @@
 {% block content %}
 <h1>Просмотр профиля {{ profile.user }} </h1>
  
-<p>Аватар (<a href="{% url avatar_change %}">Изменить</a>):</p>
-<p>{% avatar request.user %}</p>
+<p>Аватар {% if request.user == profile.user %}(<a href="{% url avatar_change %}">Изменить</a>){% endif %}:</p>
+<p>{% avatar profile.user %}</p>
 
 <p>Откуда: {{ profile.location }}</p>
 
@@ -19,3 +19,4 @@
 {% if request.user == profile.user %}<p><a href="{% url profiles_edit_profile %}">Редактировать профиль</a></p>{% endif %}
  
 {% endblock content %}
+

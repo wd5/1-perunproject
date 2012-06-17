@@ -10,14 +10,15 @@
 <link rel="shortcut icon" href="{{ MEDIA_URL }}design/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="{{ MEDIA_URL }}design/favicon.ico" type="image/x-icon" />
 
-<link rel="stylesheet" href="{{ STATIC_URL }}design/css/base{% if request.subdomain == "m" %}_mobile{% endif %}.css" type="text/css" />
+{% load fcss_tags %}
+<link rel="stylesheet" href="{% if request.subdomain == "m" %}{% get_css 'base_mobile' %}{% else %}{% get_css 'base' %}{% endif %}" type="text/css" />
 
 <meta name="description" content="{% block description %}{% endblock %}"/>
 
 <meta name="keywords" content="{% block keywords %}{% endblock %}" />
 
 {% block extrahead %}
-{% if request.subdomain != 'm' %}<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>{% endif %}
+{% if request.subdomain != 'm' %}<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>{% endif %}
 {% endblock %}
 
 </head>
@@ -57,3 +58,4 @@
 
 </body>
 </html>
+

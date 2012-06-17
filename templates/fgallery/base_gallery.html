@@ -19,10 +19,11 @@
     <h3>Последние ответы</h3>
     <ul>
         {% for object in recent_photo_comments %}
-        <li><a href="{{ object.content_object.get_absolute_url }}">{{ object.content_object.title }}</a><br /><span class="commentinfo"><b>{{ object.user }}</b>, {{ object.submit_date|date:"j b, H:i" }}:</span><br /><i>{{ object.comment }}</i></li>
+        <li><a href="{{ object.content_object.get_absolute_url }}">{{ object.content_object.title }}</a><br /><span class="commentinfo"><b>{% if object.user %}{{ object.user }}{% else %}{{ object.user_name }}{% endif %}</b>, {{ object.submit_date|date:"j b, H:i" }}:</span><br /><i>{{ object.comment }}</i></li>
         {% endfor %}
     </ul>
     {#% recent_comments %#}
     </div>
 
 {% endblock %}
+

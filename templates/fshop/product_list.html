@@ -17,7 +17,7 @@
 {% for object in object_list %}
 <li><h2><a href="{% url product_detail object.slug %}">{{object.title}}</a></h2><br />
 <a href="{% url product_detail object.slug %}"><img src="{% thumbnail object.get_cover_image 160x160 %}" /></a><br />
-<p>Цена: <span class="unit-price">{{object.price}} р</span> {% if object.old_price %}<strike>{{object.old_price}} р</strike>{% endif %}</p>
+<p><br />Цена: <span class="unit-price">{{object.price}} р</span> {% if object.old_price %}<strike>{{object.old_price}} р</strike>{% endif %}</p>
 <p>{{object.short_description}}</p>
 
 
@@ -31,9 +31,12 @@
 
 </li>
 
+{% if forloop.counter|divisibleby:"3" %}<div class="clearfix"></div>{% endif %}
+
 {% endfor %}
 </ul>
 
 {% paginate %}
 
 {% endblock %}
+

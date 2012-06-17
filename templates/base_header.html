@@ -1,36 +1,38 @@
 <div id="sitelogo"><a href="/">
-<img src="{{ STATIC_URL }}{% if request.subdomain == 'm' %}design/favicon.ico{% else %}design/logo/perunspace-logo.gif{% endif %}" alt="Перунова Слобода" />
+<img src="{{ MEDIA_URL }}{% if request.subdomain == 'm' %}design/favicon.ico{% else %}design/logo/strely-logo2.gif{% endif %}" alt="Перунова Слобода" />
 </a></div>
 
-<div id="sitetitle">Перунова Слобода</div>
-<div id="sitedescription">Русская боевая традиция в Поволжье</div>
+<div id="sitetitle">Стрелы Перуна</div>
+<div id="sitesubtitle">Русская боевая традиция в Поволжье</div>
 <div id="siteslogan">Наша жизнь - дорога в Ирий!</div>
 
-<div id="sitepicture"><img src="{{ STATIC_URL }}design/logo/psloboda-view.gif" /></div>
+<div id="sitepicture"><img src="{{ MEDIA_URL }}design/logo/psloboda-view.gif" /></div>
 
 <div id="sitemenu">
 <ul>
     <li><a href="/about/">О нас</a>
         <ul>
-            <li><a href="/tradition/">Славяно-горицкая борьба</a></li>
+            <li><a href="/tradition/">Русская боевая традиция</a></li>
             <li><a href="/strely/">Клуб Стрелы Перуна</a></li>
-            <li><a href="/sloboda/">Клановое поселение</a></li>
+            <li><a href="/shturmfight/">Федерация ШТУРМ</a></li>
+            <li><a href="/camp/">Перунова Слобода</a></li>
+            <li><a href="/slashfight/">Союз Засечного боя</a></li>
         </ul></li>
     <li><a href="/services/">Предлагаем</a>
         <ul>
             <li><a href="/training/">Регулярные тренировки</a></li>
             <li><a href="/camp/">Интересные семинары</a></li>
             <li><a href="/farm/">Здоровое питание</a></li>
-            <li><a href="/workshop/">Гильдия мастеров</a></li>
+            <li><a href="/workshop/">Работы наших мастеров</a></li>
         </ul></li>
     <li><a href="/blog/">Дневник</a>
         <ul>
             <li><a href="/blog/category/report/">Отчеты</a></li>
-            <li><a href="/blog/category/info/">Объявления</a></li>
-            <li><a href="/blog/category/article/">Статьи</a></li>
-            <li><a href="/blog/category/art/">Творчество</a></li>
-            <li><a href="/blog/category/press/">Пресса</a></li>
             <li><a href="/blog/category/video/">Видео</a></li>
+            <li><a href="/blog/category/article/">Статьи</a></li>
+            <li><a href="/blog/category/press/">Пресса</a></li>
+            <li><a href="/blog/category/art/">Творчество</a></li>
+            <li><a href="/blog/category/info/">Объявления</a></li>
             <li><a href="/blog/category/other/">Разное</a></li>
         </ul>
     </li>
@@ -46,7 +48,7 @@
         </ul>
     </li>
     <li><a href="/gallery/">Галерея</a></li>
-    <li><a href="/forum/{% if request.subdomain == 'm' %}lofi/{% endif %}">Форум</a></li>
     <li><a href="/contacts/">Контакты</a></li>
 </ul>
 </div><!-- /#sitemenu -->
+

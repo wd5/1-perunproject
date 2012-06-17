@@ -14,7 +14,7 @@
 {% block keywords %}{% if page.meta_keywords %}{{ page.meta_keywords }}{% endif %}{% endblock %}
 
 {% block extrahead %}{{ block.super }}
-{% if request.subdomain != 'm' %}<script type="text/javascript" src="{{ STATIC_URL }}design/js/tabs.js"></script>{% endif %}
+{% if request.subdomain != 'm' %}<script type="text/javascript" src="{{ MEDIA_URL }}design/js/tabs.js"></script>{% endif %}
 {% endblock %}
 
 {% block breadcrumbs %} - Добро пожаловать!{% endblock %}
@@ -26,9 +26,9 @@
 
         <!--<h2>Перунова Слобода — автономное клановое поселение бойцов клуба «Стрелы Перуна»</h2>-->
 
-        <h2>О нас (<a href="/about/">подробнее</a>)</h2>
+        <h2>О нас (<a href="/tradition/">подробнее</a>)</h2>
 
-        <div id="about-text">Перунова Слобода — <strong>автономное клановое поселение</strong> бойцов клуба славяно-горицкой борьбы «Стрелы Перуна». Наша цель — возрождение и <strong>развитие русских боевых традиций</strong>.</div>
+        <div id="about-text">Стрелы Перуна - <strong>общественное движение</strong>, которое объединяет группы энтузиастов, восстанавливающих и развивающих различные аспекты одного явления - <strong>русской боевой культуры</strong>.</div>
 
     </div><!-- /#about.halftop -->
 
@@ -112,29 +112,28 @@
         <div id="servicelist">
         <ul>
             <li id="sl-training">
-            <div class="sl-imglabel"><a href="/training/"><img src="{{ STATIC_URL }}design/services/training.png" /></a></div>
+            <div class="sl-imglabel"><a href="/training/"><img src="{{ MEDIA_URL }}design/services/training.png" /></a></div>
             <div class="sl-sublist">
-                <span><a href="/training/">Регулярные тренировки по СГБ</a></span>
+                <span><a href="/training/">Регулярные тренировки</a></span>
                 <ul>
                     <li>Йошкар-Ола</li>
                     <li>Чебоксары</li>
-                    <li>Токтайбеляк</li>
+                    <li>Перунова Слобода</li>
                 </ul>
             </div>
             <div class="clearfix"></div>
             </li><li id="sl-camp">
-            <div class="sl-imglabel"><a href="/camp/"><img src="{{ STATIC_URL }}design/services/seminar.png" /></a></div>
+            <div class="sl-imglabel"><a href="/camp/"><img src="{{ MEDIA_URL }}design/services/seminar.png" /></a></div>
             <div class="sl-sublist">
                 <span><a href="/camp/">Лагерь активного отдыха</a></span>
                 <ul>
-                    <li>Практикумы по штурмовому бою СГБ</li>
-                    <li>Семинары по русской здраве и натурфилософии</li>
+                    <li>Практикумы по рукопашному бою</li>
                     <li>Военно-спортивные курсы «Варвар»</li>
                 </ul>
             </div>
             <div class="clearfix"></div>
             </li><li id="sl-farm">
-            <div class="sl-imglabel"><a href="/farm/"><img src="{{ STATIC_URL }}design/services/farm.png" /></a></div>
+            <div class="sl-imglabel"><a href="/farm/"><img src="{{ MEDIA_URL }}design/services/farm.png" /></a></div>
             <div class="sl-sublist">
                 <span><a href="/farm/">Здоровое питание</a></span>
                 <ul>
@@ -146,22 +145,30 @@
             </li>
         </ul>
         </div><!-- /#servicelist -->
-        <div id="presentlist">А также представляем в Марий Эл и Чувашии:
+        <div id="teamlist">
+          Участники движения:
+          <ul><li><a href="/strely/">Клуб СГБ "Стрелы Перуна"</a></li>
+            <li><a href="/shturmfight/">Федерация ШТУРМ Марий Эл</a></li>
+            <li><a href="/camp/">тренировочный центр Перунова Слобода</a></li>
+            <li><a href="/slashfight/">Союз Засечного боя</a></li>
+          </ul>
+        </div>
+        <!--<div id="presentlist">А также представляем в Марий Эл и Чувашии:
             <ul><li>
                 <div class="pl-img">
-                    <img src="{{ STATIC_URL }}design/logo/goritsfighting-32px.png" />
+                    <img src="{{ MEDIA_URL }}design/logo/goritsfighting-32px.png" />
                 </div>
                 <div class="pl-title">Федерация СГБ</div>
                 <div class="clearfix"></div>
             </li><li>
                 <div class="pl-img">
-                    <img src="{{ STATIC_URL }}design/logo/shturmfight-32px.png" />
+                    <img src="{{ MEDIA_URL }}design/logo/shturmfight-32px.png" />
                 </div>
-                <div class="pl-title">Федерация ШТУРМ</div>
+                <div class="pl-title"><a style="text-decoration: none;" href="/shturmfight/">Федерация ШТУРМ</a></div>
                 <div class="clearfix"></div>
                 </li>
             </ul>
-        </div>
+        </div>-->
 
     </div><!-- /#services -->
 
@@ -169,4 +176,5 @@
 
     </div><!-- /#main -->
 {% endblock %}
+
 

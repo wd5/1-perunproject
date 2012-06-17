@@ -1,0 +1,71 @@
+{% extends "fblog/base_blog.html" %}
+{% load markup %}
+{% load comments %}
+{% load customcomments %}
+
+{% load fblog_tags %}
+{% load inlines %}
+{% load seo_tags %}
+{% load thumbnail %}
+{% load fgallery_tags %}
+{% load avatar_tags %}
+
+{% block title %}{% seo title for newsres as seo_title %}{% if seo_title %}{{ seo_title }}{% else %}{{ newsres.title }}{% endif %} | Клуб «Стрелы Перуна»{% endblock %}
+
+{% block description %}{% seo description for newsres %}{% endblock %}
+
+{% block keywords %}{% seo keywords for newsres %}{% endblock %}
+
+{% block breadcrumbs %} - <a href="{% url blog_index %}">Дневник</a> - <a href="{% url blog_archive_year newsres.date.year %}">{{ newsres.date.year }}</a> - <a href="{% url blog_archive_month newsres.date.year newsres.date|date:"m" %}">{{ newsres.date|date:"F" }}</a> - Заметка{% endblock %}
+
+{% block content %}
+<h1>{{ newsres.title }}</h1>
+
+<div class="postinfo">{{ newsres.date|date:"j M Y H:m" }} | раздел: <a href="{{ newsres.type.get_absolute_url }}">{{ newsres.type.title_plural|lower }}</a> | просмотров: {{ newsres.view_count }} | {% get_comment_count for newsres as comment_count %}<a href="{{ newsres.get_absolute_url }}#comments">ответов: {{ comment_count }}</a></div>
+
+<div class="postcontent">{{ newsres.content|render_inlines|markdown }}</div>
+
+{% if newsres.related_entries.published|length > 0 %}
+<div class="postrelated">
+<h3 id="related">Заметки по теме:</h3>
+<ul style="padding-left: 14px; list-style-type: none;">
+{% for relpost in newsres.related_entries.visible %}{% get_main_image for relpost as pimage %}
+<li style="float: left; width: 126px; border-left: 1px solid #333; padding: 4px; "><a style="text-decoration: none;" href="{{ relpost.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 126x95 %}" /><div style="width: 125px;">{{ relpost.title }}</div></a></li>
+{% if forloop.counter|divisibleby:"4" %}<div class="clearfix"></div>{% endif %}
+{% endfor %}
+<div class="clearfix"></div>
+</ul>
+</div>
+{% endif %}
+
+<div class="postcomments">
+
+<h3 id="comments">Комментарии:</h3>
+
+{% get_comment_list for newsres as allcomments %}{% if allcomments|length = 0 %}
+0 комментариев. Напишите первый комментарий к этой заметке!
+{% endif %}
+                
+{% for acomment in allcomments %}
+    <div style="margin-bottom: 8px;">
+    <div style="float:left; margin-right: 8px; width: 60px;">{% avatar acomment.user %}</div><div style="float:left; width: 560px;"><p><b>{% if acomment.user %}{{ acomment.user }}{% else %}{{ acomment.user_name }}{% endif %}</b>, {{ acomment.submit_date|date:"j M Y H:m" }}:<br>{{ acomment.comment|safe|linebreaksbr|markdown }}</p></div>
+    <div class="clearfix"></div>
+    </div>
+{% endfor %}
+
+{% if newsres.enable_comments %}
+<div id="commentform">
+<h3>Ваш комментарий{% if user.is_authenticated %}, {{ user }}{% endif %}:</h3>
+{% if user.is_authenticated %}<div><div style="float:left; margin-right: 8px; width: 60px;">{% avatar request.user %}</div><div style="float:left; width: 560px;">{% render_auth_comment_form for newsres %}</div>
+    <div class="clearfix"></div></div>
+{% else %}{% render_comment_form for newsres %}
+{% endif %}
+{% else %}
+<h3>Комментирование отключено.</h3>
+{% endif %}
+</div>
+
+</div>
+{% endblock %}
+            
+
