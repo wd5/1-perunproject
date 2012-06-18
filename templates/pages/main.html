@@ -14,7 +14,7 @@
 {% block keywords %}{% if page.meta_keywords %}{{ page.meta_keywords }}{% endif %}{% endblock %}
 
 {% block extrahead %}{{ block.super }}
-{% if request.subdomain != 'm' %}<script type="text/javascript" src="{{ MEDIA_URL }}design/js/tabs.js"></script>{% endif %}
+{% if request.subdomain != 'm' %}<script type="text/javascript" src="{{ STATIC_URL }}design/js/tabs.js"></script>{% endif %}
 {% endblock %}
 
 {% block breadcrumbs %} - Добро пожаловать!{% endblock %}
