@@ -25,10 +25,10 @@ COLORS
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
+del, dfn, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
+center,
+dl, dt, dd, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
@@ -50,7 +50,7 @@ footer, header, hgroup, menu, nav, section {
 /*body {
 	line-height: 1;
 }*/
-ol, ul {
+ul {
 	list-style: none;
 }
 blockquote, q {
@@ -89,8 +89,8 @@ h1, h2, h3,
 strong { color: #ee0000; }
 
 a, a:visited,
-#recentcomments a,
-#recentcomments a:visited,
+#recentcomments ul li a,
+#recentcomments ul li a:visited,
 .preplies-count {
     color: #ef9e4e; /*#ffae5e; /*#F59E52;*/
 }
@@ -123,6 +123,13 @@ a.next:visited,
 .eventlist ul li ul li a,
 .eventlist ul li ul li a:visited {
     color: #777777;
+}
+
+a, a:visited,
+#recentcomments ul li a,
+#recentcomments ul li a:visited,
+.preplies-count {
+    color: #ef9e4e; /*#ffae5e; /*#F59E52;*/
 }
 
 a:hover,
@@ -239,7 +246,7 @@ input, textarea {
 
 #id_comment {
     width: 98%;
-    height: 70px;
+    height: 54px;
 }
 
 #pagination {
@@ -254,11 +261,16 @@ div.img {
 
 div.img img {
     display: inline;
+    margin-right: 1px;
     border: 1px solid #999;
 }
 
 .subfont {
     font-size: 75%;
+}
+
+#commentform {
+    margin-top: 15px;
 }
 
 
@@ -289,28 +301,29 @@ div.img img {
 }
 
 #sitetitle {
-    position: absolute;
-    z-index: 35;
-    top: 6px; left: 144px;
     color: white;
-    padding-bottom: 9px;
     font: italic 40px Times New Roman;
-}
-
-#sitedescription {
+    left: 130px;
+    padding-bottom: 9px;
     position: absolute;
+    top: 6px;
     z-index: 35;
-    top: 52px; left: 154px;
-    color: #ccc;
-    font: italic 18px Times New Roman;
 }
-
+#sitesubtitle {
+    color: #bbb;
+    font: italic 16px Times New Roman;
+    left: 140px;
+    position: absolute;
+    top: 52px;
+    z-index: 35;
+}
 #siteslogan {
-    position: absolute;
-    z-index: 35;
-    top: 32px; left: 522px;
-    color: #ccc;
+    color: #CCCCCC;
     font: italic 18px Times New Roman;
+    left: 522px;
+    position: absolute;
+    top: 36px;
+    z-index: 35;
 }
 
 #sitepicture {
@@ -417,6 +430,7 @@ div.img img {
     min-height: 520px;
     margin: 0;
     padding: 14px;
+    padding-top: 10px;
     /*overflow: auto;*/
 }
 
@@ -427,10 +441,11 @@ div.img img {
     float: right;
     width: 216px;
     padding: 8px;
+    padding-top: 10px;
 }
 
 #sidebar h3 {
-    margin-bottom: 1px;
+    margin-bottom: 4px;
     font-size: 140%;
 }
 
@@ -579,6 +594,10 @@ div.img img {
     float: left;
 }
 
+#teamlist ul li a {
+    text-decoration: none;
+}
+
 /* ========================= FRONTPAGE TABS ======================== */
 
 .htabs {
@@ -654,6 +673,8 @@ div.img img {
     line-height: 1.3;
 }
 
+.page .img { text-align: center; }
+
 /* =========================== BLOG ============================ */
 
 .blog h1 {
@@ -687,6 +708,10 @@ div.img img {
 
 .postcontent, .postrelated, .postcomments {
     margin-bottom: 20px;
+}
+
+.postcontent h3 {
+    margin-top: 15px;
 }
 
 #postlist > ul {
@@ -726,39 +751,62 @@ a.next:hover {
     display: block;
 }
 
-#blog-archive-tree > ul > ul {
-    padding-left: 6px;
+#featured_list ul li {
+    margin-bottom: 4px;
 }
-
 
 /* ========================== SHOP ========================== */
 
 #product-list {
     list-style-type: none;
 }
-
 #product-list li {
     float: left;
     padding: 10px;
     padding-right: 20px;
+    width: 180px;
 }
+
+#cart-table tr td {
+    padding: 2px;
+}
+
+/* ======================== PAGINATOR ======================== */
+
+   .pager {
+      padding-left: 10px;
+      }
+   .pager .page a {
+      border: 1px solid #555555;
+      margin-left: 1px;
+      margin-right: 1px;
+      padding-left: 4px;
+      padding-right: 4px;
+      text-decoration: none;
+      background: #333333;
+      color: #cccccc;
+      }
+   .pager .page a:hover {
+      background: #111;
+      color: #fff;
+      }
+   .pager .current {
+      border: 2px solid #333333;
+      margin-left: 2px;
+      margin-right: 2px;
+      padding-left: 4px;
+      padding-right: 4px;
+      }
 
 
 /* ========================= GALLERY ======================== */
 
 #album-title {
-    margin: 4px auto;
-    text-align: center;re
     font: 14px bold Verdana;
 }
 
-.photo h1 {
-    text-align: center;
-}
-
-#photo-nav {
-    margin: 0px auto 4px;
-    text-align: center;
+#recentcomments ul li {
+   margin-bottom: 6px;
 }
 
 /* ========================== EVENTS ========================== */
@@ -831,31 +879,4 @@ a.next:hover {
 
 #stats { float: right; padding: 5px 25px 0 0; margin-top: -10px; }
 #stats ul { list-style-type: none; margin: 0; padding: 0; }
-
-/* ========================== PAGINATOR ============================ */
-
-   .pager {
-      padding-left: 10px;
-      }
-   .pager .page a {
-      border: 1px solid #555555;
-      margin-left: 1px;
-      margin-right: 1px;
-      padding-left: 4px;
-      padding-right: 4px;
-      text-decoration: none;
-      background: #333333;
-      color: #cccccc;
-      }
-   .pager .page a:hover {
-      background: #111;
-      color: #fff;
-      }
-   .pager .current {
-      border: 2px solid #333333;
-      margin-left: 2px;
-      margin-right: 2px;
-      padding-left: 4px;
-      padding-right: 4px;
-      }
 

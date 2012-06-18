@@ -11,7 +11,7 @@
 <link rel="icon" href="{{ MEDIA_URL }}design/favicon.ico" type="image/x-icon" />
 
 {% load fcss_tags %}
-<link rel="stylesheet" href="{% if request.subdomain == "m" %}{% get_css 'base_mobile' %}{% else %}{% get_css 'base' %}{% endif %}" type="text/css" />
+<link rel="stylesheet" href="{% if request.subdomain == "m" %}{{ STATIC_URL }}design/css/base_mobile.css{% else %}{{ STATIC_URL }}design/css/base.css{% endif %}" type="text/css" />
 
 <meta name="description" content="{% block description %}{% endblock %}"/>
 
