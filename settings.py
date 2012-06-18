@@ -140,6 +140,7 @@ INSTALLED_APPS = (
     #'mezzanine.twitter',
     #"mezzanine.accounts",
     #"mezzanine.mobile",
+    'mezzanine_wiki',
 
     #'south',
     'dbtemplates',
@@ -261,6 +262,8 @@ SEO_FOR_MODELS = [
     'fgallery.models.Photo',
     'fgallery.models.Album',
 ]
+
+WIKI_DEFAULT_INDEX = 'Академия'
 
 FBLOG_BLOG_TITLE = 'Дневник клуба "Стрелы Перуна"'
 
