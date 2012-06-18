@@ -18,14 +18,14 @@ django-pagination
 git+git://github.com/dfalk/django-cart.git#egg=django-cart
 django-mptt
 django-seo
-django-haystack
+#django-haystack
 BeautifulSoup
 #django-messages
 #-e git+git@github.com/arneb/django-messages.git#egg=django-messages
 #djangobb_forum
-git+git://github.com/slav0nic/DjangoBB.git#egg=djangobb
+#git+git://github.com/slav0nic/DjangoBB.git#egg=djangobb
 #simplepages
 git+git://github.com/alekam/django-simplepages.git#egg=django-simplepages
 #whoosh #check it
 markdown
-mysql-python
+#mysql-python

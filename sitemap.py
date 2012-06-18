@@ -1,5 +1,5 @@
 from django.contrib.sitemaps import Sitemap
-from djangobb_forum.models import Forum, Topic
+#from djangobb_forum.models import Forum, Topic
 from simplepages.models import Page
 
 class SitemapPage(Sitemap):

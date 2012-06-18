@@ -7,9 +7,9 @@ from django.conf import settings
 from forms import ImprovedRegistrationForm
 from perunprofile.forms import UserProfileForm
 
-from djangobb_forum import settings as forum_settings
+#from djangobb_forum import settings as forum_settings
 
-from sitemap import SitemapForum, SitemapTopic, SitemapPage
+from sitemap import SitemapPage #SitemapForum, SitemapTopic
 from fblog.sitemap import BlogSitemap
 sitemaps = {
     'page': SitemapPage,
@@ -63,7 +63,7 @@ urlpatterns = patterns('',
     url(r'^auth/', include( 'netauth.urls')),
 
     # Forum
-    (r'^forum/', include('djangobb_forum.urls', namespace='djangobb')),
+    #(r'^forum/', include('djangobb_forum.urls', namespace='djangobb')),
     # Sitemap
     (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 
@@ -77,10 +77,10 @@ urlpatterns = patterns('',
 
 
 # PM Extension
-if (forum_settings.PM_SUPPORT):
-    urlpatterns += patterns('',
-        (r'^forum/pm/', include('messages.urls')),
-   )
+#if (forum_settings.PM_SUPPORT):
+#    urlpatterns += patterns('',
+#        (r'^forum/pm/', include('messages.urls')),
+#   )
 
 
 # routing static files

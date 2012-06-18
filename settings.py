@@ -63,7 +63,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.csrf',
     'django.core.context_processors.request',
-    'djangobb_forum.context_processors.forum_settings',
+    #'djangobb_forum.context_processors.forum_settings',
     #'simplepages.context_processors.page',
 )
 
@@ -89,11 +89,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+    #'django.middleware.locale.LocaleMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
-    'djangobb_forum.middleware.LastLoginMiddleware',
-    'djangobb_forum.middleware.UsersOnline',
+    #'djangobb_forum.middleware.LastLoginMiddleware',
+    #'djangobb_forum.middleware.UsersOnline',
     #'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'simplepages.middleware.PageFallbackMiddleware',
     'pagination.middleware.PaginationMiddleware',
@@ -117,7 +117,7 @@ INSTALLED_APPS = (
 
     'django.contrib.markup',
 
-    'south',
+    #'south',
     'dbtemplates',
     'registration',
     'avatar',
@@ -132,9 +132,9 @@ INSTALLED_APPS = (
     'pagination',
     #'syncr.youtube',
 
-    'haystack',
-    'djangobb_forum',
-    'messages',
+    #'haystack',
+    #'djangobb_forum',
+    #'messages',
 
     'simplepages',
     'fblog',
