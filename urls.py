@@ -7,6 +7,8 @@ from django.conf import settings
 from forms import ImprovedRegistrationForm
 from perunprofile.forms import UserProfileForm
 
+from mezzanine.core.views import direct_to_template
+
 #from djangobb_forum import settings as forum_settings
 
 from sitemap import SitemapPage #SitemapForum, SitemapTopic
@@ -23,7 +25,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
+    # Uncomment the next line to enable the admin:
+    (r'^admin/', include(admin.site.urls)),
     # (r'^$', 'views.mainpage'),
+    url("^$", direct_to_template, {"template": "index.html"}, name="home"),
 
     # BLOG
     (r'^blog/', include('fblog.urls')),
@@ -46,9 +51,6 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    (r'^admin/', include(admin.site.urls)),
 
     ('^comments/post', 'fcomments.views.post_comment'),
     (r'^comments/', include('django.contrib.comments.urls')),
@@ -87,5 +89,9 @@ urlpatterns = patterns('',
 if settings.LOCALSERVER:
     urlpatterns+= patterns('',
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
+        #url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
     )
+
+urlpatterns+= patterns('',
+    ("^", include("mezzanine.urls")),
+)

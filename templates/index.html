@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% load markup %}
+{% load comments %}
+{% load inlines %}
+{% load page_tags %}
+{% load peruntags %}
+{% load thumbnail %}
+{% load fgallery_tags %}
+
+{% block title %}{% if page.html_title %}{{ page.html_title }}{% else %}{{ page.title }}{% endif %}{% endblock %}
+
+{% block description %}{% if page.meta_description %}{{ page.meta_description }}{% endif %}{% endblock %}
+
+{% block keywords %}{% if page.meta_keywords %}{{ page.meta_keywords }}{% endif %}{% endblock %}
+
+{% block extrahead %}{{ block.super }}
+{% if request.subdomain != 'm' %}<script type="text/javascript" src="{{ STATIC_URL }}design/js/tabs.js"></script>{% endif %}
+{% endblock %}
+
+{% block breadcrumbs %} - Добро пожаловать!{% endblock %}
+
+{% block main %}
+    <div id="content" class="frontpage">
+
+    <div id="about" class="halftop">
+
+        <!--<h2>Перунова Слобода — автономное клановое поселение бойцов клуба «Стрелы Перуна»</h2>-->
+
+        <h2>О нас (<a href="/tradition/">подробнее</a>)</h2>
+
+        <div id="about-text">Стрелы Перуна - <strong>общественное движение</strong>, которое объединяет группы энтузиастов, восстанавливающих и развивающих различные аспекты одного явления - <strong>русской боевой культуры</strong>.</div>
+
+    </div><!-- /#about.halftop -->
+
+    <div id="events" class="halftop">
+
+        <h2>События (<a href="{% url events %}">хроники</a>)</h2>
+        
+        <div class="eventlist">
+        <ul>{% get_latest fevents.Event 4 as event_list %}
+        {% for event1 in event_list %}
+        <li><span class="edate{% if not event1.is_past_due %}-hl{% endif %}">{{ event1.date|date:"Y.m.d" }}</span> - {{ event1.title }}
+            <ul>
+                {% for erelation in event1.eventrelation_set.all %}<li><a href="{{ erelation.content_object.get_absolute_url }}">{% if erelation.content_object.type %}{{ erelation.content_object.type }}{% else %}{{ erelation.content_type }}{% endif %}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+        </ul>
+        </div>
+
+    </div><!-- /#events.halftop -->
+
+    <div class="clearfix"></div>
+
+    <div id="blog" class="half">
+
+        <div id="tabwrapper">
+        <ul class="htabs">
+            <li><a id="new" href="#new">Новое</a></li>
+            <li><a id="featured" href="#featured">Интересное</a></li>
+            <span>(<a href="/blog/">дневник</a>)</span>
+        </ul>
+        <div class="tabs">
+            <div id="new" class="tab">
+            <ul>{% get_latest fblog.Post 5 as entry_list %}
+                {% for entry in entry_list %}{% get_main_image for entry as pimage %}
+                <li>
+                    <div class="entry-img"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 75x57 %}" /></a></div>
+                    <div class="entry-link">
+                        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                    </div>
+                    <div class="entry-footer">
+                        <span class="entry-date">{{ entry.date|date:"j b" }}</span>,
+                        <span class="entry-category">{{ entry.type }}</span>,
+                        Ответов: {% get_comment_count for entry as ecom_count %}
+                        <span{% if ecom_count > 0 %} class="preplies-count"{% endif %}>{{ ecom_count }}</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+                {% endfor %}
+            </ul>
+            </div>
+            <div id="featured" class="tab">
+            <ul>{% get_latest_featured fblog.Post 5 as featured_list %}
+                {% for entry in featured_list %}{% get_main_image for entry as pimage %}
+                <li>
+                    <div class="entry-img"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 75x57 %}" /></a></div>
+                    <div class="entry-link">
+                        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                    </div>
+                    <div class="entry-footer">
+                        <span class="entry-date">{{ entry.date|date:"j b" }}</span>,
+                        <span class="entry-category">{{ entry.type }}</span>,
+                        Ответов: {% get_comment_count for entry as ecom_count %}
+                        <span{% if ecom_count > 0 %} class="preplies-count"{% endif %}>{{ ecom_count }}</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+                {% endfor %}
+            </ul>
+            </div>
+        </div><!-- tabs -->
+        </div><!-- tabwrapper -->
+
+    </div><!-- /#blog -->
+
+    <div id="services" class="half">
+
+        <h2>Мы предлагаем (<a href="/services/">больше</a>)</h2>
+
+        <div id="servicelist">
+        <ul>
+            <li id="sl-training">
+            <div class="sl-imglabel"><a href="/training/"><img src="{{ STATIC_URL }}design/services/training.png" /></a></div>
+            <div class="sl-sublist">
+                <span><a href="/training/">Регулярные тренировки</a></span>
+                <ul>
+                    <li>Йошкар-Ола</li>
+                    <li>Чебоксары</li>
+                    <li>Перунова Слобода</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            </li><li id="sl-camp">
+            <div class="sl-imglabel"><a href="/camp/"><img src="{{ STATIC_URL }}design/services/seminar.png" /></a></div>
+            <div class="sl-sublist">
+                <span><a href="/camp/">Лагерь активного отдыха</a></span>
+                <ul>
+                    <li>Практикумы по рукопашному бою</li>
+                    <li>Военно-спортивные курсы «Варвар»</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            </li><li id="sl-farm">
+            <div class="sl-imglabel"><a href="/farm/"><img src="{{ STATIC_URL }}design/services/farm.png" /></a></div>
+            <div class="sl-sublist">
+                <span><a href="/farm/">Здоровое питание</a></span>
+                <ul>
+                    <li>Мясо кролика</li>
+                    <li>Лекарственные травы</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            </li>
+        </ul>
+        </div><!-- /#servicelist -->
+        <div id="teamlist">
+          Участники движения:
+          <ul><li><a href="/strely/">Клуб СГБ "Стрелы Перуна"</a></li>
+            <li><a href="/shturmfight/">Федерация ШТУРМ Марий Эл</a></li>
+            <li><a href="/camp/">тренировочный центр Перунова Слобода</a></li>
+            <li><a href="/slashfight/">Союз Засечного боя</a></li>
+          </ul>
+        </div>
+        <!--<div id="presentlist">А также представляем в Марий Эл и Чувашии:
+            <ul><li>
+                <div class="pl-img">
+                    <img src="{{ MEDIA_URL }}design/logo/goritsfighting-32px.png" />
+                </div>
+                <div class="pl-title">Федерация СГБ</div>
+                <div class="clearfix"></div>
+            </li><li>
+                <div class="pl-img">
+                    <img src="{{ MEDIA_URL }}design/logo/shturmfight-32px.png" />
+                </div>
+                <div class="pl-title"><a style="text-decoration: none;" href="/shturmfight/">Федерация ШТУРМ</a></div>
+                <div class="clearfix"></div>
+                </li>
+            </ul>
+        </div>-->
+
+    </div><!-- /#services -->
+
+    <div class="clearfix"></div>
+
+    </div><!-- /#main -->
+{% endblock %}
+
+

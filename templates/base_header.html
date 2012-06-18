@@ -1,3 +1,5 @@
+{% load pages_tags mezzanine_tags %}
+
 <div id="sitelogo"><a href="/">
 <img src="{{ STATIC_URL }}{% if request.subdomain == 'm' %}design/favicon.ico{% else %}design/logo/strely-logo2.gif{% endif %}" alt="Перунова Слобода" />
 </a></div>
@@ -9,46 +11,6 @@
 <div id="sitepicture"><img src="{{ STATIC_URL }}design/logo/psloboda-view.gif" /></div>
 
 <div id="sitemenu">
-<ul>
-    <li><a href="/about/">О нас</a>
-        <ul>
-            <li><a href="/tradition/">Русская боевая традиция</a></li>
-            <li><a href="/strely/">Клуб Стрелы Перуна</a></li>
-            <li><a href="/shturmfight/">Федерация ШТУРМ</a></li>
-            <li><a href="/camp/">Перунова Слобода</a></li>
-            <li><a href="/slashfight/">Союз Засечного боя</a></li>
-        </ul></li>
-    <li><a href="/services/">Предлагаем</a>
-        <ul>
-            <li><a href="/training/">Регулярные тренировки</a></li>
-            <li><a href="/camp/">Интересные семинары</a></li>
-            <li><a href="/farm/">Здоровое питание</a></li>
-            <li><a href="/workshop/">Работы наших мастеров</a></li>
-        </ul></li>
-    <li><a href="/blog/">Дневник</a>
-        <ul>
-            <li><a href="/blog/category/report/">Отчеты</a></li>
-            <li><a href="/blog/category/video/">Видео</a></li>
-            <li><a href="/blog/category/article/">Статьи</a></li>
-            <li><a href="/blog/category/press/">Пресса</a></li>
-            <li><a href="/blog/category/art/">Творчество</a></li>
-            <li><a href="/blog/category/info/">Объявления</a></li>
-            <li><a href="/blog/category/other/">Разное</a></li>
-        </ul>
-    </li>
-    <li><a href="/events/">Хроники</a>
-        <ul>
-            <li><a href="/events/category/perungame/">Перуновы Игрища</a></li>
-            <li><a href="/events/category/sport/">Соревнования</a></li>
-            <li><a href="/events/category/seminar/">Семинары</a></li>
-            <li><a href="/events/category/wargame/">Военно-тактические игры</a></li>
-            <li><a href="/events/category/children/">Воспитание</a></li>
-            <li><a href="/events/category/show/">Показательные выступления</a></li>
-            <li><a href="/events/category/org/">Организационные</a></li>
-        </ul>
-    </li>
-    <li><a href="/gallery/">Галерея</a></li>
-    <li><a href="/contacts/">Контакты</a></li>
-</ul>
+{% page_menu "pages/menus/dropdown.html" %}
 </div><!-- /#sitemenu -->
 

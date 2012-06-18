@@ -47,7 +47,8 @@ STATIC_URL = '/static/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+#ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -63,6 +64,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.csrf',
     'django.core.context_processors.request',
+    'mezzanine.conf.context_processors.settings',
     #'djangobb_forum.context_processors.forum_settings',
     #'simplepages.context_processors.page',
 )
@@ -88,6 +90,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     #'django.middleware.locale.LocaleMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
@@ -98,6 +101,14 @@ MIDDLEWARE_CLASSES = (
     'simplepages.middleware.PageFallbackMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'subdomains.SubdomainMiddleware',
+    "mezzanine.core.request.CurrentRequestMiddleware",
+    "mezzanine.core.middleware.TemplateForDeviceMiddleware",
+    "mezzanine.core.middleware.TemplateForHostMiddleware",
+    "mezzanine.core.middleware.AdminLoginInterfaceSelectorMiddleware",
+    # Uncomment the following if using any of the SSL settings:
+    # "mezzanine.core.middleware.SSLRedirectMiddleware",
+    "mezzanine.pages.middleware.PageMiddleware",
+    "mezzanine.core.middleware.FetchFromCacheMiddleware",
 )
 
 ROOT_URLCONF = 'urls'
@@ -111,11 +122,24 @@ INSTALLED_APPS = (
     'django.contrib.messages',
 
     'django.contrib.sites',
+    'django.contrib.redirects',
     'django.contrib.comments',
     'django.contrib.contenttypes',
     'django.contrib.sitemaps',
 
     'django.contrib.markup',
+
+    'mezzanine.boot',
+    'mezzanine.conf',
+    'mezzanine.core',
+    'mezzanine.generic',
+    #'mezzanine.blog',
+    'mezzanine.forms',
+    'mezzanine.pages',
+    'mezzanine.galleries',
+    #'mezzanine.twitter',
+    #"mezzanine.accounts",
+    #"mezzanine.mobile",
 
     #'south',
     'dbtemplates',
@@ -153,6 +177,20 @@ INSTALLED_APPS = (
     'seo',
 )
 
+# Store these package names here as they may change in the future since
+# at the moment we are using custom forks of them.
+PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
+PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
+
+OPTIONAL_APPS = (
+    "debug_toolbar",
+    "django_extensions",
+    "compressor",
+    PACKAGE_NAME_FILEBROWSER,
+    PACKAGE_NAME_GRAPPELLI,
+)
+
+DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 
 try:
     import mailer
@@ -239,6 +277,12 @@ HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_DIR, 'djangobb_index')
 FSHOP_SHOP_TITLE = 'Гильдия мастеров'
 
 
+# ========================== MEZZANINE SETTINGS ==========================
+
+USE_SOUTH = False
+
+
+
 # ============================ LOCAL SETTINGS ============================
 
 import socket
@@ -250,3 +294,6 @@ else:
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
     from local_settings import *
+
+from mezzanine.utils.conf import set_dynamic_settings
+set_dynamic_settings(globals())
