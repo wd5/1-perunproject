@@ -2,7 +2,7 @@
 
 {% load markup %}
 {% load page_tags %}
-{% load inlines %}
+{% load inlines_tags %}
 
 {% block breadcrumbs %} - {% if page.site_section.url == page.url %}{{ page.site_section.name }}{% else %}<a href="{{ page.site_section.url }}">{{ page.site_section.name }}</a> - Страница{% endif %}{% endblock %}
 
