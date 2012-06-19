@@ -12,7 +12,8 @@ django-form-utils
 #genericadmin
 git+git://github.com/nicolaslara/django-genericadmin.git#egg=django-genericadmin
 #basic.inlines
-git+git://github.com/nathanborror/django-basic-apps.git#egg=django-basic-apps
+#git+git://github.com/nathanborror/django-basic-apps.git#egg=django-basic-apps
+git+git://github.com/dfalk/django-inlines.git#egg=django-inlines
 django-pagination
 #django-cart
 git+git://github.com/dfalk/django-cart.git#egg=django-cart

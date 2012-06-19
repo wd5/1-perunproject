@@ -153,7 +153,7 @@ INSTALLED_APPS = (
     'netauth',
     'form_utils',
     'genericadmin',
-    'basic.inlines',
+    'inlines',
     'pagination',
     #'syncr.youtube',
 
