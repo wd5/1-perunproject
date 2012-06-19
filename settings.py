@@ -5,6 +5,8 @@
 import os
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__)) 
 
+_ = lambda s: s
+
 ADMINS = (
     ('Admin', 'contact@perunspace.ru'),
 )
@@ -284,6 +286,23 @@ FSHOP_SHOP_TITLE = 'Гильдия мастеров'
 
 USE_SOUTH = False
 
+ADMIN_MENU_ORDER = (
+    (_("Content"), ("pages.Page", "fblog.Post", "fevents.Event", 
+       "fgallery.Album", "mezzanine_wiki.WikiPage",
+       "generic.ThreadedComment", (_("Media Library"), "fb_browse"),)),
+    (_("Shop"), ("shop.Product", "shop.ProductVariation", "shop.Vendor",
+              "shop.DiscountCode", "shop.Sale", "shop.Order",
+              "customshop.Shipping", "customshop.Payment",)),
+    (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting",
+       "dbtemplates.Template", "fcss.Stylesheet", "inlines.InlineType")),
+    (_("Users"), ("auth.User", "auth.Group",
+       "perunprofile.UserProfile", "registration.RegistrationProfile",
+       "netauth.NetID", "avatar.Avatar")),
+    (_("Other"), ("simplepages.Page", "simplepages.SiteSection",
+       "fblog.Ptype", "fevents.Etype", "fgallery.Video",
+       "fgallery.Photo", "seo.Seo", "seo.Url",
+       "tagging.Tag", "tagging.TaggedItem")),
+)
 
 
 # ============================ LOCAL SETTINGS ============================
