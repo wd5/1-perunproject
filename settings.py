@@ -225,7 +225,8 @@ if not hasattr(globals(), 'SECRET_KEY'):
 AUTHENTICATION_BACKENDS = (
     'netauth.auth.NetBackend',
     #'social_auth.backends.contrib.vkontakte.VKontakteBackend',
-    'django.contrib.auth.backends.ModelBackend',
+    #'django.contrib.auth.backends.ModelBackend',
+    'mezzanine.core.auth_backends.MezzanineBackend',
 )
 
 FIXTURE_DIRS = (
