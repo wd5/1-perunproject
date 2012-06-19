@@ -11,7 +11,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 import urllib
 
 def albums(request):
-    album_list = Album.objects.filter(is_published=True).order_by('-date_mod')
+    album_list = Album.objects.filter(is_published=True).order_by('-date')
     video_list = Video.objects.published()
     return direct_to_template(request, 'fgallery/album_list.html', {'album_list': album_list, 'video_list': video_list})
 
