@@ -852,9 +852,10 @@ a.next:hover {
     color: #ddd;
 }
 
-code {
+pre {
     border: 1px solid #666;
     margin-left: 30px;
+    margin-bottom: 6px;
     padding: 2px;
 }
 
