@@ -82,6 +82,16 @@
         <!--<label for="id_subject">Email subject:</label>-->
         {{ form.content }}
     </div>
+    <div class="fieldWrapper">
+        {{ form.description.errors }}
+        <label for="id_description">{{ form.description.label }}</label>
+        {{ form.description }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.privacy.errors }}
+        <label for="id_privacy">{{ form.privacy.label }}</label>
+        {{ form.privacy }}
+    </div>
 <input type="submit" value="{% trans 'Save' %}" />
 </form>
 
