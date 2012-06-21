@@ -290,10 +290,13 @@ FSHOP_SHOP_TITLE = 'Гильдия мастеров'
 
 USE_SOUTH = False
 
+USE_MEZZANINE_COMMENTS = False
+
 ADMIN_MENU_ORDER = (
     (_("Content"), ("pages.Page", "fblog.Post", "fevents.Event", 
        "fgallery.Album", "mezzanine_wiki.WikiPage",
-       "generic.ThreadedComment", (_("Media Library"), "fb_browse"),)),
+       "generic.ThreadedComment", "comments.Comment",
+       (_("Media Library"), "fb_browse"),)),
     (_("Shop"), ("shop.Product", "shop.ProductVariation", "shop.Vendor",
               "shop.DiscountCode", "shop.Sale", "shop.Order",
               "customshop.Shipping", "customshop.Payment",)),
