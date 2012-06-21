@@ -87,7 +87,8 @@ TEMPLATE_DIRS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'mezzanine.core.middleware.UpdateCacheMiddleware',
+    #'mezzanine.core.middleware.UpdateCacheMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -109,7 +110,8 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the following if using any of the SSL settings:
     # "mezzanine.core.middleware.SSLRedirectMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
-    "mezzanine.core.middleware.FetchFromCacheMiddleware",
+    "django.middleware.cache.FetchFromCacheMiddleware",
+    #"mezzanine.core.middleware.FetchFromCacheMiddleware",
 )
 
 ROOT_URLCONF = 'urls'
