@@ -35,6 +35,10 @@ class PostAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
             'fields': ('preview', 'related_entries', 'date', 'is_featured', 'enable_comments')
         }),
+        ('Meta fields', {
+            'classes': ('collapse',),
+            'fields': ('meta_title', 'meta_description', 'meta_keywords',)
+        }),
     )
 #    filter_horizontal = ['images',]
 

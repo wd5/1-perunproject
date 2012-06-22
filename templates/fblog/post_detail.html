@@ -10,11 +10,11 @@
 {% load fgallery_tags %}
 {% load avatar_tags %}
 
-{% block title %}{% seo title for newsres as seo_title %}{% if seo_title %}{{ seo_title }}{% else %}{{ newsres.title }}{% endif %} | Клуб «Стрелы Перуна»{% endblock %}
+{% block title %}{% seo title for newsres as seo_title %}{% if seo_title %}{{ seo_title }}{% else %}{% if newsres.meta_title %}{{ newsres.meta_title }}{% else %}{{ newsres.title }}{% endif %}{% endif %} | Клуб «Стрелы Перуна»{% endblock %}
 
-{% block description %}{% seo description for newsres %}{% endblock %}
+{% block description %}{% seo description for newsres as seo_descr %}{% if seo_descr %}{{ seo_descr }}{% else %}{{ newsres.meta_description }}{% endif %}{% endblock %}
 
-{% block keywords %}{% seo keywords for newsres %}{% endblock %}
+{% block keywords %}{% seo keywords for newsres as seo_keywords %}{% if seo_keywords %}{{ seo_keywords }}{% else %}{{ newsres.meta_keywords }}{% endif %}{% endblock %}
 
 {% block breadcrumbs %} - <a href="{% url blog_index %}">Дневник</a> - <a href="{% url blog_archive_year newsres.date.year %}">{{ newsres.date.year }}</a> - <a href="{% url blog_archive_month newsres.date.year newsres.date|date:"m" %}">{{ newsres.date|date:"F" }}</a> - Заметка{% endblock %}
 

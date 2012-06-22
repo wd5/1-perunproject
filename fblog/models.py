@@ -64,6 +64,11 @@ class Post(models.Model):
     date = models.DateTimeField(default=datetime.now)
     date_mod = models.DateTimeField(auto_now=True)
 
+    # Meta
+    meta_title = models.CharField(max_length=100, blank=True)
+    meta_description = models.TextField(blank=True)
+    meta_keywords = models.CharField(max_length=100, blank=True)
+
     # Stats
     view_count = models.PositiveIntegerField(default=0, editable=False)
 
