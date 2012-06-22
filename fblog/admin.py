@@ -24,7 +24,7 @@ class PostAdmin(admin.ModelAdmin):
     list_per_page = 20
 
     filter_horizontal = ["related_entries"]
-    list_display = ["title", "is_published"]
+    list_display = ["title", "date", "is_published"]
     list_editable = ["is_published"]
 
     fieldsets = (
