@@ -20,8 +20,8 @@ class Ptype(models.Model):
 
     class Meta:
         ordering = ('order','title')
-        verbose_name = "тип статьи"
-        verbose_name_plural = "типы статей"
+        verbose_name = "тип заметки"
+        verbose_name_plural = "типы заметок"
 
     def __unicode__(self):
         #dt = unicode(self.date)[:10]
@@ -78,8 +78,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-date']
-        verbose_name = "статья"
-        verbose_name_plural = "статьи"
+        verbose_name = "заметка"
+        verbose_name_plural = "заметки"
 
     def __unicode__(self):
         dt = unicode(self.date)[:10]
