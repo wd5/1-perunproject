@@ -10,6 +10,8 @@
 <link rel="shortcut icon" href="{{ MEDIA_URL }}design/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="{{ MEDIA_URL }}design/favicon.ico" type="image/x-icon" />
 
+<link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css" type="text/css" />
+
 {% load fcss_tags %}
 <link rel="stylesheet" href="{% if request.subdomain == "m" %}{{ STATIC_URL }}design/css/base_mobile.css{% else %}{{ STATIC_URL }}design/css/base.css{% endif %}" type="text/css" />
 
