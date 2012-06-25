@@ -34,22 +34,53 @@
 
     <div id="events" class="halftop">
 
-        <h2>События (<a href="{% url events %}">хроники</a>)</h2>
-        
-        <div class="eventlist">
-        <ul>{% get_latest fevents.Event 4 as event_list %}
-        {% for event1 in event_list %}
-        <li><span class="edate{% if not event1.is_past_due %}-hl{% endif %}">{{ event1.date|date:"Y.m.d" }}</span> - {{ event1.title }}
-            <ul>
-                {% for erelation in event1.eventrelation_set.all %}<li><a href="{{ erelation.content_object.get_absolute_url }}">{% if erelation.content_object.type %}{{ erelation.content_object.type }}{% else %}{{ erelation.content_type }}{% endif %}</a></li>
-                {% endfor %}
-            </ul>
-        </li>
-        {% endfor %}
-        </ul>
+        <h2>Участники</h2>
+
+        <div id="teamlist">
+          <ul><li><a href="/strely/">Клуб СГБ "Стрелы Перуна"</a></li>
+            <li><a href="/shturmfight/">Федерация ШТУРМ Марий Эл</a></li>
+            <li><a href="/camp/">тренировочный центр Перунова Слобода</a></li>
+            <li><a href="/slashfight/">Союз Засечного боя</a></li>
+          </ul>
         </div>
 
     </div><!-- /#events.halftop -->
+
+    <div class="clearfix"></div>
+
+    <div id="service1" class="servicecol">
+            <div class="sl-imglabel"><a href="/training/"><img src="{{ STATIC_URL }}design/services/training.png" /></a></div>
+            <div class="sl-sublist">
+                <span><a href="/training/">Регулярные тренировки</a></span>
+                <ul>
+                    <li>Йошкар-Ола</li>
+                    <li>Чебоксары</li>
+                    <li>Перунова Слобода</li>
+                </ul>
+            </div>
+    </div>
+
+    <div id="service2" class="servicecol">
+            <div class="sl-imglabel"><a href="/camp/"><img src="{{ STATIC_URL }}design/services/seminar.png" /></a></div>
+            <div class="sl-sublist">
+                <span><a href="/camp/">Лагерь активного отдыха</a></span>
+                <ul>
+                    <li>Практикумы по рук бою</li>
+                    <li>Военно-спорт «Варвар»</li>
+                </ul>
+            </div>
+    </div>
+
+    <div id="service3" class="servicecol">
+            <div class="sl-imglabel"><a href="/farm/"><img src="{{ STATIC_URL }}design/services/farm.png" /></a></div>
+            <div class="sl-sublist">
+                <span><a href="/farm/">Здоровое питание</a></span>
+                <ul>
+                    <li>Мясо кролика</li>
+                    <li>Лекарственные травы</li>
+                </ul>
+            </div>
+    </div>
 
     <div class="clearfix"></div>
 
@@ -107,68 +138,20 @@
 
     <div id="services" class="half">
 
-        <h2>Мы предлагаем (<a href="/services/">больше</a>)</h2>
-
-        <div id="servicelist">
-        <ul>
-            <li id="sl-training">
-            <div class="sl-imglabel"><a href="/training/"><img src="{{ STATIC_URL }}design/services/training.png" /></a></div>
-            <div class="sl-sublist">
-                <span><a href="/training/">Регулярные тренировки</a></span>
-                <ul>
-                    <li>Йошкар-Ола</li>
-                    <li>Чебоксары</li>
-                    <li>Перунова Слобода</li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-            </li><li id="sl-camp">
-            <div class="sl-imglabel"><a href="/camp/"><img src="{{ STATIC_URL }}design/services/seminar.png" /></a></div>
-            <div class="sl-sublist">
-                <span><a href="/camp/">Лагерь активного отдыха</a></span>
-                <ul>
-                    <li>Практикумы по рукопашному бою</li>
-                    <li>Военно-спортивные курсы «Варвар»</li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-            </li><li id="sl-farm">
-            <div class="sl-imglabel"><a href="/farm/"><img src="{{ STATIC_URL }}design/services/farm.png" /></a></div>
-            <div class="sl-sublist">
-                <span><a href="/farm/">Здоровое питание</a></span>
-                <ul>
-                    <li>Мясо кролика</li>
-                    <li>Лекарственные травы</li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-            </li>
-        </ul>
-        </div><!-- /#servicelist -->
-        <div id="teamlist">
-          Участники движения:
-          <ul><li><a href="/strely/">Клуб СГБ "Стрелы Перуна"</a></li>
-            <li><a href="/shturmfight/">Федерация ШТУРМ Марий Эл</a></li>
-            <li><a href="/camp/">тренировочный центр Перунова Слобода</a></li>
-            <li><a href="/slashfight/">Союз Засечного боя</a></li>
-          </ul>
-        </div>
-        <!--<div id="presentlist">А также представляем в Марий Эл и Чувашии:
-            <ul><li>
-                <div class="pl-img">
-                    <img src="{{ MEDIA_URL }}design/logo/goritsfighting-32px.png" />
-                </div>
-                <div class="pl-title">Федерация СГБ</div>
-                <div class="clearfix"></div>
-            </li><li>
-                <div class="pl-img">
-                    <img src="{{ MEDIA_URL }}design/logo/shturmfight-32px.png" />
-                </div>
-                <div class="pl-title"><a style="text-decoration: none;" href="/shturmfight/">Федерация ШТУРМ</a></div>
-                <div class="clearfix"></div>
-                </li>
+        <h2>События (<a href="{% url events %}">хроники</a>)</h2>
+        
+        <div class="eventlist">
+        <ul>{% get_latest fevents.Event 4 as event_list %}
+        {% for event1 in event_list %}
+        <li><span class="edate{% if not event1.is_past_due %}-hl{% endif %}">{{ event1.date|date:"Y.m.d" }}</span> - {{ event1.title }}
+            <ul>
+                {% for erelation in event1.eventrelation_set.all %}<li><a href="{{ erelation.content_object.get_absolute_url }}">{% if erelation.content_object.type %}{{ erelation.content_object.type }}{% else %}{{ erelation.content_type }}{% endif %}</a></li>
+                {% endfor %}
             </ul>
-        </div>-->
+        </li>
+        {% endfor %}
+        </ul>
+        </div>
 
     </div><!-- /#services -->
 
