@@ -499,7 +499,7 @@ div.img img {
 .halftop {
     float: left;
     width: 435px;
-    min-height: 128px;
+    min-height: 112px;
     padding: 8px;
     margin-right: 12px;
     margin-bottom: 13px;
@@ -603,6 +603,10 @@ div.img img {
 
 .sl-sublist {
     float: left;
+}
+
+#teamlist ul {
+    margin-bottom: 0px;
 }
 
 #teamlist ul li a {
