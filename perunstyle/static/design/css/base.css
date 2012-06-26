@@ -538,29 +538,18 @@ div.img img {
 
 /* ======================== FRONTPAGE SERVICES ======================= */
 
-#servicelist > ul > li {
-    margin-bottom: 3px;
-    /*background: #232323;*/
-    padding: 2px;
-}
-
-#servicelist ul li a {
+.sl-sublist a {
     text-decoration: none;
 }
 
-#servicelist > ul {
-    list-style-type: none;
-    padding: 0px;
-}
-
-#servicelist > ul li ul {
+.sl-sublist ul {
     list-style-type: disc;
     padding-left: 14px;
     margin-top: 4px;
     margin-bottom: 6px;
 }
 
-#servicelist > ul li ul li {
+.sl-sublist ul li {
     color:#777;
     margin-bottom: 1px;
 }
