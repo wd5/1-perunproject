@@ -4,7 +4,11 @@
 from django.views.generic.simple import direct_to_template, redirect_to
 from django.shortcuts import redirect
 from django.views.generic import date_based, list_detail
+from django.contrib.auth.decorators import permission_required
+from django.http import HttpResponse, HttpResponseRedirect
+
 from fblog.models import Post, Ptype
+from fblog.forms import PostForm
 import datetime, time
 
 def post_list(request, page=0, template_name='fblog/post_list.html', **kwargs):
@@ -69,3 +73,29 @@ def category_detail(request, slug, page=0, template_name='fblog/post_list.html',
         extra_context = {'category':category.title_plural},
         **kwargs)
 
+@permission_required('fblog.add_entry')
+def post_new(request, **kwargs):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_entry = form.save(commit=False)
+            new_entry.author = request.user
+            new_entry.save()
+            return HttpResponseRedirect(reverse('blog_index'))
+    else:
+        form = PostForm()
+
+    return direct_to_template(request, 'fblog/post_edit.html',{'form':form})
+
+@permission_required('fblog.change_entry')
+def post_edit(request, year, month, day, slug, **kwargs):
+    post = Post.objects.get(date__year=year, date__month=month, date__day=day, slug=slug)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(post.get_absolute_url())
+    else:
+        form = PostForm(instance=post)
+
+    return direct_to_template(request, 'fblog/post_edit.html',{'form':form,'post':post})

@@ -18,6 +18,17 @@ urlpatterns = patterns('fblog.views',
         name='blog_detail'
     ),
 
+    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/edit/$',
+        view='post_edit',
+        name='blog_post_edit'
+    ),
+
+    url(r'^new/$',
+        view='post_new',
+        name='blog_post_new'
+    ),
+
+
     url(r'^category/(?P<slug>[-\w]+)/$',
         view='category_detail',
         name='blog_category_detail'
