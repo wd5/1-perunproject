@@ -1,0 +1,23 @@
+{% extends "fblog/base_blog.html" %}
+
+{% block title %}{% if entry %}{{ entry.title }}{% else %}Новая заметка{% endif %} | {{ block.super }}{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script type="text/javascript" src="/admin/jsi18n/"></script> 
+    {{ form.media }}
+{% endblock %}
+
+{% block breadcrumbs %} - <a href="{% url blog_index %}">Дневник</a> - {% if entry %}<a href="{% url blog_archive_year entry.date_publish.year %}">{{ entry.date_publish.year }}</a> - <a href="{% url blog_archive_month entry.date_publish.year entry.date_publish|date:"m" %}">{{ entry.date_publish|date:"F" }}</a> - <a href="{{ entry.get_absolute_url }}">Заметка</a> - Редактирование{% else %}Новая заметка{% endif %}{% endblock %}
+
+{% block contentclass %}blog-editor{% endblock %}
+{% block content %}
+<h1>{% if entry %}{{ entry.title }}{% else %}Новая заметка{% endif %}</h1>
+
+<form action="" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Save" />
+</form>
+
+</div>
+{% endblock %}
