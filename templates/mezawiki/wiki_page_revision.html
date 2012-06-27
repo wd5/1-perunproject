@@ -33,7 +33,7 @@
 
 <h1>{{ wiki_page.title }}</h1>
 
-<div id="wiki-links">
+<div id="wiki-links" class="postinfo">
 [<a href="{{ wiki_page.get_absolute_url }}">{% trans "View Page" %}</a>]
 </div>
 
@@ -47,14 +47,14 @@ intended to view,
 {% endblocktrans %}</p>
 </div>
 
-<h6>
     {% if wiki_page.categories.all.count > 0 %}
+<h6>
     {% trans "Categories" %}:
     {% for category in wiki_page.categories.all %}
     <a href="{% url wiki_page_list_category category.slug %}">{{ category }}</a>
     {% endfor %}
-    {% endif %}
 </h6>
+    {% endif %}
 
 {% if wiki_page.featured_image %}
 <p><img src="{{ MEDIA_URL }}{% thumbnail wiki_page.featured_image 600 0 %}"></p>

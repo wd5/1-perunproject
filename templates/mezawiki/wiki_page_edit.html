@@ -52,7 +52,7 @@
 {% endif %}
 </h1>
 
-<div id="wiki-links">
+<div id="wiki-links" class="postinfo">
 {% if not wiki_page.is_initial %}
 [<a href="{{ wiki_page.get_absolute_url }}">{% trans "View Page" %}</a>]
 {% else %}
@@ -61,14 +61,14 @@
 </div>
 
 {% if not wiki_page.is_initial %}
-<h6>
     {% if wiki_page.categories.all.count > 0 %}
+<h6>
     {% trans "Categories" %}:
     {% for category in wiki_page.categories.all %}
     <a href="{% url wiki_page_list_category category.slug %}">{{ category }}</a>
     {% endfor %}
-    {% endif %}
 </h6>
+    {% endif %}
 {% endif %}
 
 {% if wiki_page.featured_image %}
