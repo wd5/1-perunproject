@@ -390,6 +390,17 @@ div.img img {
     /*overflow: auto;*/
 }
 
+form .control-group {
+    margin-bottom: 8px;
+}
+
+form .controls {
+    margin-top: 2px;
+}
+
+form .help-inline {
+    color: #666;
+}
 
 /* ========================== SIDEBAR ======================== */
 
