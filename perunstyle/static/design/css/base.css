@@ -158,6 +158,11 @@ h3 {
 h1, h2, h3,
 .blog h2 {
     margin-top: 0px;
+    padding-top: 0px;
+}
+
+h2, h3 {
+    padding-top: 8px;
 }
 
 a, a:visited {
