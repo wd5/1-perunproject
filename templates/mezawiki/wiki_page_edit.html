@@ -77,21 +77,13 @@
 
 <form action="" method="post">{% csrf_token %}
 {{ form.non_field_errors }}
-    <div class="fieldWrapper">
-        {{ form.content.errors }}
-        <!--<label for="id_subject">Email subject:</label>-->
-        {{ form.content }}
-    </div>
-    <div class="fieldWrapper">
-        {{ form.description.errors }}
-        <label for="id_description">{{ form.description.label }}</label>
-        {{ form.description }}
-    </div>
-    <div class="fieldWrapper">
-        {{ form.privacy.errors }}
-        <label for="id_privacy">{{ form.privacy.label }}</label>
-        {{ form.privacy }}
-    </div>
+    {% for field in form %}
+        <div class="fieldWrapper">
+            <div class="field-errors">{{ field.errors }}</div>
+            <div class="field-label">{{ field.label_tag }}</div>
+            <div class="field-core">{{ field }}</div>
+        </div>
+    {% endfor %}
 <input type="submit" value="{% trans 'Save' %}" />
 </form>
 
