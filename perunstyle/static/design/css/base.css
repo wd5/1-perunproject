@@ -835,6 +835,10 @@ pre {
     padding-top: 10px;
 }
 
+.wiki h2, .wiki h3 {
+    color: #BCBCBC;
+}
+
 
 /* ============================ FOOTER ========================== */
 
