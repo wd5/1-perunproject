@@ -423,6 +423,7 @@ form .help-inline {
 
 #sidebar h3 {
     margin-bottom: 4px;
+    padding-top: 0px;
     font-size: 140%;
 }
 
@@ -456,6 +457,7 @@ form .help-inline {
 
 .frontpage h2 {
     margin-bottom: 4px;
+    padding-top: 0px;
 }
 
 .frontpage h2 a, .frontpage h2 a:visited, ul.htabs span a {
