@@ -2,10 +2,18 @@
 
 {% load mezzanine_tags %}
 
-{% block main %}{{ block.super }}
+{% block content %}
 
+<h1>
+{% block content_title %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% endblock %}
+</h1>
+
+{% block content_main %}
 {% editable page.richtextpage.content %}
 {{ page.richtextpage.content|richtext_filter|safe }}
 {% endeditable %}
+{% endblock %}
 
 {% endblock %}

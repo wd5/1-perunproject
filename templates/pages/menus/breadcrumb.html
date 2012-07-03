@@ -1,0 +1,23 @@
+{% load i18n pages_tags %}
+
+{% if on_home %}
+<li>{% trans "Home" %}</li>
+{% else %}
+{% for page in page_branch %}
+
+    {% if page.is_primary and forloop.first %}
+        <span class="divider">-</span>
+    {% endif %}
+
+    {% if page.is_current_or_ascendant %}
+    {% if page.is_current %}
+    {{ page.title }}
+    {% else %}
+        <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+        <span class="divider">-</span>
+    {% endif %}
+    {% if page.has_children %}{% page_menu page %}{% endif %}
+    {% endif %}
+
+{% endfor %}
+{% endif %}
