@@ -1,12 +1,18 @@
 from django import forms
 from fblog.models import Post
-from django.contrib.admin.widgets import FilteredSelectMultiple
+from selectable.forms import AutoCompleteWidget
+from selectable.forms import AutoCompleteSelectField
+from selectable.forms import AutoComboboxSelectWidget
+from fblog.lookups import CategoryLookup
 
 class PostForm(forms.ModelForm):
-    related_entries = forms.ModelMultipleChoiceField(
-            queryset=Post.objects.all(),
-            widget=FilteredSelectMultiple("verbose name", is_stacked=False),
-            required=False)
+
+    autocompleteselect = AutoCompleteSelectField(
+        widget = AutoComboboxSelectWidget,
+        lookup_class=CategoryLookup,
+        label='Select a fruit (AutoCompleteField)',
+        required=False,
+    )
 
     class Meta:
         model = Post

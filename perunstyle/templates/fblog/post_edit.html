@@ -1,10 +1,13 @@
 {% extends "fblog/base_blog.html" %}
 
+{% load selectable_tags %}
+
 {% block title %}{% if entry %}{{ entry.title }}{% else %}Новая заметка{% endif %} | {{ block.super }}{% endblock %}
 
 {% block extrahead %}
     {{ block.super }}
-    <script type="text/javascript" src="/admin/jsi18n/"></script> 
+    {% include_jquery_libs %}
+    {% include_ui_theme 'vader' %}
     {{ form.media }}
 {% endblock %}
 

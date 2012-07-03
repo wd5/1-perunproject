@@ -157,6 +157,7 @@ INSTALLED_APPS = (
 
     ## project utils
     'sorl.thumbnail', # legacy 3.2.5
+    'selectable',
     'tagging',
     'captcha',
     'netauth',

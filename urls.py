@@ -72,6 +72,7 @@ urlpatterns = patterns('',
 
     url(r'^simplepages/', include('simplepages.urls')), 
     url(r'^captcha/', include('captcha.urls')),
+    url(r'^selectable/', include('selectable.urls')),
 
     (r'^d3c503b7e78d.html$', 'django.views.static.serve', {'path':"/d3c503b7e78d.html",'document_root': settings.MEDIA_ROOT,'show_indexes': False }),
     (r'^yandex_5ad2946d08ecab92.html$', 'django.views.static.serve', {'path':"/yandex_master.html",'document_root': settings.MEDIA_ROOT,'show_indexes': False }),
