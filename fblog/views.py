@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from django.views.generic import date_based, list_detail
 from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 from fblog.models import Post, Ptype
 from fblog.forms import PostForm
