@@ -35,12 +35,14 @@
 {% endif %}
 {% endblock %}
 
+{% block contentclass %}wiki{% endblock %}
+
 {% block content %}
 <h1>
 {% if page %}
 {% editable page.title %}{{ page.title }}{% endeditable %}
 {% else %}
-{% trans "Wiki" %}
+{% trans "Page list" %}
 {% endif %}
 </h1>
 

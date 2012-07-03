@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# project settings, Django 1.3 required
+# perunspace project settings, Django 1.3+ required
+# based on Mezzanine CMS
 
 import os
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__)) 
@@ -117,21 +118,23 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'urls'
 
 INSTALLED_APPS = (
+    ## core apps
     'django.contrib.admin',
     'django.contrib.staticfiles',
-
     'django.contrib.auth',
     'django.contrib.sessions',
     'django.contrib.messages',
-
     'django.contrib.sites',
     'django.contrib.redirects',
-    'django.contrib.comments',
     'django.contrib.contenttypes',
     'django.contrib.sitemaps',
-
+    'django.contrib.comments',
     'django.contrib.markup',
 
+    ## theme apps
+    'perunstyle',
+
+    ## cms apps
     'mezzanine.boot',
     'mezzanine.conf',
     'mezzanine.core',
@@ -143,14 +146,17 @@ INSTALLED_APPS = (
     #'mezzanine.twitter',
     #"mezzanine.accounts",
     #"mezzanine.mobile",
-    'mezzanine_wiki',
 
-    #'south',
-    'dbtemplates',
-    'registration',
-    'avatar',
-    'profiles',
-    'sorl.thumbnail', #'easy_thumbnails',
+    ## project apps
+    'fblog',
+    'fgallery',
+    'fevents',
+    'mezzanine_wiki',
+    'fcomments',
+    'perunprofile',
+
+    ## project utils
+    'sorl.thumbnail', # legacy 3.2.5
     'tagging',
     'captcha',
     'netauth',
@@ -158,26 +164,27 @@ INSTALLED_APPS = (
     'genericadmin',
     'inlines',
     'pagination',
-    #'syncr.youtube',
-
-    #'haystack',
-    #'djangobb_forum',
-    #'messages',
-
-    'simplepages',
-    'fblog',
-    'fgallery',
-    'fevents',
-    'fshop',
-    'cart',
-    'mptt',
-
-    'fcss',
-    'fcomments',
-    'perunstyle',
-    'perunprofile',
     'perunutils',
 
+    ## deprecate in version 0.3
+
+    ## accounts, replace with userena
+    'registration',
+    'avatar',
+    'profiles',
+
+    ## forum, temporary deleted
+    #'djangobb_forum',
+    #'haystack',
+    #'messages',
+
+    ## other
+    'simplepages', # replace with mezzanine
+    'fshop', # replace with cartridge
+    'cart',
+    'mptt',
+    'fcss',
+    'dbtemplates', # replace with templateadmin
     'seo',
 )
 
@@ -288,7 +295,7 @@ FSHOP_SHOP_TITLE = 'Гильдия мастеров'
 
 # ========================== MEZZANINE SETTINGS ==========================
 
-USE_SOUTH = False
+USE_SOUTH = True
 
 USE_MEZZANINE_COMMENTS = False
 
