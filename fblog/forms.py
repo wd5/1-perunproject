@@ -1,12 +1,8 @@
 from django import forms
 from fblog.models import Post
-from django.contrib.admin.widgets import FilteredSelectMultiple
+
 
 class PostForm(forms.ModelForm):
-    related_entries = forms.ModelMultipleChoiceField(
-            queryset=Post.objects.all(),
-            widget=FilteredSelectMultiple("verbose name", is_stacked=False),
-            required=False)
 
     class Meta:
         model = Post
