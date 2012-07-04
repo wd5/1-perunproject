@@ -460,6 +460,10 @@ form .help-inline {
     width: 932px;
 }
 
+.eventlist {
+    line-height: 1.2;
+}
+
 .frontpage h2 {
     margin-bottom: 4px;
     padding-top: 0px;
