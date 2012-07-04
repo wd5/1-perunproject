@@ -40,9 +40,9 @@
 <div id="photo-small">
 <a href="#show" id="photo-small-show">Показать уменьшенную копию</a>
 <div id="photo-small-hidden">
-<img src="{% thumbnail photores.image 320x240 %}" />
+<img src="{% thumbnail photores.image 280x200 %}" />
 <div>HTML-код для вставки в блог<br />
-<textarea style="width: 600px"><a href="{{ photores.get_absolute_url }}"><img id="{{ photores|class_name }}-id-{{ photores.id }}" class="img-inline" src="{% thumbnail photores.image 320x240 %}" /></a></textarea>
+<textarea style="width: 600px"><a href="{{ photores.get_absolute_url }}"><img id="{{ photores|class_name }}-id-{{ photores.id }}" class="img-inline" src="{% thumbnail photores.image 280x200 %}" /></a></textarea>
 </div>
 </div>
 </div><!-- /#photo-small -->

@@ -226,6 +226,11 @@ div.img img {
     border: 1px solid #999;
 }
 
+#content img {
+    margin-right: 1px;
+    border: 1px solid #999;
+}
+
 .subfont {
     font-size: 75%;
 }
