@@ -239,7 +239,7 @@ div.img img {
     margin-top: 15px;
 }
 
-#commentform p {
+#commentform p, .postcomments p {
     margin-top: 0px;
 }
 
