@@ -226,7 +226,7 @@ div.img img {
     border: 1px solid #999;
 }
 
-#content img {
+.postcontent img {
     margin-right: 1px;
     border: 1px solid #999;
 }
@@ -237,6 +237,10 @@ div.img img {
 
 #commentform {
     margin-top: 15px;
+}
+
+#commentform p, .postcomments p {
+    margin-top: 0px;
 }
 
 
