@@ -16,9 +16,9 @@
 <h1>{% trans "Recent changes" %}</h1>
 
 <ul style="unstyled">
-{% for wikipage in wiki_pages %}
+{% for revision in wiki_revisions%}
 <li>
-    {{ wikipage.date_modified }} - <a href="{{ wikipage.get_absolute_url }}">{{ wikipage.title }}</a>
+    {{ revision.date_modified }} - <a href="{{ revision.get_absolute_url }}">{{ revision.page.title }}</a> ({{ revision.user }}{% if revision.description %}, {{ revision.description }}{% endif %})
 </li>
 {% endfor %}
 </ul>
