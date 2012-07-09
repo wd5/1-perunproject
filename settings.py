@@ -26,8 +26,6 @@ TIME_ZONE = 'Europe/Moscow'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'ru'
 
-#APPEND_SLASH = False #default True
-
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -179,14 +177,16 @@ INSTALLED_APPS = (
     #'haystack',
     #'messages',
 
-    ## other
-    #'simplepages', # replace with mezzanine
+    ## shop
     'fshop', # replace with cartridge
     'cart',
     'mptt',
+
+    ## other
+    #'simplepages', # replace with mezzanine
     #'fcss',
     #'dbtemplates', # replace with templateadmin
-    'seo',
+    #'seo',
 )
 
 # Store these package names here as they may change in the future since
@@ -270,26 +270,9 @@ CAPTCHA_NOISE_FUNCTIONS = ''
 #CAPTCHA_FILTER_FUNCTIONS = ''
 CAPTCHA_LETTER_ROTATION = (-15,15)
 
-SEO_FOR_MODELS = [
-    #'simplepages.models.Page',
-    'fblog.models.Post',
-    'fgallery.models.Photo',
-    'fgallery.models.Album',
-]
-
 WIKI_DEFAULT_INDEX = 'Академия'
 
 FBLOG_BLOG_TITLE = 'Дневник клуба "Стрелы Перуна"'
-
-DJANGOBB_FORUM_BASE_TITLE = 'Форум Перуновой Слободы'
-DJANGOBB_HEADER = 'Перунова Слобода'
-DJANGOBB_TAGLINE = 'Перунова Слобода - клановое бойцовское поселение клуба СГБ "Стрелы Перуна"'
-DJANGOBB_TOPIC_PAGE_SIZE = 20
-
-# Haystack settings
-HAYSTACK_SITECONF = 'search_sites'
-HAYSTACK_SEARCH_ENGINE = 'dummy'
-HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_DIR, 'djangobb_index')
 
 FSHOP_SHOP_TITLE = 'Гильдия мастеров'
 
@@ -297,8 +280,6 @@ FSHOP_SHOP_TITLE = 'Гильдия мастеров'
 # ========================== MEZZANINE SETTINGS ==========================
 
 USE_SOUTH = True
-
-USE_MEZZANINE_COMMENTS = False
 
 ADMIN_MENU_ORDER = (
     (_("Content"), ("pages.Page", "fblog.Post", "fevents.Event", 
@@ -308,13 +289,12 @@ ADMIN_MENU_ORDER = (
     (_("Shop"), ("shop.Product", "shop.ProductVariation", "shop.Vendor",
               "shop.DiscountCode", "shop.Sale", "shop.Order",
               "customshop.Shipping", "customshop.Payment",)),
-    (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting",
-       "inlines.InlineType")),
+    (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
     (_("Users"), ("auth.User", "auth.Group",
        "perunprofile.UserProfile", "registration.RegistrationProfile",
        "netauth.NetID", "avatar.Avatar")),
-    (_("Other"), ("fblog.Ptype", "fevents.Etype", "fgallery.Video",
-       "fgallery.Photo", "seo.Seo", "seo.Url",
+    (_("Other"), ("inlines.InlineType", "fblog.Ptype",
+       "fevents.Etype", "fgallery.Video", "fgallery.Photo",
        "tagging.Tag", "tagging.TaggedItem")),
 )
 
