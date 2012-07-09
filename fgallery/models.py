@@ -34,6 +34,11 @@ class Album(models.Model):
     slug = models.SlugField(max_length=70)
     #tags = TagField()
 
+    # Meta
+    meta_title = models.CharField(max_length=100, blank=True)
+    meta_description = models.TextField(blank=True)
+    meta_keywords = models.CharField(max_length=100, blank=True)
+
     objects = PublicManager()
 
     class Meta:
@@ -87,6 +92,11 @@ class Photo(models.Model):
     date_mod = models.DateTimeField(auto_now=True)
 
     image = models.ImageField(upload_to='photos/')
+
+    # Meta
+    meta_title = models.CharField(max_length=100, blank=True)
+    meta_description = models.TextField(blank=True)
+    meta_keywords = models.CharField(max_length=100, blank=True)
 
     objects = PublicManager()
 

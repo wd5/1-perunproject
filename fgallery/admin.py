@@ -45,6 +45,7 @@ class PhotoAdmin(admin.ModelAdmin):
 
     fieldsets = [
         (None,               {'fields': ['is_published','album','image','title','tags']}),
+        ('Metadata', {'fields': ['meta_title','meta_description','meta_keywords'], 'classes': ['collapse']}),
         ('Additional', {'fields': ['date','position','is_cover','rating','enable_comments',], 'classes': ['collapse']}),
     ]
 
