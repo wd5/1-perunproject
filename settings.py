@@ -75,7 +75,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'dbtemplates.loader.Loader',
+    #'dbtemplates.loader.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #    'django.template.loaders.eggs.load_template_source',
@@ -102,7 +102,7 @@ MIDDLEWARE_CLASSES = (
     #'djangobb_forum.middleware.LastLoginMiddleware',
     #'djangobb_forum.middleware.UsersOnline',
     #'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    'simplepages.middleware.PageFallbackMiddleware',
+    #'simplepages.middleware.PageFallbackMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'subdomains.SubdomainMiddleware',
     "mezzanine.core.request.CurrentRequestMiddleware",
@@ -180,12 +180,12 @@ INSTALLED_APPS = (
     #'messages',
 
     ## other
-    'simplepages', # replace with mezzanine
+    #'simplepages', # replace with mezzanine
     'fshop', # replace with cartridge
     'cart',
     'mptt',
-    'fcss',
-    'dbtemplates', # replace with templateadmin
+    #'fcss',
+    #'dbtemplates', # replace with templateadmin
     'seo',
 )
 
@@ -271,7 +271,7 @@ CAPTCHA_NOISE_FUNCTIONS = ''
 CAPTCHA_LETTER_ROTATION = (-15,15)
 
 SEO_FOR_MODELS = [
-    'simplepages.models.Page',
+    #'simplepages.models.Page',
     'fblog.models.Post',
     'fgallery.models.Photo',
     'fgallery.models.Album',
@@ -309,12 +309,11 @@ ADMIN_MENU_ORDER = (
               "shop.DiscountCode", "shop.Sale", "shop.Order",
               "customshop.Shipping", "customshop.Payment",)),
     (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting",
-       "dbtemplates.Template", "fcss.Stylesheet", "inlines.InlineType")),
+       "inlines.InlineType")),
     (_("Users"), ("auth.User", "auth.Group",
        "perunprofile.UserProfile", "registration.RegistrationProfile",
        "netauth.NetID", "avatar.Avatar")),
-    (_("Other"), ("simplepages.Page", "simplepages.SiteSection",
-       "fblog.Ptype", "fevents.Etype", "fgallery.Video",
+    (_("Other"), ("fblog.Ptype", "fevents.Etype", "fgallery.Video",
        "fgallery.Photo", "seo.Seo", "seo.Url",
        "tagging.Tag", "tagging.TaggedItem")),
 )
