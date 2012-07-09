@@ -3,16 +3,15 @@
 {% load markup %}
 {% load comments %}
 {% load thumbnail %}
-{% load seo_tags %}
 {% load fgallery_tags %}
 {% load customcomments %}
 {% load avatar_tags %}
 
-{% block title %}{% seo title for photores as seo_title %}{% if seo_title %}{{ seo_title }}{% else %}{{ photores.title }}{% endif %} | Фото клуба «Стрелы Перуна»{% endblock %}
+{% block title %}{% if photores.meta_title %}{{ photores.meta_title }}{% else %}{{ photores.title }}{% endif %} | Фото клуба «Стрелы Перуна»{% endblock %}
 
-{% block description %}{% seo description for photores %}{% endblock %}
+{% block description %}{% if photores.meta_description %}{{ photores.meta_description }}{% endif %}{% endblock %}
 
-{% block keywords %}{% seo keywords for photores %}{% endblock %}
+{% block keywords %}{% if photores.meta_keywords %}{{ photores.meta_keywords }}{% endif %}{% endblock %}
 
 {% block breadcrumbs %} - <a href="/gallery/">Галерея</a> - <a href="{% url gallery_album photores.album.id %}">Фотоальбом</a> - Фото{% endblock %}
 
@@ -33,7 +32,7 @@
 
 </div><!-- /#photo-header -->
 
-<div class="img">{% if photonext %}<a href="{{ photonext.get_absolute_url }}">{% endif %}<img src="{% thumbnail photores.image 640x480 %}" alt="{% seo title for photores as seo_title %}{% if seo_title %}{{ seo_title }}{% else %}{{ photores.title }}{% endif %}" />{% if photonext %}</a>{% endif %}</div>
+<div class="img">{% if photonext %}<a href="{{ photonext.get_absolute_url }}">{% endif %}<img src="{% thumbnail photores.image 640x480 %}" alt="{% if photores.meta_title %}{{ photores.meta_title }}{% else %}{{ photores.title }}{% endif %}" />{% if photonext %}</a>{% endif %}</div>
 <p style="color:#666; text-align: center;">просмотров: {{ photores.view_count }}</p>
 
 {% if user.is_staff %}
