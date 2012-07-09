@@ -30,3 +30,4 @@ git+git://github.com/alekam/django-simplepages.git#egg=django-simplepages
 #whoosh #check it
 markdown
 #mysql-python
+git+git://github.com/dfalk/mezzanine.git@release/v1.1.4-dfalk#egg=mezzanine
