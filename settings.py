@@ -3,10 +3,11 @@
 # perunspace project settings, Django 1.3+ required
 # based on Mezzanine CMS
 
+#_ = lambda s: s
+from django.utils.translation import ugettext_lazy as _
+
 import os
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__)) 
-
-_ = lambda s: s
 
 ADMINS = (
     ('Admin', 'contact@perunspace.ru'),
