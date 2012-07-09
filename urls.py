@@ -70,7 +70,6 @@ urlpatterns = patterns('',
     # Sitemap
     (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 
-    url(r'^simplepages/', include('simplepages.urls')), 
     url(r'^captcha/', include('captcha.urls')),
 
     (r'^d3c503b7e78d.html$', 'django.views.static.serve', {'path':"/d3c503b7e78d.html",'document_root': settings.MEDIA_ROOT,'show_indexes': False }),
