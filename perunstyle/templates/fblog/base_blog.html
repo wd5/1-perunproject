@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load fblog_tags %}
+
+{% block title %}Дневник клуба «Стрелы Перуна»{% endblock %}
+
+{% block breadcrumbs %} - Дневник{% endblock %}
+
+{% block sidebar %}
+{% if request.subdomain == 'm' %}<h2>Содержание</h2>{% endif %}
+<h3>Подписки</h3>
+<ul><li><a href="http://feeds.feedburner.com/perunspace" rel="alternate" type="application/rss+xml">RSS лента</a>&nbsp;<a href="http://feeds.feedburner.com/perunspace" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a></li></ul>
+<p><a href="http://feeds.feedburner.com/perunspace"><img src="http://feeds.feedburner.com/~fc/perunspace?bg=333333&amp;fg=dddddd&amp;anim=0" height="26" width="88" style="margin-left: 14px; border:0" alt="" /></a></p>
+<!--<ul><li><a href="{% url blog_rss %}">RSS лента</a></li></ul>-->
+
+<div id="featured_list">
+<h3>Интересное</h3>
+{% get_latest_featured fblog.Post 7 as featured_list %}
+<ul>
+{% for item in featured_list %}
+<li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+<h3>Разделы</h3>
+{% category_menu request %}
+
+<h3>Архив</h3>
+{% if newsres %}{% archive_tree newsres %}{% else %}{% archive_tree %}{% endif %}
+
+{% endblock %}
+
+{% block contentclass %}blog{% endblock %}
+

@@ -1,0 +1,42 @@
+{% extends "fgallery/base_gallery.html" %}
+
+{% load markup %}
+{% load comments %}
+{% load thumbnail %}
+
+{% block title %}{{ object.title }} | Видео клуба «Стрелы Перуна»{% endblock %}
+
+{% block breadcrumbs %} - <a href="/gallery/">Галерея</a> - <a href="/gallery/video/">Видеоальбом</a> - Видео{% endblock %}
+
+{% block contentclass %}video{% endblock %}
+{% block content %}
+
+<h1>{{ object.title }}</h1>
+
+<div class="img"><iframe width="640" height="390" src="http://www.youtube.com/embed/{{ object.video_id }}?rel=0" frameborder="0" allowfullscreen></iframe></div>
+<br>
+<hr>
+
+<div class="postcomments">
+
+<h3 id="comments">Комментарии:</h3>
+
+{% get_comment_list for object as allcomments %}{% if allcomments|length = 0 %}
+0 комментариев. Напишите первый комментарий к этой фотографии!
+{% endif %}
+                
+{% for acomment in allcomments %}
+    <p><b>{{ acomment.user_name }}</b>, {{ acomment.submit_date }}:<br>{{ acomment.comment }}</p>
+{% endfor %}
+
+<div id="commentform">
+{% if object.enable_comments %}
+<h3>Ваш комментарий{% if user.is_authernticated %}, {{ user }}{% endif %}:</h3>
+{% render_comment_form for object %}
+{% else %}
+<h3>Комментирование отключено.</h3>
+{% endif %}
+</div>
+
+</div>
+{% endblock %}

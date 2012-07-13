@@ -1,0 +1,6 @@
+<ul><li>Последние ответы
+    <ul>
+        {% for object in recent_comments %}<li>{{ object.comment }}</li>
+        {% endfor %}
+    </ul>
+</li></ul>

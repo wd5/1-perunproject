@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load avatar_tags %}
+
+{% block title %}Редактирование профиля{% endblock %}
+
+{% block breadcrumbs %} - <a href="{% url profiles_profile_list %}">Пользователи</a> - <a href="{% url profiles_profile_detail profile.user %}">Профиль {{ profile.user }}</a> - Редактирование{% endblock %}
+
+{% block content %}
+<h1>Редактирование профиля {{ user }} </h1>
+
+<p>Аватар (<a href="{% url avatar_change %}">Изменить</a>):</p>
+<p>{% avatar request.user %}</p>
+ 
+<form method="POST" action="">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="submit" value="Сохранить" id="submit">
+</form>
+ 
+{% endblock content %}

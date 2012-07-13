@@ -1,0 +1,42 @@
+{% extends "fgallery/base_gallery.html" %}
+
+{% load markup %}
+{% load comments %}
+{% load thumbnail %}
+
+{% block title %}Фото и видео клуба «Стрелы Перуна» | Перунова Слобода{% endblock %}
+
+{% block breadcrumbs %} - Галерея{% endblock %}
+
+{% block content %}
+    <div style="width: 450px; float: left;">
+    <h3>Фотоальбомы</h3>
+
+    <p>Всего: {{ album_list.count }}</p>
+    <table>
+    {% for album1 in album_list %}
+	{% if album1.is_published %}
+	<tr><td style="padding-bottom: 8px;"><a href="{% url gallery_album album1.id %}"><img src="{% thumbnail album1.get_cover_image 140x140 %}"></a></td>
+		<td align=left style="padding-left: 10px;"><a style="text-decoration: none;" href="{% url gallery_album album1.id %}"><b>{{ album1.title }}</b></a><br>(<a style="text-decoration:none;" href="{% url gallery_comments album1.id %}">комментарии к альбому</a>{% if user.is_staff %}, <a href="/gallery/{{ album1.id }}/edit/">изменить</a>{% endif %})<br>Дата события: {{ album1.date|date:"d.m.Y" }} <br><span style="color:#666">Обновлено: {{ album1.date_mod|date:"d.m.Y" }}</span></td></tr>
+	{% endif %}
+
+    {% endfor %}
+    </table>
+    </div>
+
+
+    <div style="width: 200px; margin-left: 20px; text-align: center; float: right;">
+    <h3 style="text-align: center">Видео</h3>
+    <p style="text-align: center">Всего: {{ video_list.count }}</p>
+    {% for object in video_list %}
+    <div style="margin-bottom: 15px;">
+    <a href="/gallery/video/{{ object.id }}/"><img src="http://img.youtube.com/vi/{{ object.video_id }}/1.jpg"></a>
+    <div>{{ object.title }}</div>
+    </div>
+    {% endfor %}
+    <a href="/gallery/video/">Еще видео</a>
+    </div>
+
+
+{% endblock %}
+

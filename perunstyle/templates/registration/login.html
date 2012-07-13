@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load netauth_tags %}
+
+{% block title %}Вход на сайт | Перунова Слобода{% endblock %}
+
+{% block breadcrumbs %} - Вход{% endblock %}
+
+{% block content %}
+
+<h3>Социальный вход</h3>
+{% include "netauth/widget.html" %}
+
+<h3>Обычная авторизация</h3>
+
+{% if user.is_authenticated %}
+<p>{{ user.username }}, вы уже идентифицированы на сайте.
+<p>Дополнительно, вы можете связать свой профиль на сайте со своей учетной записью в одной из популярных социальных или поисковых систем, для этого нажмите на одну из кнопок выше.<br/>
+{% else %}
+
+{% if form.non_field_errors %}
+{{ form.non_field_errors }}
+{% endif %}
+
+<form method="post" action="">{% csrf_token %}
+<dl class="register">
+{% for field in form %}
+    <dt>{{ field.label_tag }}</dt> <dd class="clearfix">{{ field }}
+    {% if field.help_text %}<div class="clearfix">{{ field.help_text }}</div>{% endif %}
+    {% if field.errors %}<div class="myerrors clearfix">{{ field.errors }}</div>{% endif %}
+    </dd>
+{% endfor %}
+</dl>
+<input type="submit" value="Вход" / class="clearfix">
+</form>
+
+<script type="text/javascript">
+document.getElementById('id_username').focus()
+</script>
+
+<br/>
+<ul>
+    <li><a href="{% url auth_password_reset %}">Забыли пароль?</a></li>
+    <li><a href="{% url registration_register %}">Регистрация</a></li>
+</ul>
+{% endif %}
+
+
+{% endblock %}

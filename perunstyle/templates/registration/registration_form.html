@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %} - Регистрация{% endblock %}
+
+{% block content %}
+<div class="blockform">
+	<h2><span>{% trans "Регистрация на сайте" %}</span></h2>
+	<div class="box">
+		<form method="post" action="">
+			{% csrf_token %}
+			<div class="inform">
+				{{ form.non_field_errors.as_ul }}
+					<div class="infldset">
+						{{ form.username.errors }}
+						<label><strong>{{ form.username.label }}</strong><br />{{ form.username }}<br /></label>
+                    </div>
+			</div>
+            <br />
+			<div class="inform">
+					<div class="infldset">
+						{{ form.password1.errors }}
+						{{ form.password2.errors }}
+						<label class="conl"><strong>{{ form.password1.label }}</strong><br />{{ form.password1 }}<br /></label>
+						<label class="conl"><strong>{{ form.password2.label }}</strong><br />{{ form.password2 }}<br /></label>
+						<p class="clearb">{% blocktrans %}Пароль чувствителен к регистру символов.{% endblocktrans %}</p>
+					</div>
+			</div>
+			<div class="inform">
+					<div class="infldset">
+					{{ form.email.errors }}
+					<label><strong>{{ form.email.label }}</strong><br />
+						{{ form.email }}<br /></label>
+					</div>
+			</div>
+            <br />
+            <div class="inform">
+					<div class="infldset">
+                                        {{ form.captcha.errors }}
+					<label><strong>Решите уравнение с картинки{#% trans "" %#}</strong><br />
+						{{ form.captcha|safe }}<br /></label>
+					</div>
+			</div>
+            <br />
+            <p><input type="submit" value="Зарегистрироваться" /></p>
+		</form>
+	</div>
+</div>
+{% endblock %}

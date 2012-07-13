@@ -1,0 +1,43 @@
+{% extends "fgallery/base_gallery.html" %}
+
+{% load markup %}
+{% load comments %}
+{% load thumbnail %}
+
+{% block title %}{{ albumres.title }} - комментарии | Фотоальбом клуба «Стрелы Перуна»{% endblock %}
+
+{% block breadcrumbs %} - <a href="/gallery/">Галерея</a> - <a href="{{ albumres.get_absolute_url }}">Фотоальбом</a> - Комментарии{% endblock %}
+
+{% block content %}
+<h3>{{ albumres.title }}</h3>
+
+<p><a href="{{ albumres.get_absolute_url }}">Посмотреть альбом</a>
+<p>{% if albumres.event.post_set.all %}Информация в разделе: <a href="{{ albumres.event.post_set.all.0.get_absolute_url }}">{{ albumres.event.post_set.all.0.type }}</a>{% endif %}
+<p>
+
+<table class=noborder align=left>
+    <table align=left>
+    {% for photo1 in albumres.photo_set.all %}
+
+
+    {% get_comment_count for photo1 as comment_count %}
+    {% if comment_count > 0 %}
+        <tr><td valign=top align=center><a href="{% url gallery_photo photo1.album.id photo1.id %}"><img src="{% thumbnail photo1.image 140x140 %}"/></a><br></td><td style="padding-left:10px; border-bottom:1px solid #555;" valign=top>
+        {% get_comment_list for photo1 as cmnts %}
+        {% for cmnt in cmnts %}
+             {% if cmnt.is_public %}
+             <p><span style="color:#fff">{{ cmnt.name }}</span> <span style="color:#777">({{ cmnt.submit_date }})</span><br>
+             {{ cmnt.comment }}
+             {% endif %}
+        {% endfor %}
+        </td></tr>
+
+    {% endif %}
+{% endfor %}
+</table>
+
+</table>
+
+
+
+{% endblock %}

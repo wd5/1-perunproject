@@ -1,0 +1,9 @@
+{% load i18n %}
+
+{% blocktrans %}
+Приветствуем, Вас, на сайте Перуновой Слободы!
+
+Благодарим за Вашу регистрацию. Чтобы активировать вашу учетную запись пройдите по ссылке:
+{% endblocktrans %}
+
+http://{{ site.domain }}{% url registration_activate activation_key %}

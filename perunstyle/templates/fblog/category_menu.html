@@ -1,0 +1,6 @@
+<div id="blog-cats">
+<ul>
+    {% for category in category_menu %}<li><a {% if page.url == request.path %}style="color:red;" {% endif %}href="{% url blog_category_detail category.slug %}">{{ category.title_plural }}</a></li>
+    {% endfor %}
+</ul>
+</div>

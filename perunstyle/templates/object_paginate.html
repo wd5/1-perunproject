@@ -1,0 +1,15 @@
+{% if pages %}
+<br />
+<span class="item-nav">
+[ <span>Страницы:&nbsp;</span>
+{% for p in pages %}
+<a href="{{ base_url }}?page={{p}}">{{p}}</a>
+{% endfor %}
+{% if page_count > window %}
+...
+<a href="{{ base_url }}?page={{page_count}}">{{page_count}}</a>
+{% endif %}
+<a href="{{ base_url }}?page={{page_count}}">последняя</a> ]
+</span>
+{% endif %}
+

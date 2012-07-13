@@ -1,0 +1,6 @@
+{% extends "fevents/event_list.html" %}
+
+{% block title %}{{ category }} | Хроники клуба «Стрелы Перуна»{% endblock %}
+
+{% block breadcrumbs %}{% if category %} - <a href="/events/">Хроники</a> - {{ category }}{% else %} - События{% endif %}{% endblock %}
+

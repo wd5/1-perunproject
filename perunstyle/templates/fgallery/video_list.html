@@ -1,0 +1,23 @@
+{% extends "fgallery/base_gallery.html" %}
+
+{% load markup %}
+{% load comments %}
+{% load thumbnail %}
+
+{% block title %}Видео клуба «Стрелы Перуна» | Перунова Слобода{% endblock %}
+
+{% block breadcrumbs %} - <a href="/gallery/">Галерея</a> - Видеоальбом{% endblock %}
+
+{% block contentclass %}video{% endblock %}
+{% block content %}
+
+<h3>Видеоальбом</h3>
+
+{% for object in object_list %}
+<div style="margin-bottom: 15px;">
+<a href="/gallery/video/{{ object.id }}/"><img src="http://img.youtube.com/vi/{{ object.video_id }}/1.jpg"></a>
+<div>{{ object.title }}</div>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "fgallery/base_gallery.html" %}
+
+{% load markup %}
+{% load comments %}
+{% load thumbnail %}
+{% load seo_tags %}
+{% load fgallery_tags %}
+{% load customcomments %}
+{% load avatar_tags %}
+
+{% block title %}{% seo title for photores as seo_title %}{% if seo_title %}{{ seo_title }}{% else %}{{ photores.title }}{% endif %} | Фото клуба «Стрелы Перуна»{% endblock %}
+
+{% block description %}{% seo description for photores %}{% endblock %}
+
+{% block keywords %}{% seo keywords for photores %}{% endblock %}
+
+{% block breadcrumbs %} - <a href="/gallery/">Галерея</a> - <a href="{% url gallery_album photores.album.id %}">Фотоальбом</a> - Фото{% endblock %}
+
+{% block contentclass %}photo{% endblock %}
+{% block content %}
+
+<div id="photo-header">
+<h1>{{ photores.title }}</h1>
+
+<div id="album-title">из альбома: {{ photores.album.title }}</div>
+
+<div id="photo-nav">
+{% if photoprev %}<a href="{% url gallery_photo photoprev.album.id photoprev.id %}">назад</a>{% endif %}
+{% if photores.album.is_published %}&nbsp;&nbsp;<a href="{{ photores.album.get_absolute_url }}">альбом</a>{% endif %}
+<a href="/media/{{ photores.image }}" target="_blank">оригинал</a>&nbsp;&nbsp;
+{% if photonext %}<a href="{% url gallery_photo photonext.album.id photonext.id %}">вперед</a>{% endif %}
+</div>
+
+</div><!-- /#photo-header -->
+
+<div class="img">{% if photonext %}<a href="{{ photonext.get_absolute_url }}">{% endif %}<img src="{% thumbnail photores.image 640x480 %}" alt="{% seo title for photores as seo_title %}{% if seo_title %}{{ seo_title }}{% else %}{{ photores.title }}{% endif %}" />{% if photonext %}</a>{% endif %}</div>
+<p style="color:#666; text-align: center;">просмотров: {{ photores.view_count }}</p>
+
+{% if user.is_staff %}
+<div id="photo-small">
+<a href="#show" id="photo-small-show">Показать уменьшенную копию</a>
+<div id="photo-small-hidden">
+<img src="{% thumbnail photores.image 280x200 %}" />
+<div>HTML-код для вставки в блог<br />
+<textarea style="width: 600px"><a href="{{ photores.get_absolute_url }}"><img id="{{ photores|class_name }}-id-{{ photores.id }}" class="img-inline" src="{% thumbnail photores.image 280x200 %}" /></a></textarea>
+</div>
+</div>
+</div><!-- /#photo-small -->
+{% endif %}
+
+<script>
+$(document).ready(function(){
+    $("#photo-small-hidden").hide();
+    $("#photo-small-show").click(function(){
+        $("#photo-small-hidden").toggle();
+    });
+});
+</script>
+
+<hr>
+
+<div class="postcomments">
+
+<h3 id="comments">Комментарии:</h3>
+
+{% get_comment_list for photores as allcomments %}{% if allcomments|length = 0 %}
+0 комментариев. Напишите первый комментарий к этой фотографии!
+{% endif %}
+                
+{% for acomment in allcomments %}
+    <div style="margin-bottom: 8px;">
+    <div style="float:left; margin-right: 8px; width: 60px;">{% avatar acomment.user %}</div><div style="float:left; width: 560px;"><p><b>{% if acomment.user %}{{ acomment.user }}{% else %}{{ acomment.user_name }}{% endif %}</b>, {{ acomment.submit_date|date:"j M Y H:m" }}:<br>{{ acomment.comment|linebreaks|markdown }}</p></div>
+    <div class="clearfix"></div>
+    </div>
+{% endfor %}
+
+{% if photores.enable_comments %}
+<div id="commentform">
+<h3>Ваш комментарий{% if user.is_authenticated %}, {{ user }}{% endif %}:</h3>
+{% if user.is_authenticated %}<div><div style="float:left; margin-right: 8px; width: 60px;">{% avatar request.user %}</div><div style="float:left; width: 560px;">{% render_auth_comment_form for photores %}</div>
+    <div class="clearfix"></div></div>
+{% else %}{% render_comment_form for photores %}
+{% endif %}
+{% else %}
+<h3>Комментирование отключено.</h3>
+{% endif %}
+</div>
+
+</div>
+
+{% endblock %}
+
