@@ -1,3 +1,6 @@
+from django.utils import translation
+
+
 class SubdomainMiddleware:
     """ Make the subdomain publicly available to classes """
 
@@ -8,6 +11,10 @@ class SubdomainMiddleware:
             if (subdomain.lower() == 'www'):
                 subdomain = None
             domain = '.'.join(domain_parts[1:])
+            if subdomain in ('en',):
+                translation.activate(subdomain)
+                request.LANGUAGE_CODE = translation.get_language()
+
         else:
             subdomain = None
             domain = request.get_host()
