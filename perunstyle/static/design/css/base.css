@@ -891,14 +891,10 @@ pre {
 #campfire { float: left; padding-right: 30px; margin-left: -4px; }
 
 #footermenu > ul { list-style-type: none; margin: 0; padding: 0;  font-size: 75%; margin-top: 20px; }
-#footermenu > ul > li { float:left; padding: 0px; }
-#footermenu > ul > li h3 { margin: 0; padding: 0; }
+#footermenu > ul > li { float:left; padding: 0px; margin-right: 30px; }
 #footermenu > ul > li ul { list-style-type: none; display: inline; margin: 0; padding: 0; text-align: left;}
-#fm-about { width: 154px; }
-#fm-present { width: 150px; }
-#fm-resources { width: 80px; }
-#fm-community { width: 100px; }
-#fm-contacts { width: 100px; }
+#footermenu > ul > li > ul > li:first-child { font-size: 140%; font-family: Georiga; }
+#footermenu > ul > li > ul > li:first-child a { color: #f7b867; }
 
 #stats { float: right; padding: 5px 25px 0 0; margin-top: -10px; }
 #stats ul { list-style-type: none; margin: 0; padding: 0; }

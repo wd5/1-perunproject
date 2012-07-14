@@ -1,3 +1,5 @@
+{% load pages_tags mezzanine_tags %}
+
 <div id="splitline">
     <div id="copyright">(c) Стрелы Перуна, 2010-2012{% if request.subdomain == "m" %}, мобильная версия сайта, <a href="http://{{ request.domain }}">полная версия</a>{% endif %}</div>
     <div id="author">дизайн и разработка: Сокол, 2010-2012</div>
@@ -10,38 +12,33 @@
 
 <div id="footermenu">
     <ul>
-    <li id="fm-resources"><h3>Ресурсы</h3>
-    <ul>
+        <li>
+        <ul>
+        <li id="fm-resources"><a href="/">Главная</a></li>
         <li><a href="/blog/">Дневник</a></li>
         <li><a href="/events/">Хроники</a></li>
         <li><a href="/gallery/">Галерея</a></li>
+        </li>
+        </ul>
     </ul>
-    </li><li id="fm-about"><h3>О нас</h3>
+    {% page_menu "pages/menus/footer.html" %}
     <ul>
-        <li><a href="/tradition/">Русская боевая традиция</a></li>
-        <li><a href="/strely/">Клуб Стрелы Перуна</a></li>
-        <li><a href="/shturmfight/">Федерация ШТУРМ</a></li>
-        <li><a href="/camp/">Перунова Слобода</a></li>
-        <li><a href="/slashfight/">Союз Засечного боя</a></li>
-    </ul>
-    </li><li id="fm-present"><h3>Мы предлагаем</h3>
-    <ul>
-        <li><a href="/training/">Регулярные тренировки</a></li>
-        <li><a href="/camp/">Интересные семинары</a></li>
-        <li><a href="/farm/">Здоровое питание</a></li>
-        <li><a href="/workshop/">Работы из мастерской</a></li>
-    </ul>
-    </li><li id="fm-community"><h3>Сообщество</h3>
-    <ul>
-        <li><a href="/links/">Ссылки</a></li>
+        <li>
+        <ul>
+        <li id="fm-community">Сообщество</li>
         <li><a href="http://vkontakte.ru/perunspace">Мы Вконтакте</a></li>
+        <li><a href="/links/">Ссылки</a></li>
+        </li>
+        </ul>
     </ul>
-    </li>
-    </li><li id="fm-community"><h3>Контакты</h3>
     <ul>
-        <li>contact@perunspace.ru</li>
-    </ul>
-    </li>
+        <li>
+        <ul>
+        <li id="fm-contacts">Контакты</li>
+        <li><a href="/contacts/">Форма обратной связи</a></li>
+        <li>Email: contact@perunspace.ru</li>
+        </ul>
+        </li>
     </ul>
 </div><!-- /#footermenu -->
 
