@@ -2,7 +2,7 @@
 {% load mezzanine_tags keyword_tags pages_tags %}
 
 {% block title %}
-{% block meta_title %}{% if page.meta_title %}{{ page.meta_title }}{% else %}{{ page.title }}{% endif %}{% if page.add_title_suffix and settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}{% endblock %}
+{% block meta_title %}{% if page.meta_title != page.titles %}{{ page.meta_title }}{% else %}{{ page.title }}{% endif %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}
 {% endblock title %}
 
 {% block keywords %}
