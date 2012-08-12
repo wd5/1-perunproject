@@ -133,6 +133,7 @@ class Photo(models.Model):
     class Meta:
         verbose_name = "фото"
         verbose_name_plural = "фотографии"
+        ordering = ["position"]
 
     def __unicode__(self):
         dt = unicode(self.date)[:10]

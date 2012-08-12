@@ -21,7 +21,7 @@ class PhotoForm(forms.ModelForm):
 class PhotoInline(admin.TabularInline):
     model = Photo
     form = PhotoForm
-    fields = ('image', 'author', 'title', 'tags')
+    fields = ('image', 'author', 'title', 'tags', 'position')
 
 class AlbumAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
