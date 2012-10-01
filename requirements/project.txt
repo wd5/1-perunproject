@@ -1,33 +1,34 @@
 Django==1.3.1
 south
-django-dbtemplates
 django-registration
 django-avatar
 django-profiles
 sorl-thumbnail==3.2.5
-django-tagging
+django-tagging # for gallery
 django-simple-captcha
 django-netauth
-django-form-utils
-#genericadmin
+django-form-utils # admin image
 git+git://github.com/nicolaslara/django-genericadmin.git#egg=django-genericadmin
-#basic.inlines
-#git+git://github.com/nathanborror/django-basic-apps.git#egg=django-basic-apps
 git+git://github.com/dfalk/django-inlines.git#egg=django-inlines
 django-pagination
-#django-cart
 git+git://github.com/dfalk/django-cart.git#egg=django-cart
 django-mptt
-django-seo
+markdown
+mezzanine
+git+git://github.com/dfalk/mezzanine-wiki.git@dev#egg=mezzanine-wiki
+
+
+### deprecated
+
+#django-dbtemplates
+#basic.inlines # django-inlines now
+#django-seo
 #django-haystack
-BeautifulSoup
+#BeautifulSoup
 #django-messages
 #-e git+git@github.com/arneb/django-messages.git#egg=django-messages
 #djangobb_forum
 #git+git://github.com/slav0nic/DjangoBB.git#egg=djangobb
 #simplepages
-git+git://github.com/alekam/django-simplepages.git#egg=django-simplepages
-#whoosh #check it
-markdown
+#git+git://github.com/alekam/django-simplepages.git#egg=django-simplepages
 #mysql-python
-git+git://github.com/dfalk/mezzanine.git@release/v1.1.4-dfalk#egg=mezzanine
