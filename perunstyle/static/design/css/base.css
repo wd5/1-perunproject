@@ -480,7 +480,6 @@ form .help-inline {
 .frontblock {
     min-height: 144px;
     padding: 8px;
-    margin-right: 12px;
     margin-bottom: 13px;
     border-radius: 6px;
     border: 1px solid #393939;
@@ -488,12 +487,13 @@ form .help-inline {
 
 .frontblock-left {
     float: left;
-    width: 505px;
+    margin-right: 10px;
+    width: 485px;
 }
 
 .frontblock-right {
     float: right;
-    width: 365px;
+    width: 400px;
 }
 
 #about-text {
