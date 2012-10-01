@@ -16,6 +16,7 @@ django-mptt
 markdown
 mezzanine
 git+git://github.com/dfalk/mezzanine-wiki.git@dev#egg=mezzanine-wiki
+diff-match-patch
 
 
 ### deprecated
