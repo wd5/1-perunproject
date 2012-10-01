@@ -477,10 +477,8 @@ form .help-inline {
     text-decoration: none;
 }
 
-.halftop {
-    float: left;
-    width: 435px;
-    min-height: 128px;
+.frontblock {
+    min-height: 144px;
     padding: 8px;
     margin-right: 12px;
     margin-bottom: 13px;
@@ -488,13 +486,14 @@ form .help-inline {
     border: 1px solid #393939;
 }
 
-.half {
+.frontblock-left {
     float: left;
-    width: 435px;
-    margin-right: 12px;
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid #393939;
+    width: 505px;
+}
+
+.frontblock-right {
+    float: right;
+    width: 365px;
 }
 
 #about-text {
@@ -588,6 +587,11 @@ form .help-inline {
 
 #teamlist ul li a {
     text-decoration: none;
+}
+
+.frontblock .entry-description {
+    margin-top: 4px;
+    color: #999;
 }
 
 /* ========================= FRONTPAGE TABS ======================== */

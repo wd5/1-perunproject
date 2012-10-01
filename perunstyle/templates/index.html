@@ -22,7 +22,13 @@
 {% block main %}
     <div id="content" class="frontpage">
 
-    <div id="about" class="halftop">
+    <div id="about" class="frontblock frontblock-left">
+
+        <div><iframe width="480" height="320" src="http://www.youtube.com/embed/-c2EblUCBcM" frameborder="0" allowfullscreen></iframe></div>
+
+    </div><!-- /#about.halftop -->
+
+    <div id="about" class="frontblock frontblock-right">
 
         <h2>О нас (<a href="/tradition/">подробнее</a>)</h2>
 
@@ -30,10 +36,10 @@
 
     </div><!-- /#about.halftop -->
 
-    <div id="events" class="halftop">
+    <div id="events" class="frontblock frontblock-right">
 
         <h2>События (<a href="{% url events %}">хроники</a>)</h2>
-        
+
         <div class="eventlist">
         <ul>{% get_latest fevents.Event 4 as event_list %}
         {% for event1 in event_list %}
@@ -47,63 +53,9 @@
         </ul>
         </div>
 
-    </div><!-- /#events.halftop -->
+    </div>
 
-    <div class="clearfix"></div>
-
-    <div id="blog" class="half">
-
-        <div id="tabwrapper">
-        <ul class="htabs">
-            <li><a id="new" href="#new">Новое</a></li>
-            <li><a id="featured" href="#featured">Интересное</a></li>
-            <span>(<a href="/blog/">дневник</a>)</span>
-        </ul>
-        <div class="tabs">
-            <div id="new" class="tab">
-            <ul>{% get_latest fblog.Post 5 as entry_list %}
-                {% for entry in entry_list %}{% get_main_image for entry as pimage %}
-                <li>
-                    <div class="entry-img"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 75x57 %}" /></a></div>
-                    <div class="entry-link">
-                        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
-                    </div>
-                    <div class="entry-footer">
-                        <span class="entry-date">{{ entry.date|date:"j b" }}</span>,
-                        <span class="entry-category">{{ entry.type }}</span>,
-                        Ответов: {% get_comment_count for entry as ecom_count %}
-                        <span{% if ecom_count > 0 %} class="preplies-count"{% endif %}>{{ ecom_count }}</span>
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-                {% endfor %}
-            </ul>
-            </div>
-            <div id="featured" class="tab">
-            <ul>{% get_latest_featured fblog.Post 5 as featured_list %}
-                {% for entry in featured_list %}{% get_main_image for entry as pimage %}
-                <li>
-                    <div class="entry-img"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 75x57 %}" /></a></div>
-                    <div class="entry-link">
-                        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
-                    </div>
-                    <div class="entry-footer">
-                        <span class="entry-date">{{ entry.date|date:"j b" }}</span>,
-                        <span class="entry-category">{{ entry.type }}</span>,
-                        Ответов: {% get_comment_count for entry as ecom_count %}
-                        <span{% if ecom_count > 0 %} class="preplies-count"{% endif %}>{{ ecom_count }}</span>
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-                {% endfor %}
-            </ul>
-            </div>
-        </div><!-- tabs -->
-        </div><!-- tabwrapper -->
-
-    </div><!-- /#blog -->
-
-    <div id="services" class="half">
+    <div class="frontblock frontblock-right">
 
         <h2>Мы предлагаем (<a href="/services/">больше</a>)</h2>
 
@@ -123,10 +75,11 @@
             </li><li id="sl-camp">
             <div class="sl-imglabel"><a href="/camp/"><img src="{{ STATIC_URL }}design/services/seminar.png" /></a></div>
             <div class="sl-sublist">
-                <span><a href="/camp/">Лагерь активного отдыха</a></span>
+                <span><a href="/camp/">Учебно-тренировочный центр</a></span>
                 <ul>
-                    <li>Практикумы по рукопашному бою</li>
-                    <li>Военно-спортивные курсы</li>
+                    <li>Тренировки по засечному бою</li>
+                    <li>Русский магический клуб "Темный лес"</li>
+                    <li>Курсы гражданской обороны "ВАРВАР"</li>
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -147,28 +100,65 @@
           Участники движения:
           <ul><li><a href="/strely/">Клуб СГБ "Стрелы Перуна"</a></li>
             <li><a href="/slashfight/">Федерация Засечного боя</a></li>
-            <li><a href="/camp/">тренировочный центр Перунова Слобода</a></li>
+            <li><a href="/sloboda/">тренировочный центр Перунова Слобода</a></li>
             <li><a href="/shturmfight/">Федерация ШТУРМ Марий Эл</a></li>
           </ul>
         </div>
-        <!--<div id="presentlist">А также представляем в Марий Эл и Чувашии:
-            <ul><li>
-                <div class="pl-img">
-                    <img src="{{ MEDIA_URL }}design/logo/goritsfighting-32px.png" />
-                </div>
-                <div class="pl-title">Федерация СГБ</div>
-                <div class="clearfix"></div>
-            </li><li>
-                <div class="pl-img">
-                    <img src="{{ MEDIA_URL }}design/logo/shturmfight-32px.png" />
-                </div>
-                <div class="pl-title"><a style="text-decoration: none;" href="/shturmfight/">Федерация ШТУРМ</a></div>
-                <div class="clearfix"></div>
-                </li>
-            </ul>
-        </div>-->
 
     </div><!-- /#services -->
+
+    <div id="blog" class="frontblock frontblock-left">
+
+        <div id="tabwrapper">
+        <ul class="htabs">
+            <li><a id="new" href="#new">Новое</a></li>
+            <li><a id="featured" href="#featured">Интересное</a></li>
+            <span>(<a href="/blog/">дневник</a>)</span>
+        </ul>
+        <div class="tabs">
+            <div id="new" class="tab">
+            <ul>{% get_latest fblog.Post 5 as entry_list %}
+                {% for entry in entry_list %}{% get_main_image for entry as pimage %}
+                <li>
+                    <div class="entry-img"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 110x85 %}" /></a></div>
+                    <div class="entry-link">
+                        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                    </div>
+                    <div class="entry-footer">
+                        <span class="entry-date">{{ entry.date|date:"j b" }}</span>,
+                        <span class="entry-category">{{ entry.type }}</span>,
+                        Ответов: {% get_comment_count for entry as ecom_count %}
+                        <span{% if ecom_count > 0 %} class="preplies-count"{% endif %}>{{ ecom_count }}</span>
+                    </div>
+                    <div class="entry-description">{{ entry.meta_description }}</div>
+                    <div class="clearfix"></div>
+                </li>
+                {% endfor %}
+            </ul>
+            </div>
+            <div id="featured" class="tab">
+            <ul>{% get_latest_featured fblog.Post 5 as featured_list %}
+                {% for entry in featured_list %}{% get_main_image for entry as pimage %}
+                <li>
+                    <div class="entry-img"><a href="{{ entry.get_absolute_url }}"><img src="{% thumbnail pimage.image.image 110x85 %}" /></a></div>
+                    <div class="entry-link">
+                        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                    </div>
+                    <div class="entry-footer">
+                        <span class="entry-date">{{ entry.date|date:"j b" }}</span>,
+                        <span class="entry-category">{{ entry.type }}</span>,
+                        Ответов: {% get_comment_count for entry as ecom_count %}
+                        <span{% if ecom_count > 0 %} class="preplies-count"{% endif %}>{{ ecom_count }}</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+                {% endfor %}
+            </ul>
+            </div>
+        </div><!-- tabs -->
+        </div><!-- tabwrapper -->
+
+    </div><!-- /#blog -->
 
     <div class="clearfix"></div>
 
