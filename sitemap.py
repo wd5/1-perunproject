@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 #from djangobb_forum.models import Forum, Topic
-from simplepages.models import Page
+#from simplepages.models import Page
 
 class SitemapPage(Sitemap):
     priority = 0.8
