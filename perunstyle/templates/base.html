@@ -1,4 +1,4 @@
-{% load mezzanine_tags %}
+{% load mezzanine_tags compress %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
@@ -11,9 +11,11 @@
 <link rel="shortcut icon" href="{{ STATIC_URL }}design/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="{{ STATIC_URL }}design/favicon.ico" type="image/x-icon" />
 
+{% compress css %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css" type="text/css" />
 
-<link rel="stylesheet" href="{% if request.subdomain == "m" %}{{ STATIC_URL }}design/css/base_mobile.css{% else %}{{ STATIC_URL }}design/css/base10.css{% endif %}" type="text/css" />
+<link rel="stylesheet" href="{% if request.subdomain == "m" %}{{ STATIC_URL }}design/css/base_mobile.css{% else %}{{ STATIC_URL }}design/css/base.css{% endif %}" type="text/css" />
+{% endcompress %}
 
 <meta name="description" content="{% block description %}{% endblock %}"/>
 
