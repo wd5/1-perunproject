@@ -10,6 +10,7 @@ django-netauth
 django-form-utils # admin image
 git+git://github.com/nicolaslara/django-genericadmin.git#egg=django-genericadmin
 git+git://github.com/dfalk/django-inlines.git#egg=django-inlines
+BeautifulSoup
 django-pagination
 git+git://github.com/dfalk/django-cart.git#egg=django-cart
 django-mptt
@@ -17,6 +18,7 @@ markdown
 mezzanine
 git+git://github.com/dfalk/mezzanine-wiki.git@dev#egg=mezzanine-wiki
 diff-match-patch
+django-compressor
 
 
 ### deprecated
@@ -25,7 +27,6 @@ diff-match-patch
 #basic.inlines # django-inlines now
 #django-seo
 #django-haystack
-#BeautifulSoup
 #django-messages
 #-e git+git@github.com/arneb/django-messages.git#egg=django-messages
 #djangobb_forum
