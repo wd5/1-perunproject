@@ -11,11 +11,13 @@ from mezzanine.core.views import direct_to_template
 
 #from djangobb_forum import settings as forum_settings
 
-from sitemap import SitemapPage #SitemapForum, SitemapTopic
+#from sitemap import SitemapPage #SitemapForum, SitemapTopic
 from fblog.sitemap import BlogSitemap
+from mezzanine.core.sitemaps import DisplayableSitemap
 sitemaps = {
-    'page': SitemapPage,
+    #'page': SitemapPage,
     'blog': BlogSitemap,
+    'all': DisplayableSitemap,
     #'topic': SitemapTopic,
 }
 
