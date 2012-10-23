@@ -73,7 +73,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    #'dbtemplates.loader.Loader',
+    'dbtemplates.loader.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #    'django.template.loaders.eggs.load_template_source',
@@ -185,7 +185,7 @@ INSTALLED_APPS = (
     ## other
     #'simplepages', # replace with mezzanine
     #'fcss',
-    #'dbtemplates', # replace with templateadmin
+    'dbtemplates', # maybe replace with templateadmin
     #'seo',
 )
 
@@ -279,7 +279,7 @@ FSHOP_SHOP_TITLE = 'Гильдия мастеров'
 
 # ========================== MEZZANINE SETTINGS ==========================
 
-USE_SOUTH = True
+USE_SOUTH = False
 
 ADMIN_MENU_ORDER = (
     (_("Content"), ("pages.Page", "fblog.Post", "fevents.Event", 

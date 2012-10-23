@@ -19,11 +19,11 @@ mezzanine
 git+git://github.com/dfalk/mezzanine-wiki.git@dev#egg=mezzanine-wiki
 diff-match-patch
 django-compressor
+django-dbtemplates
 
 
 ### deprecated
 
-#django-dbtemplates
 #basic.inlines # django-inlines now
 #django-seo
 #django-haystack
