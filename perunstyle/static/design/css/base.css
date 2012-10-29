@@ -258,18 +258,19 @@ div.img img {
     z-index: 20;
     top: 0px;
     left: 4px;
-    width: 100px;
-    height: 100px;
-    margin: 4px;
+    width: 120px;
+    height: 120px;
+    margin: 0px;
 }
 
 #sitelogo img {
-    width: 110px;
+    width: 120px;
 }
 
 #sitetitle {
     color: white;
-    font: italic 40px Times New Roman;
+    font: 36px Georgia;
+    letter-spacing: 1px;
     left: 130px;
     padding-bottom: 9px;
     position: absolute;
