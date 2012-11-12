@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django.views.generic.simple import direct_to_template, redirect_to
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import date_based, list_detail
 from fblog.models import Post, Ptype
 import datetime, time
@@ -23,7 +23,8 @@ def news1(request, fnews_id):
     #return direct_to_template(request,'fblog/post_detail.html', {'newsres':newsres})
 
 def post_detail(request, year, month, day, slug, **kwargs):
-    newsres = Post.objects.get(slug=slug)
+    posts = Post.objects.published()
+    newsres = get_object_or_404(posts, slug=slug)
     if not request.user.is_staff:
         newsres.view_count += 1
         newsres.save()
