@@ -40,10 +40,6 @@ class Post(models.Model):
     # Category
     type = models.ForeignKey(Ptype, blank=True, null=True)
 
-    # Published
-    is_published = models.BooleanField(default=True)
-    slug = models.SlugField(unique=True,max_length=70)
-
     # Title
     title = models.CharField(max_length=100)
 
@@ -51,8 +47,12 @@ class Post(models.Model):
     content = models.TextField()
     preview = models.TextField(blank=True)
 
-    # Self-related
-    related_entries = models.ManyToManyField('self', blank=True, null=True)
+    # Published
+    is_published = models.BooleanField(default=True)
+
+    # TimeStamped
+    date = models.DateTimeField(default=datetime.now)
+    date_mod = models.DateTimeField(auto_now=True)
 
     # Special
     is_featured = models.BooleanField(default=False)
@@ -60,11 +60,11 @@ class Post(models.Model):
     # Comments
     enable_comments = models.BooleanField(default=True)
 
-    # TimeStamped
-    date = models.DateTimeField(default=datetime.now)
-    date_mod = models.DateTimeField(auto_now=True)
+    # Self-related
+    related_entries = models.ManyToManyField('self', blank=True, null=True)
 
     # Meta
+    slug = models.SlugField(unique=True,max_length=70)
     meta_title = models.CharField(max_length=100, blank=True)
     meta_description = models.TextField(blank=True)
     meta_keywords = models.CharField(max_length=100, blank=True)

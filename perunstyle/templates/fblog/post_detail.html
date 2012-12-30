@@ -20,7 +20,7 @@
 {% block content %}
 <h1>{{ newsres.title }}</h1>
 
-<div class="postinfo">{{ newsres.date|date:"j M Y H:m" }} | раздел: <a href="{{ newsres.type.get_absolute_url }}">{{ newsres.type.title_plural|lower }}</a> | просмотров: {{ newsres.view_count }} | {% get_comment_count for newsres as comment_count %}<a href="{{ newsres.get_absolute_url }}#comments">ответов: {{ comment_count }}</a></div>
+<div class="postinfo">{{ newsres.date|date:"j M Y H:m" }} | раздел: <a href="{{ newsres.type.get_absolute_url }}">{{ newsres.type.title_plural|lower }}</a> | просмотров: {{ newsres.view_count }} | {% get_comment_count for newsres as comment_count %}<a href="{{ newsres.get_absolute_url }}#comments">ответов: {{ comment_count }}</a>{% if perms.can_change_entry %} | <a href="{% url blog_post_edit newsres.date.year newsres.date|date:"m" newsres.date|date:"d" newsres.slug %}">редактировать</a>{% endif %}</div>
 
 <div class="postcontent">{{ newsres.content|render_inlines|markdown }}</div>
 
