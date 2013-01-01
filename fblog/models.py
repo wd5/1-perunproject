@@ -37,9 +37,6 @@ class Post(models.Model):
     # Owned
     author = models.ForeignKey(User, related_name='author')
 
-    # Category
-    type = models.ForeignKey(Ptype, blank=True, null=True)
-
     # Title
     title = models.CharField(max_length=100)
 
@@ -53,6 +50,9 @@ class Post(models.Model):
     # TimeStamped
     date = models.DateTimeField(default=datetime.now)
     date_mod = models.DateTimeField(auto_now=True)
+
+    # Category
+    type = models.ForeignKey(Ptype, blank=True, null=True)
 
     # Special
     is_featured = models.BooleanField(default=False)
@@ -83,7 +83,7 @@ class Post(models.Model):
 
     def __unicode__(self):
         dt = unicode(self.date)[:10]
-        return "[%s]-%s" % (dt, self.title)
+        return "[%s] %s" % (dt, self.title)
 
     def preview_or_content(self):
         return self.preview or self.content

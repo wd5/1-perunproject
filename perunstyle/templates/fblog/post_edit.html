@@ -10,7 +10,7 @@
 <form action="" method="post">{% csrf_token %}
 {{ form.non_field_errors }}
     {% for field in form %}
-        <div class="fieldWrapper">
+        <div class="fieldWrapper" id="field_{{ field.name }}">
             <div class="field-errors">{{ field.errors }}</div>
             <div class="field-label">{{ field.label_tag }}</div>
             <div class="field-core">{{ field }}</div>
@@ -18,5 +18,42 @@
     {% endfor %}
 <input type="submit" value="Save" />
 </form>
+
+<script>
+$(document).ready(function() {
+    $("#field_type").append("<a id='lnk_add_category' href='#'>+ добавить категорию</a><div id='field_add_category' style='display:none'><input type='text' name='new_category'><input type='button' name='btn_add_category' value='Добавить категорию'><a id='lnk_cancel_category' href='#'>отмена</a></div><div id='new_category_response'></div>");
+
+    $("#lnk_add_category").click(function() {
+        $('#field_add_category').toggle();
+        event.preventDefault();
+    });
+
+    $("#lnk_cancel_category").click(function() {
+        $('#field_add_category').hide();
+        event.preventDefault();
+    });
+
+    $("input[name='btn_add_category']").click(function() {
+        $('#new_category_response').html('');
+        var category_title = $('input[name="new_category"]').val();
+        $.ajax({
+            type:'POST',
+            url: '/blog/add_category/',
+            data: { title: category_title,
+                    csrfmiddlewaretoken: '{{ csrf_token }}' },
+            success: function(data) {
+                $('#new_category_response').html('добавлено');
+                $('#id_type')
+                         .append($("<option></option>")
+                         .attr("value",data)
+                         .text(category_title));
+                $('#id_type').val(data);
+                $('#field_add_category').hide();
+            }
+        });
+        event.preventDefault();
+    });
+});
+</script>
 
 {% endblock %}

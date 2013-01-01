@@ -48,6 +48,17 @@ def post_new(request):
 
     return direct_to_template(request, 'fblog/post_edit.html',{'form':form})
 
+@permission_required('fblog.add_entry')
+def add_category(request):
+    if request.is_ajax():
+        if request.REQUEST['title']:
+            new_title = request.REQUEST['title']
+            newcat = Ptype(title=new_title,title_plural=new_title,slug=new_title)
+            newcat.save()
+            return HttpResponse(newcat.id)
+        else:
+            return HttpResponse('error')
+
 @permission_required('fblog.change_entry')
 def post_edit(request, year, month, day, slug, **kwargs):
     post = Post.objects.get(date__year=year, date__month=month, date__day=day, slug=slug)
