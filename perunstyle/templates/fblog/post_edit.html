@@ -1,6 +1,19 @@
 {% extends "fblog/base_blog.html" %}
+{% load thumbnail %}
 
 {% block title %}{% if entry %}{{ entry.title }}{% else %}Новая заметка{% endif %} | {{ block.super }}{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+
+<link rel="stylesheet" href="{{ STATIC_URL }}jqueryui/vader/jquery-ui-1.9.2.custom.min.css" type="text/css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}multiselect/jquery.multiselect.css" type="text/css" />
+
+<style>
+ul#dialog-thumbs li {display: inline;}
+</style>
+{% endblock %}
+
 
 {% block breadcrumbs %} - <a href="{% url blog_index %}">Дневник</a> - {% if entry %}<a href="{% url blog_archive_year entry.date_publish.year %}">{{ entry.date_publish.year }}</a> - <a href="{% url blog_archive_month entry.date_publish.year entry.date_publish|date:"m" %}">{{ entry.date_publish|date:"F" }}</a> - <a href="{{ entry.get_absolute_url }}">Заметка</a> - Редактирование{% else %}Новая заметка{% endif %}{% endblock %}
 
@@ -19,36 +32,101 @@
 <input type="submit" value="Save" />
 </form>
 
+<div id="dialog-form" title="Выбор изображения">
+    <div id="dialog-leftblock">
+        <ul id="dialog-thumbs">
+        {% for photo in photos|slice:"0:20" %}
+        <li class="dialog-thumb" id="photo-{{ photo.id }}"><img src="{% thumbnail photo.image 120x120 %}" /></li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div id="dialog-albumlist">
+        <ul id="dialog-albums">
+        {% for album in albums %}
+        <li class="dialog-album"><a href="#" id="album-{{ album.id }}">{{ album.title }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+<div id="div_dialog"><a href="#" id="btn_dialog">Open dialog</a><div id="dialog_result"></div></div>
+
+<script src="{{ STATIC_URL }}jqueryui/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="{{ STATIC_URL }}multiselect/jquery.multiselect.min.js"></script>
+
 <script>
 $(document).ready(function() {
     $("#field_type").append("<a id='lnk_add_category' href='#'>+ добавить категорию</a><div id='field_add_category' style='display:none'><input type='text' name='new_category'><input type='button' name='btn_add_category' value='Добавить категорию'><a id='lnk_cancel_category' href='#'>отмена</a></div><div id='new_category_response'></div>");
 
-    $("#lnk_add_category").click(function() {
-        $('#field_add_category').toggle();
+    $("#lnk_add_category").click(function(event) {
+        $("#field_add_category").toggle();
         event.preventDefault();
     });
 
-    $("#lnk_cancel_category").click(function() {
-        $('#field_add_category').hide();
+    $("#lnk_cancel_category").click(function(event) {
+        $("#field_add_category").hide();
         event.preventDefault();
     });
 
-    $("input[name='btn_add_category']").click(function() {
-        $('#new_category_response').html('');
-        var category_title = $('input[name="new_category"]').val();
+    $("input[name='btn_add_category']").click(function(event) {
+        $("#new_category_response").html("");
+        var category_title = $("input[name='new_category']").val();
         $.ajax({
-            type:'POST',
-            url: '/blog/add_category/',
+            type: "POST",
+            url: "/blog/add_category/",
             data: { title: category_title,
-                    csrfmiddlewaretoken: '{{ csrf_token }}' },
+                    csrfmiddlewaretoken: "{{ csrf_token }}" },
             success: function(data) {
-                $('#new_category_response').html('добавлено');
-                $('#id_type')
+                $("#new_category_response").html("добавлено");
+                $("#id_type")
                          .append($("<option></option>")
                          .attr("value",data)
                          .text(category_title));
-                $('#id_type').val(data);
-                $('#field_add_category').hide();
+                $("#id_type").val(data);
+                $("#field_add_category").hide();
+            }
+        });
+        event.preventDefault();
+    });
+
+    $("#id_related_entries").multiselect();
+
+    $("#dialog-form").dialog({
+        autoOpen: false,
+        height: 400,
+        width: 650,
+        modal: true,
+    });
+
+    $("#btn_dialog")
+    .button()
+    .click(function(event) {
+        $("#dialog-form").dialog("open");
+        event.preventDefault();
+    });
+
+    $( ".dialog-thumb" )
+    .click(function(event) {
+        $("#dialog_result").html( $(this).html() );
+        var value = $(this).attr("id").split("-")[1]
+        $("#id_featured_image").val(value);
+        $("#dialog-form").dialog("close");
+        event.preventDefault();
+    });
+
+    $(".dialog-album a").click(function(event) {
+        var value = $(this).attr("id").split("-")[1]
+        $.ajax({
+            type: "POST",
+            url: "/blog/get_album/",
+            data: { id: value,
+                    csrfmiddlewaretoken: "{{ csrf_token }}" },
+            success: function(data) {
+                // clear thumbs
+                $("#dialog_thumbs").html("");
+                // TODO: parse DATA
+                // TODO: display DATA
+                $("#dialog_thumbs")
+                         .append($("<li class='dialog-thumb'></li>");
             }
         });
         event.preventDefault();

@@ -14,6 +14,7 @@ urlpatterns = patterns('fblog.views',
 
     url(r'^new/$', view='post_new', name='blog_post_new'),
     url(r'^add_category/$', view='add_category', name='blog_add_category'),
+    url(r'^get_album/$', view='get_album', name='blog_get_album'),
 
     #url(r'^(?P<fnews_id>\d+)/$', 'news1', name='blog_entry'),
     url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',

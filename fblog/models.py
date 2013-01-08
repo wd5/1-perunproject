@@ -6,6 +6,7 @@ from datetime import datetime
 
 from fblog.managers import PublicManager
 from fevents.models import Event
+from fgallery.models import Photo
 #from sorl.improved.fields import ImprovedImageWithThumbnailsField
 #from tagging.fields import TagField
 from django.contrib.auth.models import User
@@ -44,9 +45,12 @@ class Post(models.Model):
     content = models.TextField()
     preview = models.TextField(blank=True)
 
+    # Featured image
+    featured_image = models.ForeignKey(Photo, blank=True, null=True)
+
     # Published
     is_published = models.BooleanField(default=True)
-
+    
     # TimeStamped
     date = models.DateTimeField(default=datetime.now)
     date_mod = models.DateTimeField(auto_now=True)
@@ -54,14 +58,14 @@ class Post(models.Model):
     # Category
     type = models.ForeignKey(Ptype, blank=True, null=True)
 
+    # Self-related
+    related_entries = models.ManyToManyField('self', blank=True, null=True)
+
     # Special
     is_featured = models.BooleanField(default=False)
 
     # Comments
     enable_comments = models.BooleanField(default=True)
-
-    # Self-related
-    related_entries = models.ManyToManyField('self', blank=True, null=True)
 
     # Meta
     slug = models.SlugField(unique=True,max_length=70)

@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from fblog.models import Post, Ptype
+from fgallery.models import Photo, Album
 from fblog.forms import PostForm
 import datetime, time
 
@@ -59,9 +60,21 @@ def add_category(request):
         else:
             return HttpResponse('error')
 
+@permission_required('fblog.add_entry')
+def get_album(request):
+    if request.is_ajax():
+        if request.REQUEST['id']:
+            album_id = request.REQUEST['id']
+            photos = Photo.objects.filter(album__id=album_id)
+            return HttpResponse(photos)
+        else:
+            return HttpResponse('error')
+
 @permission_required('fblog.change_entry')
 def post_edit(request, year, month, day, slug, **kwargs):
     post = Post.objects.get(date__year=year, date__month=month, date__day=day, slug=slug)
+    photos = Photo.objects.all()
+    albums = Album.objects.all()
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
@@ -70,7 +83,8 @@ def post_edit(request, year, month, day, slug, **kwargs):
     else:
         form = PostForm(instance=post)
 
-    return direct_to_template(request, 'fblog/post_edit.html',{'form':form,'post':post})
+    return direct_to_template(request, 'fblog/post_edit.html',
+        {'form':form,'post':post,'photos':photos,'albums':albums})
 
 def post_archive_year(request, year, page=0, template_name='fblog/post_archive_year.html', **kwargs):
     return list_detail.object_list(

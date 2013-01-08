@@ -279,7 +279,7 @@ FSHOP_SHOP_TITLE = 'Гильдия мастеров'
 
 # ========================== MEZZANINE SETTINGS ==========================
 
-USE_SOUTH = False
+USE_SOUTH = True
 
 ADMIN_MENU_ORDER = (
     (_("Content"), ("pages.Page", "fblog.Post", "fevents.Event", 
