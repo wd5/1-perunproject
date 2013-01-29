@@ -43,6 +43,7 @@ def post_new(request):
             new_entry = form.save(commit=False)
             new_entry.author = request.user
             new_entry.save()
+            form.save_m2m()
             return HttpResponseRedirect(reverse('blog_index'))
     else:
         form = PostForm()
