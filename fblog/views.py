@@ -42,6 +42,10 @@ def post_new(request):
         if form.is_valid():
             new_entry = form.save(commit=False)
             new_entry.author = request.user
+            if 'save' in request.POST:
+                new_entry.is_published = True
+            if 'draft' in request.POST:
+                new_entry.is_published = False
             new_entry.save()
             form.save_m2m()
             return HttpResponseRedirect(reverse('blog_index'))
@@ -79,7 +83,14 @@ def post_edit(request, year, month, day, slug, **kwargs):
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
-            form.save()
+            new_entry = form.save(commit=False)
+            new_entry.author = request.user
+            if 'save' in request.POST:
+                new_entry.is_published = True
+            if 'draft' in request.POST:
+                new_entry.is_published = False
+            new_entry.save()
+            form.save_m2m()
             return HttpResponseRedirect(post.get_absolute_url())
     else:
         form = PostForm(instance=post)

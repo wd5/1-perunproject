@@ -8,6 +8,7 @@ django-tagging # for gallery
 django-simple-captcha
 django-netauth
 django-form-utils # admin image
+django-crispy-forms
 git+git://github.com/nicolaslara/django-genericadmin.git#egg=django-genericadmin
 git+git://github.com/dfalk/django-inlines.git#egg=django-inlines
 BeautifulSoup

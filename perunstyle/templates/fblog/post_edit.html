@@ -1,5 +1,5 @@
 {% extends "fblog/base_blog.html" %}
-{% load thumbnail %}
+{% load thumbnail crispy_forms_tags %}
 
 {% block title %}{% if entry %}{{ entry.title }}{% else %}Новая заметка{% endif %} | {{ block.super }}{% endblock %}
 
@@ -18,19 +18,9 @@ ul#dialog-thumbs li {display: inline;}
 {% block breadcrumbs %} - <a href="{% url blog_index %}">Дневник</a> - {% if entry %}<a href="{% url blog_archive_year entry.date_publish.year %}">{{ entry.date_publish.year }}</a> - <a href="{% url blog_archive_month entry.date_publish.year entry.date_publish|date:"m" %}">{{ entry.date_publish|date:"F" }}</a> - <a href="{{ entry.get_absolute_url }}">Заметка</a> - Редактирование{% else %}Новая заметка{% endif %}{% endblock %}
 
 {% block content %}
-<h1>{% if entry %}{{ entry.title }}{% else %}Новая заметка{% endif %}</h1>
+<h1>{% if post %}{{ post.title }}{% else %}Новая заметка{% endif %}</h1>
 
-<form action="" method="post">{% csrf_token %}
-{{ form.non_field_errors }}
-    {% for field in form %}
-        <div class="fieldWrapper" id="field_{{ field.name }}">
-            <div class="field-errors">{{ field.errors }}</div>
-            <div class="field-label">{{ field.label_tag }}</div>
-            <div class="field-core">{{ field }}</div>
-        </div>
-    {% endfor %}
-<input type="submit" value="Save" />
-</form>
+{% crispy form %}
 
 <div id="dialog-form" title="Выбор изображения">
     <div id="dialog-leftblock">
@@ -55,7 +45,7 @@ ul#dialog-thumbs li {display: inline;}
 
 <script>
 $(document).ready(function() {
-    $("#field_type").append("<a id='lnk_add_category' href='#'>+ добавить категорию</a><div id='field_add_category' style='display:none'><input type='text' name='new_category'><input type='button' name='btn_add_category' value='Добавить категорию'><a id='lnk_cancel_category' href='#'>отмена</a></div><div id='new_category_response'></div>");
+    $("#div_id_type").append("<a id='lnk_add_category' href='#'>+ добавить категорию</a><div id='field_add_category' style='display:none'><input type='text' name='new_category'><input type='button' name='btn_add_category' value='Добавить категорию'><a id='lnk_cancel_category' href='#'>отмена</a></div><div id='new_category_response'></div>");
 
     $("#lnk_add_category").click(function(event) {
         $("#field_add_category").toggle();

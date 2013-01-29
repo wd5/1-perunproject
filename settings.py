@@ -164,6 +164,7 @@ INSTALLED_APPS = (
     'inlines',
     'pagination',
     'perunutils',
+    'crispy_forms',
 
     ## deprecate in version 0.3
 
