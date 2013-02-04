@@ -1,0 +1,18 @@
+{% load i18n pybb_tags %}
+    {% include "pybb/breadcrumb_top_extra_crumb.html" %}
+    - <a href="{% url pybb:index %}">{% trans "Forum" %}</a> <span class="divider">-</span>
+    {% if object %}
+        {% if object.get_parents %}
+            {% for obj in object.get_parents %}
+                {% pybb_link obj %} <span class="divider">-</span>
+            {% endfor %}
+        {% endif %}
+        {% if extra_crumb %}
+            {% pybb_link object %} <span class="divider">-</span>
+        {% else %}
+            {{ object }}
+        {% endif %}
+    {% endif %}
+    {% if extra_crumb %}
+        {% trans extra_crumb %}
+    {% endif %}

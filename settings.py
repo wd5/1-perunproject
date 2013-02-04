@@ -67,6 +67,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.csrf',
     'django.core.context_processors.request',
     'mezzanine.conf.context_processors.settings',
+    'pybb.context_processors.processor',
     #'djangobb_forum.context_processors.forum_settings',
     #'simplepages.context_processors.page',
 )
@@ -101,6 +102,7 @@ MIDDLEWARE_CLASSES = (
     #'djangobb_forum.middleware.UsersOnline',
     #'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     #'simplepages.middleware.PageFallbackMiddleware',
+    'pybb.middleware.PybbMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'subdomains.SubdomainMiddleware',
     "mezzanine.core.request.CurrentRequestMiddleware",
@@ -164,6 +166,13 @@ INSTALLED_APPS = (
     'inlines',
     'pagination',
     'perunutils',
+    'crispy_forms',
+    'mailer',
+
+    # forum
+    'pybb',
+    'pytils',
+    'pure_pagination',
 
     ## deprecate in version 0.3
 
@@ -202,6 +211,8 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_GRAPPELLI,
 )
 
+PYBB_USE_DJANGO_MAILER = False
+
 DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 
 INTERNAL_IPS = ("127.0.0.1",)
@@ -209,7 +220,7 @@ INTERNAL_IPS = ("127.0.0.1",)
 try:
     import mailer
     INSTALLED_APPS += ('mailer',)
-    EMAIL_BACKEND = "mailer.backend.DbBackend"
+    #EMAIL_BACKEND = "mailer.backend.DbBackend"
 except ImportError:
     pass
 
@@ -276,10 +287,11 @@ FBLOG_BLOG_TITLE = 'Дневник клуба "Стрелы Перуна"'
 
 FSHOP_SHOP_TITLE = 'Гильдия мастеров'
 
+PYBB_DEFAULT_TITLE = 'Форум движения "Стрелы Перуна"'
 
 # ========================== MEZZANINE SETTINGS ==========================
 
-USE_SOUTH = False
+USE_SOUTH = True
 
 ADMIN_MENU_ORDER = (
     (_("Content"), ("pages.Page", "fblog.Post", "fevents.Event", 

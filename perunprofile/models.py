@@ -3,9 +3,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import signals
+from pybb.models import PybbProfile
 from perunprofile.signals import create_profile
 
-class UserProfile(models.Model):
+class UserProfile(PybbProfile):
     user = models.OneToOneField(User, primary_key=True)
     status = models.CharField('Статус', blank=True, max_length=50)
     location = models.CharField('Откуда', blank=True, max_length=50)

@@ -68,6 +68,7 @@ urlpatterns = patterns('',
     url(r'^auth/', include( 'netauth.urls')),
 
     # Forum
+    (r'^forum/', include('pybb.urls', namespace='pybb')),
     #(r'^forum/', include('djangobb_forum.urls', namespace='djangobb')),
     # Sitemap
     (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
