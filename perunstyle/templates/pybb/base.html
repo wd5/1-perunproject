@@ -10,6 +10,10 @@
     <!-- Feeds -->
     <link rel="alternate" type="application/atom+xml" href="{% url pybb:feed_posts %}" title="{% trans "Latest posts on forum" %}" >
     <link rel="alternate" type="application/atom+xml" href="{% url pybb:feed_topics %}" title="{% trans "Latest topics on forum" %}" >
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}pybb/posts.css" type="text/css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}pybb/forum.css" type="text/css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}pybb/visual.css" type="text/css" />
 {% endblock %}
 {% endblock %}
 
