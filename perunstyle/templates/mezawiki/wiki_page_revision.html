@@ -14,19 +14,12 @@
 
 
 {% block breadcrumb_menu %}
-<li>
-    <a href="{% url home %}">{% trans "Home" %}</a>
-    <span class="divider">/</span>
-</li>
-<li>
-    <a href="{% url wiki_index %}">{{ page.richtextpage.title }}</a>
-    <span class="divider">/</span>
-</li>
-<li>
+    <span class="divider">-</span>
+    <a href="{% url wiki_index %}">Академия</a>
+    <span class="divider">-</span>
     <a href="{% url wiki_page_detail wiki_page.slug %}">{{ wiki_page.title }}</a>
-    <span class="divider">/</span>
-</li>
-<li class="active">{% trans "Viewing revision" %}</li>
+    <span class="divider">-</span>
+    <span class="active">{% trans "Viewing revision" %}</span>
 {% endblock %}
 
 {% block content %}

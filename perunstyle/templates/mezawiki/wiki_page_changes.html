@@ -4,9 +4,8 @@
 {% block title %}{% trans "Recent changes" %}{% endblock %}
 
 {% block breadcrumbs %}
-    <a href="{% url home %}">{% trans "Home" %}</a>
     <span class="divider">-</span>
-    <a href="{% url wiki_index %}">{{ page.richtextpage.title }}</a>
+    <a href="{% url wiki_index %}">Академия</a>
     <span class="divider">-</span>
     {% trans "Recent changes" %}
 {% endblock %}

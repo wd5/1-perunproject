@@ -15,10 +15,14 @@
 {{ page.description }}
 {% endmetablock %}{% endblock %}
 
+{% block breadcrumbs %}
 {% block breadcrumb_menu %}
 {{ block.super }}
+<span class="divider">-</span>
+    <a href="{% url wiki_index %}">Академия</a>
+    <span class="divider">-</span>
 {% if tag or category or year or month or author %}
-<li>{% spaceless %}
+{% spaceless %}
 {% if tag %}
     {% trans "Tag:" %} {{ tag }}
 {% else %}{% if category %}
@@ -29,10 +33,10 @@
     {% trans "Author:" %} {{ author.get_full_name|default:author.username }}
 {% endif %}{% endif %}{% endif %}{% endif %}
 {% endspaceless %}
-</li>
 {% else %}
-<li>{% trans "Page list" %}</li>
+{% trans "Page list" %}
 {% endif %}
+{% endblock %}
 {% endblock %}
 
 {% block contentclass %}wiki{% endblock %}

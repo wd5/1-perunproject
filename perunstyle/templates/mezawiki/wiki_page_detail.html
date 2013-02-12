@@ -13,15 +13,10 @@
 {% endmetablock %}{% endblock %}
 
 {% block breadcrumb_menu %}
-<li>
-    <a href="{% url home %}">{% trans "Home" %}</a>
-    <span class="divider">/</span>
-</li>
-<li>
-    <a href="{% url wiki_index %}">{{ page.richtextpage.title }}</a>
-    <span class="divider">/</span>
-</li>
-<li class="active">{{ wiki_page.title }}</li>
+    <span class="divider">-</span>
+    <a href="{% url wiki_index %}">Академия</a>
+    <span class="divider">-</span>
+    <span class="active">{{ wiki_page.title }}</span>
 {% endblock %}
 
 {% block content %}
