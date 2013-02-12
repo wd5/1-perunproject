@@ -1,10 +1,7 @@
-{% load thumbnail %}
+{% load thumbnail avatar_tags %}
 
 <div class="avatar">
-    <a href="{{ post.user.get_profile.get_absolute_url }}">
-    {% thumbnail post.user.get_profile.avatar "80x80" as avatar %}
-    {% if avatar %}<img src="{{ avatar.url }}" alt="{{ post.user }} avatar" />
-    {% else %}<img src="{{PYBB_DEFAULT_AVATAR_URL}}" alt="default avatar" />
-    {% endif %}
+    <a href="{% url profiles_profile_detail post.user %}">
+    {% avatar post.user.get_profile.user %}
     </a>
 </div>
