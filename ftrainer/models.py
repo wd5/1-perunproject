@@ -14,7 +14,7 @@ class Part(models.Model):
     title = models.CharField(_("Title"), max_length=100)
 
     # Content
-    content = models.TextField(_("Content"))
+    content = models.TextField(_("Content"), blank=True)
 
     # Position
     position = models.IntegerField(_("Position"), default=0)
@@ -37,7 +37,7 @@ class Member(models.Model):
     title = models.CharField(_("Title"), max_length=100)
 
     # Content
-    content = models.TextField(_("Content"))
+    content = models.TextField(_("Content"), blank=True)
 
     # Position
     position = models.IntegerField(_("Position"), default=0)
@@ -60,7 +60,7 @@ class Skill(models.Model):
     title = models.CharField(_("Title"), max_length=100)
 
     # Content
-    content = models.TextField(_("Content"))
+    content = models.TextField(_("Content"), blank=True)
 
     # Position
     position = models.IntegerField(_("Position"), default=0)
@@ -91,7 +91,7 @@ class Exercise(models.Model):
     title = models.CharField(_("Title"), max_length=100)
 
     # Content
-    content = models.TextField(_("Content"))
+    content = models.TextField(_("Content"), blank=True)
 
     # Position
     position = models.IntegerField(_("Position"), default=0)
