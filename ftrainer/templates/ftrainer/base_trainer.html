@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load ftrainer_tags %}
+
+{% block title %}Виртуальный тренер клуба «Стрелы Перуна»{% endblock %}
+
+{% block breadcrumbs %} - Тренер{% endblock %}
+
+{% block sidebar %}
+<h3>Тренер</h3>
+<ul>
+<li><a href="{% url trainer_index %}">Все упражнения</a></li>
+<li><a href="{% url trainer_exercise_add %}">Добавить упражнение</a></li>
+</ul>
+
+<h3>Части тренировки</h3>
+{% parts_menu %}
+
+<h3>Умения</h3>
+{% skills_menu %}
+
+<h3>Участники</h3>
+{% members_menu %}
+
+{% endblock %}
+
+{% block contentclass %}trainer{% endblock %}
+

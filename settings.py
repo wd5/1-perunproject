@@ -155,6 +155,7 @@ INSTALLED_APPS = (
     'mezzanine_wiki',
     'fcomments',
     'perunprofile',
+    'ftrainer',
 
     ## project utils
     'sorl.thumbnail', # legacy 3.2.5

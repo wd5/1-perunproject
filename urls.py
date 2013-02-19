@@ -43,6 +43,7 @@ urlpatterns = patterns('',
     (r'^events/', include('fevents.urls')),
     (r'^workshop/', include('fshop.urls')),
     (r'^wiki/', include('mezzanine_wiki.urls')),
+    (r'^trainer/', include('ftrainer.urls')),
 
     # GALLERY
     (r'^gallery/', include('fgallery.urls')),

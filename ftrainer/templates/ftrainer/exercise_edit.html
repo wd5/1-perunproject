@@ -1,0 +1,13 @@
+{% extends "ftrainer/base_trainer.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% if exercise %}{{ exercise.title }}{% else %}Новое упражнение{% endif %} | {{ block.super }}{% endblock %}
+
+{% block breadcrumbs %} - <a href="{% url trainer_index %}">Тренер</a> - {% if exercise %}<a href="{{ exercise.get_absolute_url }}">Упражнение</a> - Редактирование{% else %}Новое упражнение{% endif %}{% endblock %}
+
+{% block content %}
+<h1>{% if exercise %}{{ exercise.title }}{% else %}Новое упражнение{% endif %}</h1>
+
+{% crispy form %}
+
+{% endblock %}

@@ -1,0 +1,6 @@
+<div id="trainer-parts">
+<ul>
+    {% for item in parts_menu %}<li><a href="{% url trainer_part_detail item.id %}">{{ item.title }}</a></li>
+    {% endfor %}
+</ul>
+</div>

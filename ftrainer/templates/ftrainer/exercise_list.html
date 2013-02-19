@@ -1,0 +1,21 @@
+{% extends "ftrainer/base_trainer.html" %}
+
+{% load markup %}
+{% load comments %}
+
+{% block content %}
+
+<h2>Упражнения</h2>
+{% if part %}<h2>{{ part.title }}</h2>{% endif %}
+
+<div id="exercise-list">
+<table>
+<tr><th>Раздел</th><th>Упражнение</th><th>Умение</th><th>Участники</th></tr>
+{% for item in object_list %}
+<tr><td>{{ item.part }}</td><td><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></td><td>{{ item.skill }}</td><td>{{ item.member }}</td></tr>
+{% endfor %}
+</table>
+</div><!-- /#postlist -->
+
+{% if is_paginated %}{% load paginator %}{% paginator 2 %}{% endif %}
+{% endblock %}

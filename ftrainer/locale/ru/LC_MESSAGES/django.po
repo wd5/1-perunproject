@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2013
+# This file is distributed under the same license as the PACKAGE package.
+# Dmitry Falk <dfalk5@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-19 14:28+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Dmitry Falk <dfalk5@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: forms.py:18
+msgid "Save"
+msgstr "Сохранить"
+
+#: models.py:14 models.py:37 models.py:60 models.py:91
+msgid "Title"
+msgstr "Название"
+
+#: models.py:17 models.py:40 models.py:63 models.py:94
+msgid "Content"
+msgstr "Содержание"
+
+#: models.py:20 models.py:43 models.py:66 models.py:97
+msgid "Position"
+msgstr "Позиция"
+
+#: models.py:24
+msgid "Part of training"
+msgstr ""
+
+#: models.py:25
+msgid "Parts of training"
+msgstr ""
+
+#: models.py:47 models.py:84
+msgid "Member"
+msgstr "Участник"
+
+#: models.py:48
+msgid "Members"
+msgstr "Участники"
+
+#: models.py:70 models.py:85
+msgid "Skill"
+msgstr "Умение"
+
+#: models.py:71
+msgid "Skills"
+msgstr "Умения"
+
+#: models.py:83
+msgid "Part"
+msgstr "Часть"
+
+#: models.py:108
+msgid "Exercise"
+msgstr "Упражнение"
+
+#: models.py:109
+msgid "Exercises"
+msgstr "Упражнения"
+
+#~ msgid "Parts"
+#~ msgstr "Части"

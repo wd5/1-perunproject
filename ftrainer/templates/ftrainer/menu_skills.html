@@ -1,0 +1,6 @@
+<div id="trainer-skills">
+<ul>
+    {% for item in skills_menu %}<li><a href="{% url trainer_skill_detail item.id %}">{{ item.title }}</a></li>
+    {% endfor %}
+</ul>
+</div>
