@@ -3,16 +3,26 @@
 {% load markup %}
 {% load comments %}
 
+{% block extrahead %}
+{{ block.super }}
+
+<style>
+#exercise-table td {
+    padding-right: 6px;
+}
+</style>
+{% endblock %}
+
 {% block content %}
 
 <h2>Упражнения</h2>
 {% if part %}<h2>{{ part.title }}</h2>{% endif %}
 
 <div id="exercise-list">
-<table>
-<tr><th>Раздел</th><th>Упражнение</th><th>Умение</th><th>Участники</th></tr>
+<table id="exercise-table">
+<tr><th>Раздел</th><th>Упражнение</th><th>Описание</th></tr>
 {% for item in object_list %}
-<tr><td>{{ item.part }}</td><td><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></td><td>{{ item.skill }}</td><td>{{ item.member }}</td></tr>
+<tr><td>{{ item.part }}</td><td><a href="{{ item.get_absolute_url }}" title="{% if item.member %}{{ item.member }}{% else %}Общее{% endif %}{% if item.skill %} - {{ item.skill }}{% endif %}">{{ item.title }}</a></td><td>{% if item.content %}+{% else %}-{% endif %}</td></tr>
 {% endfor %}
 </table>
 </div><!-- /#postlist -->
