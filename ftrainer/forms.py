@@ -25,6 +25,8 @@ class ExerciseForm(forms.ModelForm):
                 'member',
                 'skill',
                 'content',
+                'structure',
+                'complexity',
             ),
         )
         super(ExerciseForm, self).__init__(*args, **kwargs)

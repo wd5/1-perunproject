@@ -93,6 +93,12 @@ class Exercise(models.Model):
     # Content
     content = models.TextField(_("Content"), blank=True)
 
+    # Structure
+    structure = models.ManyToManyField("self", verbose_name=_("Structure"), blank=True, null=True)
+
+    # Complexity (relative number value)
+    complexity = models.IntegerField(_("Complexity"), default=0)
+
     # Position
     position = models.IntegerField(_("Position"), default=0)
 
@@ -104,7 +110,7 @@ class Exercise(models.Model):
     date_mod = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["part", "title"]
+        ordering = ["part", "complexity", "title"]
         verbose_name = _("Exercise")
         verbose_name_plural = _("Exercises")
 

@@ -48,6 +48,7 @@ def exercise_edit(request, pk=None):
             if 'draft' in request.POST:
                 new_exercise.is_published = False
             new_exercise.save()
+            form.save_m2m()
             return HttpResponseRedirect(new_exercise.get_absolute_url())
     else:
         form = ExerciseForm(instance=exercise)

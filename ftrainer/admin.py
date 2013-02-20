@@ -22,8 +22,8 @@ class SkillAdmin(admin.ModelAdmin):
 
 class ExerciseAdmin(admin.ModelAdmin):
     exclude = ["user"]
-    list_display = ["title", "part", "date", "is_published"]
-    list_editable = ["is_published"]
+    list_display = ["title", "part", "complexity", "date", "is_published"]
+    list_editable = ["complexity", "is_published"]
     list_per_page = 30
 
     def save_model(self, request, obj, form, change):
