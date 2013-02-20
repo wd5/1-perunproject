@@ -15,8 +15,8 @@ class ExerciseForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
-        self.helper.add_input(Submit('save', _('Save')))
-        #self.helper.add_input(Submit('draft', 'Save to draft'))
+        self.helper.add_input(Submit('publish', _('Publish')))
+        self.helper.add_input(Submit('draft', _('Save to draft')))
         self.helper.layout = Layout(
             Div(
                 #'Content',
@@ -25,8 +25,6 @@ class ExerciseForm(forms.ModelForm):
                 'member',
                 'skill',
                 'content',
-                'enable_comments',
-                'is_published',
             ),
         )
         super(ExerciseForm, self).__init__(*args, **kwargs)

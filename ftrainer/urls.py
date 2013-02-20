@@ -6,6 +6,7 @@ from django.views.generic.simple import direct_to_template
 
 urlpatterns = patterns('ftrainer.views',
     url(r'^$', 'exercise_list', name='trainer_index'),
+    url(r'^exercise/drafts/$', 'exercise_list', {'published': False}, name='trainer_exercise_drafts'),
     url(r'^exercise/add/$', view='exercise_edit', name='trainer_exercise_add'),
     url(r'^exercise/edit/(?P<pk>\d+)/$', view='exercise_edit', name='trainer_exercise_edit'),
     url(r'^exercise/(?P<pk>\d+)/$', 'exercise_detail', name='trainer_exercise_detail'),

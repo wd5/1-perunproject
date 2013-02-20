@@ -7,9 +7,13 @@ from ftrainer.models import Exercise
 from ftrainer.forms import ExerciseForm
 
 @permission_required('ftrainer.add_exercise')
-def exercise_list(request, part=None, member=None, skill=None,
+def exercise_list(request, published=True, part=None, member=None, skill=None,
         page=0, template_name='ftrainer/exercise_list.html', **kwargs):
-    qs = Exercise.objects.filter(is_published=True)
+    qs = Exercise.objects.select_related()
+    if published:
+        qs = qs.filter(is_published=True)
+    else:
+        qs = qs.filter(is_published=False)
     if part:
         qs = qs.filter(part__id=part)
     if member:
@@ -39,10 +43,12 @@ def exercise_edit(request, pk=None):
         if form.is_valid():
             new_exercise = form.save(commit=False)
             new_exercise.user = request.user
-            new_exercise.is_published = True
+            if 'publish' in request.POST:
+                new_exercise.is_published = True
+            if 'draft' in request.POST:
+                new_exercise.is_published = False
             new_exercise.save()
             return HttpResponseRedirect(new_exercise.get_absolute_url())
-        print form.errors
     else:
         form = ExerciseForm(instance=exercise)
 
