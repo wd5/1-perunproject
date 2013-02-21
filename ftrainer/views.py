@@ -39,7 +39,7 @@ def exercise_edit(request, pk=None):
     if pk:
         exercise = Exercise.objects.get(id=pk)
     if request.method == 'POST':
-        form = ExerciseForm(request.POST, instance=exercise)
+        form = ExerciseForm(request.POST, request.FILES, instance=exercise)
         if form.is_valid():
             new_exercise = form.save(commit=False)
             new_exercise.user = request.user

@@ -6,6 +6,19 @@
 
 {% block title %}{{ exercise.title }} | Виртуальный тренер клуба «Стрелы Перуна»{% endblock %}
 
+{% block extrahead %}
+{{ block.super }}
+
+<script src="{{ STATIC_URL }}flowplayer/flowplayer-3.2.12.min.js"></script>
+
+<script language="javascript">
+$(document).ready(function() { 
+    flowplayer("player", "{{ STATIC_URL }}flowplayer/flowplayer-3.2.16.swf");
+});
+</script>
+
+{% endblock %}
+
 {% block breadcrumbs %} - <a href="{% url trainer_index %}">Тренер</a> - Упражнение{% endblock %}
 
 {% block content %}
@@ -18,6 +31,8 @@
 {% if exercise.member %}{% trans "Members" %}: <a href="{% url trainer_member_detail exercise.member.id %}">{{ exercise.member }}</a><br />{% endif %}
 {% if exercise.skill %}{% trans "Skill" %}: <a href="{% url trainer_skill_detail exercise.skill.id %}">{{ exercise.skill }}</a>{% endif %}
 </p>
+
+<p><a href="{{ MEDIA_URL }}{{ exercise.video }}" id="player" style="display:block;width:425px;height:240px;">Видео</a></p>
 
 <p>{{ exercise.content }}</p>
 

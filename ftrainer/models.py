@@ -93,6 +93,9 @@ class Exercise(models.Model):
     # Content
     content = models.TextField(_("Content"), blank=True)
 
+    # Video file
+    video = models.FileField(_("Video"), upload_to="trainer/", blank=True, null=True)
+
     # Structure
     structure = models.ManyToManyField("self", verbose_name=_("Structure"), blank=True, null=True)
 

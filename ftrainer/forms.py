@@ -25,6 +25,7 @@ class ExerciseForm(forms.ModelForm):
                 'member',
                 'skill',
                 'content',
+                'video',
                 'structure',
                 'complexity',
             ),
