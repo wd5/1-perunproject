@@ -20,9 +20,9 @@
 
 <div id="exercise-list">
 <table id="exercise-table">
-<tr><th>Раздел</th><th>Упражнение</th><th>Сложность</th><th>Описание</th></tr>
+<tr><th>Раздел</th><th>Упражнение</th><th>Сложность</th><th>Описание</th><th>Видео</th></tr>
 {% for item in object_list %}
-<tr><td>{{ item.part }}</td><td><a href="{{ item.get_absolute_url }}" title="{% if item.member %}{{ item.member }}{% else %}Общее{% endif %}{% if item.skill %} - {{ item.skill }}{% endif %}">{{ item.title }}</a></td><td>{{ item.complexity }}</td><td>{% if item.content %}+{% else %}-{% endif %}</td></tr>
+<tr><td>{{ item.part }}</td><td><a href="{{ item.get_absolute_url }}" title="{% if item.member %}{{ item.member }}{% else %}Общее{% endif %}{% if item.skill %} - {{ item.skill }}{% endif %}">{{ item.title }}</a></td><td>{{ item.complexity }}</td><td>{% if item.content %}+{% else %}-{% endif %}</td><td>{% if item.video %}+{% else %}-{% endif %}</td></tr>
 {% endfor %}
 </table>
 </div><!-- /#postlist -->
