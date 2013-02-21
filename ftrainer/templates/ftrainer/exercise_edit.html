@@ -3,6 +3,24 @@
 
 {% block title %}{% if exercise %}{{ exercise.title }}{% else %}Новое упражнение{% endif %} | {{ block.super }}{% endblock %}
 
+{% block extrahead %}
+{{ block.super }}
+<style>
+.select2-choices {
+    width: 400px;
+}
+#hint_id_structure {
+    display: none;
+}
+</style>
+
+<link href="{{ STATIC_URL}}select2-3.3.1/select2.css" rel="stylesheet"/>
+<script src="{{ STATIC_URL}}select2-3.3.1/select2.js"></script>
+<script>
+$(document).ready(function() { $("#id_structure").select2(); });
+</script>
+{% endblock %}
+
 {% block breadcrumbs %} - <a href="{% url trainer_index %}">Тренер</a> - {% if exercise %}<a href="{{ exercise.get_absolute_url }}">Упражнение</a> - Редактирование{% else %}Новое упражнение{% endif %}{% endblock %}
 
 {% block content %}

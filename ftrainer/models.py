@@ -120,3 +120,9 @@ class Exercise(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('ftrainer.views.exercise_detail', [self.id])
+
+    def simpler_queryset(self):
+        return self.structure.order_by("complexity").filter(complexity__lt=self.complexity)
+
+    def harder_queryset(self):
+        return self.structure.order_by("complexity").filter(complexity__gt=self.complexity)

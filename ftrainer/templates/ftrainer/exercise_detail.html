@@ -1,5 +1,6 @@
 {% extends "ftrainer/base_trainer.html" %}
 
+{% load i18n %}
 {% load markup %}
 {% load comments %}
 
@@ -12,7 +13,36 @@
 
 <p><a href="{% url trainer_exercise_edit exercise.id %}">редактировать</a></p>
 
-<p>{{ exercise.part }}, {{ exercise.member }}, {{ exercise.skill }}</p>
+<p>
+{% if exercise.part %}{% trans "Part of training" %}: <a href="{% url trainer_part_detail exercise.part.id %}">{{ exercise.part }}</a><br />{% endif %}
+{% if exercise.member %}{% trans "Members" %}: <a href="{% url trainer_member_detail exercise.member.id %}">{{ exercise.member }}</a><br />{% endif %}
+{% if exercise.skill %}{% trans "Skill" %}: <a href="{% url trainer_skill_detail exercise.skill.id %}">{{ exercise.skill }}</a>{% endif %}
+</p>
+
 <p>{{ exercise.content }}</p>
+
+{% with simpler_qs=exercise.simpler_queryset %}
+{% if simpler_qs %}
+<p>Содержит упражнения:</p>
+
+<ul>
+{% for item in exercise.simpler_queryset %}
+<li>{{ item.complexity }} <a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+{% with harder_qs=exercise.harder_queryset %}
+{% if harder_qs %}
+<p>Содержится в упражнениях:</p>
+
+<ul>
+{% for item in harder_qs %}
+<li>{{ item.complexity }} <a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
 
 {% endblock %}
