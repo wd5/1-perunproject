@@ -27,8 +27,7 @@ $(document).ready(function() {
 <p><a href="{% url trainer_exercise_edit exercise.id %}">редактировать</a></p>
 
 <p>
-{% if exercise.part %}{% trans "Part of training" %}: <a href="{% url trainer_part_detail exercise.part.id %}">{{ exercise.part }}</a><br />{% endif %}
-{% if exercise.member %}{% trans "Members" %}: <a href="{% url trainer_member_detail exercise.member.id %}">{{ exercise.member }}</a><br />{% endif %}
+{% if exercise.part %}{% trans "Category" %}: <a href="{% url trainer_part_detail exercise.part.id %}">{{ exercise.part }}</a><br />{% endif %}
 {% if exercise.skill %}{% trans "Skill" %}: <a href="{% url trainer_skill_detail exercise.skill.id %}">{{ exercise.skill }}</a>{% endif %}
 </p>
 

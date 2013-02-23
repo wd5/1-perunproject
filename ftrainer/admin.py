@@ -1,16 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from ftrainer.models import Exercise, Part, Member, Skill
+from ftrainer.models import Exercise, Part, Skill
 from django.contrib import admin
 
 
 class PartAdmin(admin.ModelAdmin):
-    list_display = ["title", "position", "is_published"]
-    list_editable = ["position", "is_published"]
-    list_per_page = 30
-
-class MemberAdmin(admin.ModelAdmin):
     list_display = ["title", "position", "is_published"]
     list_editable = ["position", "is_published"]
     list_per_page = 30
@@ -34,5 +29,4 @@ class ExerciseAdmin(admin.ModelAdmin):
 
 admin.site.register(Exercise, ExerciseAdmin)
 admin.site.register(Part, PartAdmin)
-admin.site.register(Member, MemberAdmin)
 admin.site.register(Skill, SkillAdmin)

@@ -22,7 +22,6 @@ class ExerciseForm(forms.ModelForm):
                 #'Content',
                 'title',
                 'part',
-                'member',
                 'skill',
                 'content',
                 'video',

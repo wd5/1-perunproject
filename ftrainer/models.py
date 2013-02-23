@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from datetime import datetime
 
+from ftrainer.settings import GROUP_CHOICES
+
 
 class Part(models.Model):
 
@@ -16,36 +18,17 @@ class Part(models.Model):
     # Content
     content = models.TextField(_("Content"), blank=True)
 
-    # Position
-    position = models.IntegerField(_("Position"), default=0)
-
-    class Meta:
-        ordering = ["position"]
-        verbose_name = _("Part of training")
-        verbose_name_plural = _("Parts of training")
-
-    def __unicode__(self):
-        return unicode(self.title)
-
-
-class Member(models.Model):
-
-    # Published
-    is_published = models.BooleanField(default=True)
-
-    # Title
-    title = models.CharField(_("Title"), max_length=100)
-
-    # Content
-    content = models.TextField(_("Content"), blank=True)
+    # Category
+    group = models.IntegerField(_("Group"),
+        choices=GROUP_CHOICES, default=0)
 
     # Position
     position = models.IntegerField(_("Position"), default=0)
 
     class Meta:
-        ordering = ["position"]
-        verbose_name = _("Member")
-        verbose_name_plural = _("Members")
+        ordering = ["group", "position"]
+        verbose_name = _("Category")
+        verbose_name_plural = _("Categories")
 
     def __unicode__(self):
         return unicode(self.title)
@@ -80,8 +63,7 @@ class Exercise(models.Model):
     user = models.ForeignKey(User, related_name='user')
 
     # Part
-    part = models.ForeignKey(Part, verbose_name=_("Part"), blank=True, null=True)
-    member = models.ForeignKey(Member, verbose_name=_("Member"), blank=True, null=True)
+    part = models.ForeignKey(Part, verbose_name=_("Category"), blank=True, null=True)
     skill = models.ForeignKey(Skill, verbose_name=_("Skill"), blank=True, null=True)
 
     # Published
