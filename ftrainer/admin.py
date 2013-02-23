@@ -6,8 +6,8 @@ from django.contrib import admin
 
 
 class PartAdmin(admin.ModelAdmin):
-    list_display = ["title", "position", "is_published"]
-    list_editable = ["position", "is_published"]
+    list_display = ["title", "group", "position", "is_published"]
+    list_editable = ["group", "position", "is_published"]
     list_per_page = 30
 
 class SkillAdmin(admin.ModelAdmin):
@@ -18,7 +18,7 @@ class SkillAdmin(admin.ModelAdmin):
 class ExerciseAdmin(admin.ModelAdmin):
     exclude = ["user"]
     list_display = ["title", "part", "complexity", "date", "is_published"]
-    list_editable = ["complexity", "is_published"]
+    list_editable = ["part", "complexity", "is_published"]
     list_per_page = 30
 
     def save_model(self, request, obj, form, change):
